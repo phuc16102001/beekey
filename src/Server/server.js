@@ -1,16 +1,22 @@
-var http = require('http')
+var express = require('express')
+var config = require('./config/config')
 
-function handler(req,res){
-    switch (req.url){
-        case ('/'): {
-            res.writeHead(200,{ 'Content-Type': 'text/html' });
-            res.write('Yeu Nhu Thanh nhieu')
-            res.end();
-            break;
-        }
+var app = express()
+
+app.use(function(req,res,next){
+    if (config.server.noTokenUrl.indexOf(req.url)==-1){
+        
     }
-}
+})
 
-var server = http.createServer(handler);
-server.listen(8080);
-console.log("Begin listen on 8080...");
+app.get("/",function(req,res){
+    res.json({
+        username:"phuc16102001",
+        password:"20"
+    })
+    res.end()
+})
+
+app.listen(config.server.port,function(){
+    console.log("Begin listen on port %s...",config.server.port);
+})
