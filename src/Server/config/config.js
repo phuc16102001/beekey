@@ -7,7 +7,7 @@ exports.server = {
 
 exports.database = {
     host: 'localhost',
-    username: 'postgres',
+    user: 'root',
     password: 'Phuc16102001',
-    name: 'BeeKey'
+    name: 'BEEKEY'
 }
