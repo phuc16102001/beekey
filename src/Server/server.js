@@ -3,7 +3,7 @@ var config = require('./config/config')
 var db = require('mysql')
 var app = express()
 
-const conn = db.createConnection(config.server);
+const conn = db.createConnection(config.database);
 conn.connect(err=>{
     if (err) throw err;
     console.log("Connect successfully to database");
