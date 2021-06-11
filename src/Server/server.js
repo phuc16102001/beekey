@@ -1,28 +1,65 @@
-var express = require('express')
-var config = require('./config/config')
-var db = require('mysql')
-var app = express()
+const   express = require('express')
+        app = express()
+        route = require('./route/route')
+        jwt = require('jsonwebtoken')
 
-const conn = db.createConnection(config.database);
-conn.connect(err=>{
-    if (err) throw err;
-    console.log("Connect successfully to database");
+//==================== Library =======================
+
+//#region middleware
+
+app.use(express.json())
+app.use(express.urlencoded({
+    extended:true
+}));
+
+app.use((req,res,next)=>{
+    console.log("%s %s",req.method,req.url);
+    next()
 });
 
 app.use(function(req,res,next){
     if (config.server.noTokenUrl.indexOf(req.url)==-1){
-        
+        //In token url
+        const token = req.body.token || req.headers['x-access-token']
+        if (token){ 
+            //Token found
+            const decoded = jwt.decode(token);
+            if (decoded.exitcode==-1) {
+                //Parse failed
+                res.json({
+                    exitcode: 1,
+                    message: 'Fail to parse token'
+                })
+                res.end()
+            } 
+            else {
+                //Parse successful
+                req.paylod = decoded.database
+                next()
+            }
+        } 
+        else {
+            //No token found
+            res.status(403);
+            res.send({
+                exitcode: 0,
+                message: "No token"
+            })
+            res.end()
+        }
+    } 
+    else {
+        //Non-token url
+        next()
     }
 })
 
-app.get("/",function(req,res){
-    res.json({
-        username:"phuc16102001",
-        password:"20"
-    })
-    res.end()
-})
+//#endregion middleware
 
+//Bind route
+route.assignRoutes(app)
+
+//Start listen
 app.listen(config.server.port,function(){
     console.log("Begin listen on port %s...",config.server.port);
 })
