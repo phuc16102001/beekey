@@ -13,11 +13,6 @@ app.use(express.urlencoded({
     extended:true
 }));
 
-app.use((req,res,next)=>{
-    console.log("%s %s",req.method,req.url);
-    next()
-});
-
 app.use(function(req,res,next){
     if (config.server.noTokenUrl.indexOf(req.url)==-1){
         //In token url

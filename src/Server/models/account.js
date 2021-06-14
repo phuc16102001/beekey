@@ -22,6 +22,8 @@ Account.create = function(resultCallback) {
     });
 }
 
+Account.getInformation = ()
+
 Account.getAll = function(resultCallback){
     sql.query("SELECT * FROM ACCOUNT",function(err,res){
         if (err) {
