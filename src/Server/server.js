@@ -1,6 +1,6 @@
 const   express = require('express')
         app = express()
-        route = require('./route/route')
+        route = require('./routes/routes')
         jwt = require('jsonwebtoken')
         config = require('./config/config')
 

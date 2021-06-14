@@ -1,4 +1,4 @@
-const sql = require('./../db')
+const sql = require('./db')
 
 const Account = function(account) {
     this.username = account.username;
@@ -22,7 +22,17 @@ Account.create = function(resultCallback) {
     });
 }
 
-Account.getInformation = ()
+Account.login = function(data,resultCallback){
+    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[data.username,data.password],function(err,res){
+        if (err){
+            console.log("Fail to login: ",err)
+            resultCallback(err,null)
+        }
+
+        console.log("Login account: ",res)
+        resultCallback(null,res)
+    });
+}
 
 Account.getAll = function(resultCallback){
     sql.query("SELECT * FROM ACCOUNT",function(err,res){
