@@ -10,20 +10,20 @@ const Account = function(account) {
     this.coin = account.coin;
 }
 
-Account.create = function(resultCallback) {
-    sql.query("INSERT INTO ACCOUNT SET ?",newAccount,function(err,res){
+Account.signup = function(account,resultCallback) {
+    sql.query("INSERT INTO ACCOUNT SET ?",account,function(err,res){
         if (err) {
             console.log("Fail to create: ",err);
             resultCallback(err,null);
         }
 
-        console.log("Created account: ",{id:res.insertedID,...newAccount});
-        resultCallback(null,{id:res.insertedID,...newAccount})
+        console.log("Created account: ",{id:res.insertedID});
+        resultCallback(null,{id:res.insertedID})
     });
 }
 
-Account.login = function(data,resultCallback){
-    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[data.username,data.password],function(err,res){
+Account.login = function(account,resultCallback){
+    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[account.username,account.password],function(err,res){
         if (err){
             console.log("Fail to login: ",err)
             resultCallback(err,null)
@@ -34,16 +34,16 @@ Account.login = function(data,resultCallback){
     });
 }
 
-Account.getAll = function(resultCallback){
-    sql.query("SELECT * FROM ACCOUNT",function(err,res){
+Account.getInformation = function(account,resultCallback) {
+    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=?",[account.username],(err,res)=>{
         if (err) {
-            console.log("Fail to get account: ",err);
-            resultCallback(err,null);
+            console.log("Fail to get information: ",err)
+            resultCallback(err,null)
         }
 
-        console.log("Get account");
+        console.log("Get account: ",res)
         resultCallback(null,res)
-    });
+    })
 }
 
 module.exports = Account
