@@ -2,6 +2,7 @@ const   express = require('express')
         app = express()
         route = require('./route/route')
         jwt = require('jsonwebtoken')
+        config = require('./config/config')
 
 //==================== Library =======================
 
@@ -34,7 +35,7 @@ app.use(function(req,res,next){
             } 
             else {
                 //Parse successful
-                req.paylod = decoded.database
+                req.payload = decoded.data
                 next()
             }
         } 
