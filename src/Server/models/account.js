@@ -21,6 +21,7 @@ Account.signup = function(account,resultCallback) {
         if (err) {
             console.log("Fail to create: ",err);
             resultCallback(err,null);
+            return;
         }
 
         resultCallback(null,account)
@@ -32,6 +33,7 @@ Account.login = function(account,resultCallback){
         if (err){
             console.log("Fail to login: ",err)
             resultCallback(err,null)
+            return;
         }
 
         resultCallback(null,res)
@@ -43,6 +45,7 @@ Account.getInformation = function(account,resultCallback) {
         if (err) {
             console.log("Fail to get information: ",err)
             resultCallback(err,null)
+            return;
         }
 
         resultCallback(null,res)
