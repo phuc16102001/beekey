@@ -1,7 +1,12 @@
 const sql = require('./db')
 
+const accountType = {
+    admin: 0,
+    user: 1
+}
+
 const Account = function(account) {
-    this.username = account.username;
+    this.username = account.USERNAME;
     this.name = account.name;
     this.password = account.password;
     this.phone = account.phone;
@@ -11,14 +16,14 @@ const Account = function(account) {
 }
 
 Account.signup = function(account,resultCallback) {
+    account.type = accountType.user
     sql.query("INSERT INTO ACCOUNT SET ?",account,function(err,res){
         if (err) {
             console.log("Fail to create: ",err);
             resultCallback(err,null);
         }
 
-        console.log("Created account: ",{id:res.insertedID});
-        resultCallback(null,{id:res.insertedID})
+        resultCallback(null,account)
     });
 }
 
@@ -29,7 +34,6 @@ Account.login = function(account,resultCallback){
             resultCallback(err,null)
         }
 
-        console.log("Login account: ",res)
         resultCallback(null,res)
     });
 }
@@ -41,7 +45,6 @@ Account.getInformation = function(account,resultCallback) {
             resultCallback(err,null)
         }
 
-        console.log("Get account: ",res)
         resultCallback(null,res)
     })
 }
