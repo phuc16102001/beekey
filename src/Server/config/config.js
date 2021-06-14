@@ -1,6 +1,6 @@
 exports.server = {
     port: 8080,
-    noTokenUrl: ['/account/login','/account/signup'],
+    noTokenUrl: ['/account/login','/account/signup','/ping','/account/getInformation'],
     expTime: 60*60*24,
     secret: 'BTree'
 }
