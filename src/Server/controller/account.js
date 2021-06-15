@@ -1,6 +1,6 @@
-const   jwt = require('jsonwebtoken')
-        Account = require('../models/account')
-        config = require('../config/config')
+const jwt = require('jsonwebtoken')
+const Account = require('../models/account')
+const config = require('../config/config')
 
 function login(req,res){
     data = {
@@ -79,7 +79,7 @@ function getInformation(req,res){
             })
         }
 
-        if (result.length>0) {
+        if (result && result.length>0) {
             account = result[0]
             res.send({
                 exitcode: 0,
@@ -101,8 +101,57 @@ function getInformation(req,res){
     })
 }
 
+function changePassword(req,res,next) {
+    data = {
+        username: req.payload.username,
+        newPassword: req.body.newPassword,
+        oldPassword: req.body.oldPassword
+    }
+    Account.getPassword(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: res
+            })
+        }
+        
+        if (result && result.length>0) {
+            oldPassword = result[0].password
+            if (oldPassword!=data.oldPassword) {
+                res.send({
+                    exitcode: 2,
+                    message: "Old password not correct"
+                })
+                return;
+            }
+
+            Account.changePassword(data,(err,result)=>{
+                if (err) {
+                    res.send({
+                        exitcode: 1,
+                        message: err
+                    })
+                }
+
+                if (result) {
+                    res.send({
+                        exitcode: 0,
+                        message: "Change password successfully"
+                    })
+                }
+            })
+        } else {
+            res.send({
+                exitcode: 3,
+                message: "Not found user"
+            })
+        }
+    })
+}
+
 module.exports = {
     login,
     signup,
-    getInformation
+    getInformation,
+    changePassword
 }

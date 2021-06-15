@@ -16,22 +16,22 @@ const Account = function(account) {
     this.coin = account.coin;
 }
 
-Account.signup = function(account,resultCallback) {
-    account.type = accountType.user
-    account.coin = accountCoinDefault
-    sql.query("INSERT INTO ACCOUNT SET ?",account,function(err,res){
+Account.signup = function(data,resultCallback) {
+    data.type = accountType.user
+    data.coin = accountCoinDefault
+    sql.query("INSERT INTO ACCOUNT SET ?",data,function(err,res){
         if (err) {
             console.log("Fail to create: ",err);
             resultCallback(err,null);
             return;
         }
 
-        resultCallback(null,account)
+        resultCallback(null,data)
     });
 }
 
-Account.login = function(account,resultCallback){
-    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[account.username,account.password],function(err,res){
+Account.login = function(data,resultCallback){
+    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[data.username,data.password],function(err,res){
         if (err){
             console.log("Fail to login: ",err)
             resultCallback(err,null)
@@ -42,8 +42,8 @@ Account.login = function(account,resultCallback){
     });
 }
 
-Account.getInformation = function(account,resultCallback) {
-    sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=?",[account.username],(err,res)=>{
+Account.getInformation = function(data,resultCallback) {
+    sql.query("SELECT * FROM ACCOUNT WHERE username=?",[data.username],(err,res)=>{
         if (err) {
             console.log("Fail to get information: ",err)
             resultCallback(err,null)
@@ -51,6 +51,30 @@ Account.getInformation = function(account,resultCallback) {
         }
 
         resultCallback(null,res)
+    })
+}
+
+Account.getPassword = function(data,resultCallBack){
+    sql.query("SELECT password FROM ACCOUNT WHERE username=?",[data.username],(err,res)=>{
+        if (err){
+            console.log("Fail to get password: ",err)
+            resultCallBack(err,null)
+            return;
+        }
+
+        resultCallBack(null,res)
+    })
+}
+
+Account.changePassword = function(data,resultCallBack) {
+    sql.query("UPDATE ACCOUNT SET password=? WHERE username=?",[data.newPassword,data.username],(err,res)=>{
+        if (err) {
+            console.log("Fail to change password: ",err)
+            resultCallBack(err,null)
+            return;
+        }
+
+        resultCallBack(null,res)
     })
 }
 
