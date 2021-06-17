@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BeeKey</string>
+    <string name="sign_up_to_become_a_new_bee">Sign up to become a new Bee</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="beekey">BEEKEY</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="logintodo">TODO</string>
 </resources>

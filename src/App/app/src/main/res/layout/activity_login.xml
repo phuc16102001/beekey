@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+    <TextView
+        android:id="@+id/login_BEEKEY"
+        android:layout_width="287dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/beekey"
+        android:textColor="@color/black"
+        android:textSize="80sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="235dp"
+        android:layout_height="229dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="65dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_t"
+        android:contentDescription="@string/logintodo" />
+
+    <EditText
+        android:id="@+id/LoginUsername"
+        android:layout_width="290dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="60dp"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
+    <EditText
+        android:id="@+id/LoginPassword"
+        android:layout_width="290dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginUsername"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/Loginsignup"
+        android:layout_width="220dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/sign_up_to_become_a_new_bee"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/LoginForgetPassword"
+        android:layout_width="166dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:text="@string/forget_password"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoginPassword" />
+
+    <Button
+        android:id="@+id/LoginButton"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="40dp"
+        android:filterTouchesWhenObscured="false"
+        android:text="@string/login"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/Loginsignup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
