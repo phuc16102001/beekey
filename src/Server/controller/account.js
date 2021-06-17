@@ -101,7 +101,7 @@ function getInformation(req,res){
     })
 }
 
-function changePassword(req,res,next) {
+function changePassword(req,res) {
     data = {
         username: req.payload.username,
         newPassword: req.body.newPassword,
@@ -143,15 +143,56 @@ function changePassword(req,res,next) {
         } else {
             res.send({
                 exitcode: 3,
-                message: "Not found user"
+                message: "Username not found"
             })
         }
     })
+}
+
+function changeInformation(req,res) {
+    changes = {
+        phone: req.body.phone,
+        address: req.body.address,
+        name: req.body.name,
+        gender: req.body.gender,
+    },
+    Object.keys(changes).forEach(key=>{
+        if (changes[key]===undefined) {
+            delete changes[key]
+        }
+    })
+    data = {
+        changes,
+        username: req.payload.username
+    }
+    Account.changeInformation(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return;
+        }
+
+        affectedRows = result.affectedRows
+        if (affectedRows!=null && affectedRows>0){
+            res.send({
+                exitcode: 0,
+                message: "Change successfully"
+            })
+        } else {
+            res.send({
+                exitcode: 3,
+                message: "Username not found"
+            })
+        }
+    });
 }
 
 module.exports = {
     login,
     signup,
     getInformation,
-    changePassword
+    changePassword,
+    changeInformation
 }

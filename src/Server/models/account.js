@@ -78,4 +78,20 @@ Account.changePassword = function(data,resultCallBack) {
     })
 }
 
+Account.changeInformation = function(data,resultCallBack){
+    console.log(data.username)
+    console.log(data.changes)
+    sql.query(
+        "UPDATE ACCOUNT SET ? WHERE username=?",
+        [data.changes,data.username],
+        (err,res)=>{
+            if (err) {
+                resultCallBack(err,null)
+                return
+            }
+
+            resultCallBack(null,res)
+        })
+}
+
 module.exports = Account
