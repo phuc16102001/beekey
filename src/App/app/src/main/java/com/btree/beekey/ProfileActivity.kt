@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 
-class ProfileActivityActivity:AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.profile_activity)
+        setContentView(R.layout.activity_profile)
 
         val userList = mutableListOf<Feedback>()
         userList.add(Feedback("Good","Description: Test test test","Thanh"))
