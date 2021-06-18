@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BeeKey</string>
+    <string name="display_name">Display name</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="_84_70_201_1234">(+84)70 201 1234</string>
+    <string name="vietnam">Vietnam</string>
 </resources>

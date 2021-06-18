@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="beegrey">#424242</color>
     <color name="beeyellow">#FEC215</color>
+    <color name="greyborder">#F2EEEE</color>
+
 </resources>
