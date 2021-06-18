@@ -19,8 +19,11 @@
     <string name="todo">TODO</string>
     <string name="ok">OK</string>
     <string name="change_pass">Change Pass</string>
-    <string name="password">Password</string>
     <string name="new_password">New Password</string>
     <string name="reenter_password">ReEnter Password</string>
+    <string name="change_information">Change Information</string>
+    <string name="name">Name</string>
+    <string name="gender">Gender</string>
+    <string name="phonenumber">Phone number</string>
 
 </resources>
