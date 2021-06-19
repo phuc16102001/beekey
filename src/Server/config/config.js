@@ -9,5 +9,5 @@ exports.database = {
     host: 'localhost',
     user: 'root',
     password: 'Phuc16102001',
-    name: 'BEEKEY'
+    database: 'BEEKEY'
 }
