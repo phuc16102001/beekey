@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_BEEKEY"
+        android:layout_width="287dp"
+        android:layout_height="95dp"
+        android:text="@string/beekey"
+        android:textColor="@color/black"
+        android:textSize="80sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/login_logo"
+        android:layout_width="235dp"
+        android:layout_height="229dp"
+        app:srcCompat="@drawable/logo_t"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintTop_toTopOf="@+id/login_BEEKEY"
+        android:contentDescription="@string/logintodo" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LoginUsername"
+        android:layout_width="290dp"
+        android:layout_height="71dp"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintTop_toTopOf="@+id/login_logo"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LoginPassword"
+        android:layout_width="290dp"
+        android:layout_height="70dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintTop_toTopOf="@+id/LoginUsername"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/Loginsignup"
+        android:layout_width="220dp"
+        android:layout_height="27dp"
+        android:text="@string/sign_up_to_become_a_new_bee"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textColorHighlight="@color/beeyellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/LoginForgetPassword"
+        android:layout_width="166dp"
+        android:layout_height="36dp"
+        android:text="@string/forget_password"
+        android:textSize="20sp"
+        android:focusable="true"
+        android:textColorHighlight="@color/beeyellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintTop_toTopOf="@id/LoginPassword"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/LoginButton"
+        android:layout_width="210dp"
+        android:layout_height="70dp"
+        android:filterTouchesWhenObscured="false"
+        android:text="@string/login"
+        android:textColor="@color/black"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/Loginsignup"
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
