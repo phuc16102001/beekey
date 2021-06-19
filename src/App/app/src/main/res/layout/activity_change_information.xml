@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#ffcd00"
+        android:backgroundTint="@color/beeyellow"
         tools:layout_editor_absoluteX="158dp"
         tools:layout_editor_absoluteY="413dp" />
 
