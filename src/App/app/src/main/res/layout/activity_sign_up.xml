@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,7 +15,7 @@
         app:srcCompat="@drawable/logo_t" />
 
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/create_your_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_signup"
         android:layout_width="150dp"
         android:layout_height="45dp"
