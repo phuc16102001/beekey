@@ -85,11 +85,12 @@ CREATE TABLE ATTACH_FILE(
 
 CREATE TABLE REPORT(
 	report_id INT AUTO_INCREMENT,
-	email VARCHAR(30),
+	username VARCHAR(30),
 	date_time DATETIME,
 	content TEXT,
 
-	PRIMARY KEY(report_id)
+	PRIMARY KEY(report_id),
+	FOREIGN KEY(username) REFERENCES ACCOUNT(username)
 );
 
 --------------------------------------------------------------------
