@@ -83,6 +83,15 @@ CREATE TABLE ATTACH_FILE(
 	FOREIGN KEY(task_id) REFERENCES TASK(task_id)
 );
 
+CREATE TABLE REPORT(
+	report_id INT AUTO_INCREMENT,
+	email VARCHAR(30),
+	date_time DATETIME,
+	content TEXT,
+
+	PRIMARY KEY(report_id)
+);
+
 --------------------------------------------------------------------
 
 INSERT INTO ACCOUNT(username,password,type) VALUES
