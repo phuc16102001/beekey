@@ -96,7 +96,7 @@ CREATE TABLE REPORT(
 --------------------------------------------------------------------
 
 INSERT INTO ACCOUNT(username,password,type) VALUES
-("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",1);
+("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",0);
 
 INSERT INTO CATEGORY(category_name) VALUES
 ("Testing"),

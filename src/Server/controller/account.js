@@ -154,8 +154,8 @@ function changeInformation(req,res) {
         phone: req.body.phone,
         address: req.body.address,
         name: req.body.name,
-        gender: req.body.gender,
-    },
+        gender: req.body.gender
+    }
     Object.keys(changes).forEach(key=>{
         if (changes[key]===undefined) {
             delete changes[key]

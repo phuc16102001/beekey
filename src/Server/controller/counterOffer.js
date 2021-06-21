@@ -1,7 +1,7 @@
-function getCategory(req,res) {
+function post(req,res) {
 
 }
 
 module.exports = {
-    
+    post
 }

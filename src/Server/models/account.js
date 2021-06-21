@@ -1,10 +1,5 @@
 const sql = require('./db')
-
-const accountType = {
-    admin: 0,
-    user: 1
-}
-const accountCoinDefault = 0
+const config = require('../config/config')
 
 const Account = function(account) {
     this.username = account.username;
@@ -17,8 +12,8 @@ const Account = function(account) {
 }
 
 Account.signup = function(data,resultCallback) {
-    data.type = accountType.user
-    data.coin = accountCoinDefault
+    data.type = config.constant.USER_ID
+    data.coin = config.constant.DEFAULT_COIN
     sql.query("INSERT INTO ACCOUNT SET ?",data,function(err,res){
         if (err) {
             console.log("Fail to create: ",err);
