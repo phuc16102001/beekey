@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">BeeKey</string>
+    <string name="display_name">Display name</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="_84_70_201_1234">(+84)70 201 1234</string>
+    <string name="vietnam">Vietnam</string>
+    <string name="sign_up_to_become_a_new_bee">Sign up to become a new Bee</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="beekey">BEEKEY</string>
+    <string name="logintodo">TODO</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="home_address">Home Address</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="todo">TODO</string>
+    <string name="ok">OK</string>
+    <string name="change_pass">Change Pass</string>
+    <string name="new_password">New Password</string>
+    <string name="reenter_password">ReEnter Password</string>
+    <string name="change_information">Change Information</string>
+    <string name="name">Name</string>
+    <string name="gender">Gender</string>
+    <string name="phonenumber">Phone number</string>
+
 </resources>

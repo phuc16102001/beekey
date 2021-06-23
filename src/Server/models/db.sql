@@ -83,10 +83,20 @@ CREATE TABLE ATTACH_FILE(
 	FOREIGN KEY(task_id) REFERENCES TASK(task_id)
 );
 
+CREATE TABLE REPORT(
+	report_id INT AUTO_INCREMENT,
+	username VARCHAR(30),
+	date_time DATETIME,
+	content TEXT,
+
+	PRIMARY KEY(report_id),
+	FOREIGN KEY(username) REFERENCES ACCOUNT(username)
+);
+
 --------------------------------------------------------------------
 
 INSERT INTO ACCOUNT(username,password,type) VALUES
-("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",1);
+("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",0);
 
 INSERT INTO CATEGORY(category_name) VALUES
 ("Testing"),
