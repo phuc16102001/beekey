@@ -25,5 +25,8 @@
     <string name="name">Name</string>
     <string name="gender">Gender</string>
     <string name="phonenumber">Phone number</string>
+    <string name="my_request">My Request</string>
+    <string name="backbutton">BACKBUTTON</string>
+    <string name="requesticon">REQUESTICON</string>
 
 </resources>
