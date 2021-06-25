@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.btree.beekey.api.LoginPost
 import com.btree.beekey.api.LoginResponse
@@ -28,10 +29,25 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val loginButton: Button = findViewById(R.id.LoginButton)
+        val forget: TextView = findViewById(R.id.LoginForgetPassword)
+        val signup: TextView = findViewById(R.id.Loginsignup)
 
         loginButton.setOnClickListener{
             CheckAccount()
         }
+
+        forget.setOnClickListener {
+            Intent(this, ChangePasswordActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+        signup.setOnClickListener {
+            Intent(this, SignUpActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
     }
 
     private fun CheckAccount(){
@@ -46,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(API::class.java)
-        
+
         val response = api.postlogin(LoginPost(usernameStr,passwordStr))
 
         response.enqueue(object : Callback<LoginResponse>{
