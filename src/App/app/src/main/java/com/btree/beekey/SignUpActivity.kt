@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.btree.beekey.api.LoginPost
 import com.btree.beekey.api.LoginResponse
 import com.btree.beekey.api.SignUpPost
@@ -32,15 +31,21 @@ class SignUpActivity : AppCompatActivity() {
     private fun Signupaccount(){
         val Username = findViewById<EditText>(R.id.SignUpUserName)
         val Password = findViewById<EditText>(R.id.SignUpPassword)
-        val reenterPassword = findViewById<EditText>(R.id.SignUpReEnterPass)
         val PhoneNum = findViewById<EditText>(R.id.SignUpPhoneNumer)
         val Homeadd = findViewById<EditText>(R.id.SignUpHomeAdd)
+        val Gender = findViewById<Spinner>(R.id.SignUpGender)
+
 
         val usernameStr = Username.text.toString()
         val passwordStr = Password.text.toString()
-        val reenterPasswordStr = reenterPassword.text.toString()
         val PhoneNumStr = PhoneNum.text.toString()
         val HomeaddStr = Homeadd.text.toString()
+        val GenderStr = Gender.getSelectedItem().toString();
+        var GenderBool = true;
+
+        if (GenderStr == "Female"){
+            GenderBool = false;
+        }
 
 
         val api = Retrofit.Builder()
@@ -49,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             .build()
             .create(API::class.java)
 
-        val response = api.postsignup(SignUpPost(usernameStr,passwordStr,PhoneNumStr,HomeaddStr,true))
+        val response = api.postsignup(SignUpPost(usernameStr,passwordStr,PhoneNumStr,HomeaddStr,GenderBool))
         if (checkFill()) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(

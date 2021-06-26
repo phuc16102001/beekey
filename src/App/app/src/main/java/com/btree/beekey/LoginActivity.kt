@@ -1,8 +1,10 @@
 package com.btree.beekey
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -17,12 +19,11 @@ import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-
-const val BASE_URL = "http://115.74.19.83:8080"
-
 class LoginActivity : AppCompatActivity() {
 
     private var TAG = "loginactivity"  //for debug
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +72,10 @@ class LoginActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("LoginStatus",data.toString())
                     if (data?.exitcode == 0) {
+
+//                        val cache = HashMap<Any,Any>()
+//                        cache["token"] = data.token
+//
                         Intent(this@LoginActivity, ProfileActivity::class.java).also {
                             startActivity(it)
                         }

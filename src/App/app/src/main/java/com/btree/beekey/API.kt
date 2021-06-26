@@ -10,6 +10,8 @@ import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.POST
 
+const val BASE_URL = "http://171.232.60.54:8080"
+
 interface API {
     @POST("/account/login")
     fun postlogin(

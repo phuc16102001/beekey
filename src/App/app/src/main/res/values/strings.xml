@@ -25,5 +25,9 @@
     <string name="name">Name</string>
     <string name="gender">Gender</string>
     <string name="phonenumber">Phone number</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
 </resources>
