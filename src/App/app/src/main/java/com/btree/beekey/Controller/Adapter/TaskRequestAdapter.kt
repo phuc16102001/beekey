@@ -1,4 +1,4 @@
-package com.btree.beekey
+package com.btree.beekey.Controller.Adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.btree.beekey.R
 
 class TaskRequestAdapter (
     private val ListTask: List<TaskRequest>

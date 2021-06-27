@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="top|center"
-    tools:context=".MainActivity">
+    tools:context=".Controller.Activity.MainActivity">
 
     <TextView
         android:id="@+id/textView"
