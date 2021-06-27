@@ -15,6 +15,9 @@ class ProfileActivity : AppCompatActivity() {
         userList.add(Feedback("Good","Description: Test test test","Phuc"))
         userList.add(Feedback("Good","Description: Test test test","Khanh"))
         userList.add(Feedback("Good","Description: Test test test","Khoa"))
+        userList.add(Feedback("Good","Description: Test test test","Khoa1"))
+        userList.add(Feedback("Good","Description: Test test test","Khoa2"))
+        userList.add(Feedback("Good","Description: Test test test","Khoa3"))
         Log.d("user",userList.size.toString());
 
         val recycler_view: RecyclerView = findViewById(R.id.recycler)

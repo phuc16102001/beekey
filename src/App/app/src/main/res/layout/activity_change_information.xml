@@ -9,18 +9,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="58dp"
         android:layout_marginTop="10dp"
-
-        android:minWidth="0dp"
-        android:minHeight="80dp"
 
         android:text="@string/change_information"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/avatar"
@@ -39,8 +35,7 @@
         android:hint="@string/name"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="200dp"
-        android:autofillHints="" />
+        tools:layout_editor_absoluteY="200dp" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -50,8 +45,7 @@
         android:ems="10"
         android:inputType="text|phone"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="234dp"
-        android:autofillHints="" />
+        tools:layout_editor_absoluteY="234dp" />
 
     <EditText
         android:id="@+id/editAddress"
@@ -61,8 +55,7 @@
         android:ems="10"
         android:inputType="text"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="234dp"
-        android:autofillHints="" />
+        tools:layout_editor_absoluteY="234dp" />
 
     <EditText
         android:id="@+id/editGender"
@@ -72,8 +65,7 @@
         android:ems="10"
         android:inputType="text"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="298dp"
-        android:autofillHints="" />
+        tools:layout_editor_absoluteY="298dp" />
 
     <Button
         android:id="@+id/OkButton"
