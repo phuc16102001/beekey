@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         forget.setOnClickListener {
-            Intent(this, ChangePasswordActivity::class.java).also {
+            Intent(this, ForgetPasswordActivity::class.java).also {
                 startActivity(it)
             }
         }
