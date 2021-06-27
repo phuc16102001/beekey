@@ -20,6 +20,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".MyListRequestActivity">
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ChangeInformationActivity" />
         <activity android:name=".LoginActivity">
@@ -29,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

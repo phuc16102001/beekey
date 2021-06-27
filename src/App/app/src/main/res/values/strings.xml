@@ -25,10 +25,12 @@
     <string name="name">Name</string>
     <string name="gender">Gender</string>
     <string name="phonenumber">Phone number</string>
+    <string name="my_request">My Request</string>
+    <string name="backbutton">BACKBUTTON</string>
+    <string name="requesticon">REQUESTICON</string>
     <string name="sorry_for_no_function">Sorry for no function</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>
-
 </resources>
