@@ -1,7 +1,8 @@
-package com.btree.beekey
+package com.btree.beekey.Controller.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.R
 
 class ChangeInformationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

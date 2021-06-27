@@ -1,20 +1,17 @@
-package com.btree.beekey
+package com.btree.beekey.Controller.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
-import com.btree.beekey.api.LoginPost
-import com.btree.beekey.api.LoginResponse
-import com.btree.beekey.api.SignUpPost
-import com.btree.beekey.api.SignUpResponse
+import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.SignUpPost
+import com.btree.beekey.Model.SignUpResponse
+import com.btree.beekey.R
+import com.btree.beekey.Utils.MyAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,21 +37,15 @@ class SignUpActivity : AppCompatActivity() {
         val passwordStr = Password.text.toString()
         val PhoneNumStr = PhoneNum.text.toString()
         val HomeaddStr = Homeadd.text.toString()
-        val GenderStr = Gender.getSelectedItem().toString();
-        var GenderBool = true;
+        val GenderStr = Gender.selectedItem.toString()
+        var GenderBool = true
 
-        if (GenderStr == "Female"){
-            GenderBool = false;
+        if (GenderStr == "Female") {
+            GenderBool = false
         }
 
-
-        val api = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(API::class.java)
-
-        val response = api.postsignup(SignUpPost(usernameStr,passwordStr,PhoneNumStr,HomeaddStr,GenderBool))
+        val response = MyAPI.getAPI()
+            .postsignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
         if (checkFill()) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(
@@ -98,12 +89,12 @@ class SignUpActivity : AppCompatActivity() {
         val HomeaddStr = Homeadd.text.toString()
         if (usernameStr == "" || passwordStr == "" || reenterPasswordStr == "" || PhoneNumStr == "" || HomeaddStr == ""){
             Toast.makeText(this, "Must fill all plain", Toast.LENGTH_SHORT).show()
-            return false;
+            return false
         }
         else if (passwordStr!=reenterPasswordStr){
             Toast.makeText(this, "Re-enter Password wrong", Toast.LENGTH_SHORT).show()
-            return false;
+            return false
         }
-        return true;
+        return true
     }
 }

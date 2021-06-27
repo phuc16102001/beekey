@@ -1,23 +1,20 @@
-package com.btree.beekey
+package com.btree.beekey.Controller.Activity
+
 
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.btree.beekey.api.LoginPost
-import com.btree.beekey.api.LoginResponse
+import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.LoginPost
+import com.btree.beekey.Model.LoginResponse
+import com.btree.beekey.R
+import com.btree.beekey.Utils.MyAPI
 import kotlinx.coroutines.*
 import retrofit2.*
-
-
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class LoginActivity : AppCompatActivity() {
 
@@ -51,26 +48,21 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun CheckAccount(){
+    private fun CheckAccount() {
         val Username = findViewById<EditText>(R.id.LoginUsername)
         val Password = findViewById<EditText>(R.id.LoginPassword)
 
         val usernameStr = Username.text.toString()
         val passwordStr = Password.text.toString()
 
-        val api = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(API::class.java)
 
-        val response = api.postlogin(LoginPost(usernameStr,passwordStr))
+        val response = MyAPI.getAPI().postlogin(LoginPost(usernameStr, passwordStr))
 
-        response.enqueue(object : Callback<LoginResponse>{
+        response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     val data = response.body()
-                    Log.d("LoginStatus",data.toString())
+                    Log.d("LoginStatus", data.toString())
                     if (data?.exitcode == 0) {
 
 //                        val cache = HashMap<Any,Any>()
