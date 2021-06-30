@@ -3,6 +3,7 @@ const   express = require('express')
         route = require('./routes/routes')
         jwt = require('jsonwebtoken')
         config = require('./config/config')
+        cors = require('cors')
 
 //==================== Library =======================
 
