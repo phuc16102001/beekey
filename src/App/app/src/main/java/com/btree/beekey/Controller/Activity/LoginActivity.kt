@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.Hash256
 import com.btree.beekey.Model.LoginPost
 import com.btree.beekey.Model.LoginResponse
 import com.btree.beekey.R
@@ -53,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
         val Password = findViewById<EditText>(R.id.LoginPassword)
 
         val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString()
-
+        val passwordStr = Hash256(Password.text.toString()).encode()
+        Log.d("xxxxx",passwordStr)
 
         val response = MyAPI.getAPI().postlogin(LoginPost(usernameStr, passwordStr))
 

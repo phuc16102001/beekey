@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.Hash256
 import com.btree.beekey.Model.SignUpPost
 import com.btree.beekey.Model.SignUpResponse
 import com.btree.beekey.R
@@ -34,7 +35,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
         val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString()
+        val passwordStr = Hash256(Password.text.toString()).encode()
         val PhoneNumStr = PhoneNum.text.toString()
         val HomeaddStr = Homeadd.text.toString()
         val GenderStr = Gender.selectedItem.toString()
@@ -43,7 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         if (GenderStr == "Female") {
             GenderBool = false
         }
-
+        Log.d("check pass",passwordStr)
         val response = MyAPI.getAPI()
             .postsignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
         if (checkFill()) {
