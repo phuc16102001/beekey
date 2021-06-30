@@ -22,7 +22,7 @@ app.use(function(req,res,next){
             if (err) {
                 res.status(403);
                 res.send({
-                    exitcode: 1,
+                    exitcode: 2,
                     message: err
                 })
                 return

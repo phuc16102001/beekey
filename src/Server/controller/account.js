@@ -117,7 +117,7 @@ function changePassword(req,res) {
             oldPassword = result[0].password
             if (oldPassword!=data.oldPassword) {
                 res.send({
-                    exitcode: 2,
+                    exitcode: 104,
                     message: "Old password not correct"
                 })
                 return;
