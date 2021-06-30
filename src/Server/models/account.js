@@ -7,12 +7,10 @@ const Account = function(account) {
     this.password = account.password;
     this.phone = account.phone;
     this.address = account.address;
-    this.type = account.type;
     this.coin = account.coin;
 }
 
 Account.signup = function(data,resultCallback) {
-    data.type = config.constant.USER_ID
     data.coin = config.constant.DEFAULT_COIN
     sql.query("INSERT INTO ACCOUNT SET ?",data,function(err,res){
         if (err) {

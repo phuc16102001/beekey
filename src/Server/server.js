@@ -29,8 +29,7 @@ app.use(function(req,res,next){
             }
             
             req.payload = {
-                username: decoded.username,
-                type: decoded.type
+                username: decoded.username
             }
             next()
         })

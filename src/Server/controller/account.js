@@ -20,7 +20,6 @@ function login(req,res){
             account = account[0]
             payload = {
                 username: account.username,
-                type: account.type
             }
             res.send({
                 exitcode: 0,
@@ -85,7 +84,6 @@ function getInformation(req,res){
                 exitcode: 0,
                 message: "Successfully get information",
                 username: account.username,
-                type: account.type,
                 name: account.name,
                 gender: account.gender,
                 phone: account.phone,

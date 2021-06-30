@@ -8,7 +8,6 @@ CREATE TABLE ACCOUNT(
 	username VARCHAR(30),
 	name VARCHAR(30),
 	password CHAR(64),
-	type INT,
 	gender BOOLEAN,
 	phone VARCHAR(12),
 	address VARCHAR(30),
