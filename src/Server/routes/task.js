@@ -1,7 +1,7 @@
 const task = require('../controller/task')
 
 function assignRoutes(app) {
-   app.assignRoutes("/task/getByCategory",task.getTaskByCategory)
+   app.post("/task/getByCategory",task.getTaskByCategory)
 }
 
 module.exports = {
