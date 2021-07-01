@@ -23,12 +23,50 @@ function getTaskByCategory(req,res) {
     })
 }
 
-function getTaskByUsername(req,res) {
+function getRequestByUsername(req,res) {
+    data = {
+        username: req.payload.username
+    }
 
+    Task.getRequestByUsername(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Get request by username successfully",
+                tasks: result
+            })
+        }
+    })
 }
 
-function getTaskByLancer(req,res){
+function getTaskByUsername(req,res){
+    data = {
+        username: req.payload.username
+    }
 
+    Task.getTaskByUsername(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Get task by username successfully",
+                tasks: result
+            })
+        }
+    })
 }
 
 function postTask(req,res){
@@ -61,7 +99,7 @@ function postTask(req,res){
 
 module.exports = {
     getTaskByCategory,
+    getRequestByUsername,
     getTaskByUsername,
-    getTaskByLancer,
     postTask
 }

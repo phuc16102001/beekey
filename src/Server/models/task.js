@@ -31,4 +31,28 @@ Task.postTask = function(data,resultCallback) {
 }
 
 
+Task.getRequestByUsername = function(data,resultCallback) {
+    sql.query("SELECT * FROM TASK WHERE user_id=?",data.username,(err,res)=>{
+        if (err) {
+            console.log("Fail to get request: ",err)
+            resultCallback(err,null)
+            return;
+        }
+
+        resultCallback(null,res)
+    })
+}
+
+Task.getTaskByUsername = function(data,resultCallback) {
+    sql.query("SELECT * FROM TASK WHERE lancer_id=?",data.username,(err,res)=>{
+        if (err) {
+            console.log("Fail to get request: ",err)
+            resultCallback(err,null)
+            return;
+        }
+
+        resultCallback(null,res)
+    })
+}
+
 module.exports = Task
