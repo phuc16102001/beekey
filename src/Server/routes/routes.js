@@ -1,4 +1,3 @@
-
 const accountRoutes = require('./account')
 const taskRoutes = require('./task')
 const categoryRoutes = require('./category')

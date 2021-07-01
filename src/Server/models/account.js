@@ -1,14 +1,7 @@
 const sql = require('./db')
 const config = require('../config/config')
 
-const Account = function(account) {
-    this.username = account.username;
-    this.name = account.name;
-    this.password = account.password;
-    this.phone = account.phone;
-    this.address = account.address;
-    this.coin = account.coin;
-}
+const Account = function(account){};
 
 Account.signup = function(data,resultCallback) {
     data.coin = config.constant.DEFAULT_COIN
@@ -72,8 +65,6 @@ Account.changePassword = function(data,resultCallBack) {
 }
 
 Account.changeInformation = function(data,resultCallBack){
-    console.log(data.username)
-    console.log(data.changes)
     sql.query(
         "UPDATE ACCOUNT SET ? WHERE username=?",
         [data.changes,data.username],
