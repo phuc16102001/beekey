@@ -3,11 +3,13 @@ const   express = require('express')
         route = require('./routes/routes')
         jwt = require('jsonwebtoken')
         config = require('./config/config')
+        cors = require('cors')
 
 //==================== Library =======================
 
 //#region middleware
 
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({
     extended:true
@@ -22,15 +24,14 @@ app.use(function(req,res,next){
             if (err) {
                 res.status(403);
                 res.send({
-                    exitcode: 1,
+                    exitcode: 2,
                     message: err
                 })
                 return
             }
             
             req.payload = {
-                username: decoded.username,
-                type: decoded.type
+                username: decoded.username
             }
             next()
         })

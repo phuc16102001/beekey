@@ -20,7 +20,6 @@ function login(req,res){
             account = account[0]
             payload = {
                 username: account.username,
-                type: account.type
             }
             res.send({
                 exitcode: 0,
@@ -85,7 +84,6 @@ function getInformation(req,res){
                 exitcode: 0,
                 message: "Successfully get information",
                 username: account.username,
-                type: account.type,
                 name: account.name,
                 gender: account.gender,
                 phone: account.phone,
@@ -119,7 +117,7 @@ function changePassword(req,res) {
             oldPassword = result[0].password
             if (oldPassword!=data.oldPassword) {
                 res.send({
-                    exitcode: 2,
+                    exitcode: 104,
                     message: "Old password not correct"
                 })
                 return;
@@ -154,8 +152,8 @@ function changeInformation(req,res) {
         phone: req.body.phone,
         address: req.body.address,
         name: req.body.name,
-        gender: req.body.gender,
-    },
+        gender: req.body.gender
+    }
     Object.keys(changes).forEach(key=>{
         if (changes[key]===undefined) {
             delete changes[key]

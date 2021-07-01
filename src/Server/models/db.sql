@@ -8,7 +8,6 @@ CREATE TABLE ACCOUNT(
 	username VARCHAR(30),
 	name VARCHAR(30),
 	password CHAR(64),
-	type INT,
 	gender BOOLEAN,
 	phone VARCHAR(12),
 	address VARCHAR(30),
@@ -26,10 +25,12 @@ CREATE TABLE CATEGORY(
 
 CREATE TABLE TASK(
 	task_id INT AUTO_INCREMENT,
+	title VARCHAR(30),
 	description TEXT,
 	offer INT,
 	deadline DATETIME,
 	category_id INT,
+	status INT,
 	lancer_id VARCHAR(30),
 	user_id VARCHAR(30),
 
@@ -50,7 +51,7 @@ CREATE TABLE FEEDBACK(
 	PRIMARY KEY(feedback_id),
 	FOREIGN KEY(user_id) REFERENCES ACCOUNT(username),
 	FOREIGN KEY(lancer_id) REFERENCES ACCOUNT(username),
-	FOREIGN KEY(task_id) REFERENCES ACCOUNT(task_id)
+	FOREIGN KEY(task_id) REFERENCES TASK(task_id)
 );
 
 CREATE TABLE COUNTER_OFFER(
@@ -83,10 +84,20 @@ CREATE TABLE ATTACH_FILE(
 	FOREIGN KEY(task_id) REFERENCES TASK(task_id)
 );
 
+CREATE TABLE REPORT(
+	report_id INT AUTO_INCREMENT,
+	username VARCHAR(30),
+	date_time DATETIME,
+	content TEXT,
+
+	PRIMARY KEY(report_id),
+	FOREIGN KEY(username) REFERENCES ACCOUNT(username)
+);
+
 --------------------------------------------------------------------
 
-INSERT INTO ACCOUNT(username,password,type) VALUES
-("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",1);
+INSERT INTO ACCOUNT(username,password) VALUES
+("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918");
 
 INSERT INTO CATEGORY(category_name) VALUES
 ("Testing"),
