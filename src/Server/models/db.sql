@@ -30,6 +30,7 @@ CREATE TABLE TASK(
 	offer INT,
 	deadline DATETIME,
 	category_id INT,
+	status INT,
 	lancer_id VARCHAR(30),
 	user_id VARCHAR(30),
 

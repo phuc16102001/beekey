@@ -1,9 +1,12 @@
-const sql = require('./db')
+const   sql = require('./db')
+        config = require("../config/config")
 
 const Task = function(){};
 
 Task.getByCategory = function(data,resultCallback) {
-    sql.query("SELECT * FROM TASK WHERE category_id=?",data.category_id,function(err,res){
+    sql.query("SELECT * FROM TASK WHERE category_id=? AND status=?",
+    [data.category_id,config.constant.STATUS.PENDING],
+    (err,res)=>{
         if (err) {
             console.log("Fail to get: ",err);
             resultCallback(err,null);
@@ -15,6 +18,7 @@ Task.getByCategory = function(data,resultCallback) {
 }
 
 Task.postTask = function(data,resultCallback) {
+    data["status"]=config.constant.STATUS.PENDING
     sql.query("INSERT INTO TASK SET ?",data,(err,res)=>{
         if (err) {
             console.log("Fail to create task: ",err)

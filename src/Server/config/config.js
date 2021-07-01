@@ -14,7 +14,14 @@ exports.database = {
 }
 
 exports.constant = {
-    MALE: 0,
-    FEMALE: 1,
+    GENDER: {
+        MALE: 0,
+        FEMALE: 1,
+    },
+    STATUS: {
+        PENDING: 0,
+        ACCEPTED: 1,
+        DONE: 2
+    },
     DEFAULT_COIN: 0
 }

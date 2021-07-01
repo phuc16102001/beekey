@@ -1,7 +1,7 @@
 const sql = require('./db')
 const config = require('../config/config')
 
-const Account = function(account){};
+const Account = function(){};
 
 Account.signup = function(data,resultCallback) {
     data.coin = config.constant.DEFAULT_COIN
