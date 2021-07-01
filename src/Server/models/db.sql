@@ -25,6 +25,7 @@ CREATE TABLE CATEGORY(
 
 CREATE TABLE TASK(
 	task_id INT AUTO_INCREMENT,
+	title VARCHAR(30),
 	description TEXT,
 	offer INT,
 	deadline DATETIME,
