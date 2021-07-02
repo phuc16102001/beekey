@@ -22,7 +22,7 @@
         <activity android:name=".Controller.Activity.MainActivity" />
         <activity android:name=".Controller.Activity.ProfileActivity" />
         <activity android:name=".Controller.Activity.MyListRequestActivity" />
-        <activity android:name=".Controller.Activity.SettingsActivity" />
+        <activity android:name=".Controller.Activity.SettingsActivity"/>
         <activity android:name=".Controller.Activity.ChangeInformationActivity" />
         <activity android:name=".Controller.Activity.LoginActivity">
             <intent-filter>
