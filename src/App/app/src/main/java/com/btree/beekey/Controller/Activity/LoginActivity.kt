@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.LoginPost
 import com.btree.beekey.Model.LoginResponse
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import kotlinx.coroutines.*
 import retrofit2.*
@@ -19,8 +20,6 @@ import retrofit2.*
 class LoginActivity : AppCompatActivity() {
 
     private var TAG = "loginactivity"  //for debug
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +52,8 @@ class LoginActivity : AppCompatActivity() {
         val Password = findViewById<EditText>(R.id.LoginPassword)
 
         val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString()
-
+        val passwordStr = Password.text.toString().sha256()
+        Log.d("xxxxx",passwordStr)
 
         val response = MyAPI.getAPI().postlogin(LoginPost(usernameStr, passwordStr))
 

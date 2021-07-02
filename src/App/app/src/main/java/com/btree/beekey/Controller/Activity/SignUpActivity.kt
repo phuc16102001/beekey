@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.SignUpPost
 import com.btree.beekey.Model.SignUpResponse
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,7 +35,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
         val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString()
+        val passwordStr = Password.text.toString().sha256()
         val PhoneNumStr = PhoneNum.text.toString()
         val HomeaddStr = Homeadd.text.toString()
         val GenderStr = Gender.selectedItem.toString()
@@ -43,7 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         if (GenderStr == "Female") {
             GenderBool = false
         }
-
+        Log.d("check pass",passwordStr)
         val response = MyAPI.getAPI()
             .postsignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
         if (checkFill()) {
