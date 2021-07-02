@@ -4,9 +4,9 @@ import android.content.Context
 
 class Cache {
     companion object {
-        val PREF_NAME = "BK_TOKEN"
-        val PREF_MODE = Context.MODE_PRIVATE
-        val KEY = "TOKEN"
+        private const val PREF_NAME = "BK_TOKEN"
+        private const val PREF_MODE = Context.MODE_PRIVATE
+        private const val KEY = "TOKEN"
 
         fun getToken(context: Context): String? {
             val preferences = context.getSharedPreferences(PREF_NAME, PREF_MODE)
