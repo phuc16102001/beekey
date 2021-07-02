@@ -28,7 +28,7 @@ function login(req,res){
                 }),
                 message: "Login successfully"
             })
-            console.log("[Login]: "+data)
+            console.log("[Login]: "+data.username+"/"+data.password)
         } else {
             res.send({
                 exitcode: 104,
@@ -62,7 +62,7 @@ function signup(req,res){
                 exitcode: 0,
                 message: "Create account successfully"
             })
-            console.log("[Signup]: "+data)
+            console.log("[Signup]: "+data.username)
         }
     })
 }
