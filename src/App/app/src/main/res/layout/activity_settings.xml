@@ -9,18 +9,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageButton
-
-            android:id="@+id/back_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:background="@null"
-            android:src="@drawable/ic_back_button"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"/>
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,9 +17,9 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif"
-            android:text="Settings"
+            android:text="@string/settings"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold"/>
 
         <ImageView
@@ -41,7 +30,7 @@
             android:background="@null"
             android:src="@drawable/ic_avatar"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"/>
+            android:adjustViewBounds="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,9 +39,9 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
-            android:text="Display name"
+            android:text="@string/display_name"
             android:textColor="@color/beegrey"
-            android:textSize="16dp"
+            android:textSize="16sp"
             />
 
         <View style="@style/Divider"
@@ -63,7 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/personal_information_ic"
@@ -77,14 +67,15 @@
                 android:adjustViewBounds="true"/>
 
             <TextView
+                android:id="@+id/personal_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Personal Information"
+                android:text="@string/personal_information"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toEndOf="@id/personal_information_ic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/beegrey"
                 />
 
@@ -107,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/password_ic"
@@ -122,14 +114,15 @@
                 android:adjustViewBounds="true"/>
 
             <TextView
+                android:id="@+id/password_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Password"
+                android:text="@string/change_password"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toEndOf="@id/password_ic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/beegrey"
                 />
 
@@ -152,7 +145,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/report_ic"
@@ -169,12 +163,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Help and Support"
+                android:text="@string/help_and_support"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toEndOf="@id/report_ic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/beegrey"
                 />
 
@@ -197,7 +191,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:clickable="true">
+            android:clickable="true"
+            android:focusable="true">
 
             <ImageView
                 android:id="@+id/about_us_ic"
@@ -214,12 +209,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About Us"
+                android:text="@string/about_us"
                 android:layout_marginStart="20dp"
                 app:layout_constraintStart_toEndOf="@id/about_us_ic"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textColor="@color/beegrey"
                 />
 
@@ -237,12 +232,13 @@
             android:layout_marginTop="15dp"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Log Out"
+            android:text="@string/log_out"
             android:textAllCaps="false"
             android:textColor="@color/black" />
     </LinearLayout>
