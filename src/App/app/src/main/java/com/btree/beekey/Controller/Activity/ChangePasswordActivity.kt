@@ -7,10 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.ChangePasswordHeader
 import com.btree.beekey.Model.ChangePasswordPost
 import com.btree.beekey.Model.ChangePasswordResponse
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,16 +38,21 @@ class ChangePasswordActivity : AppCompatActivity() {
         val oldPasswordStr = oldPassword.text.toString()
         val newPasswordStr = newPassword.text.toString()
         val ReEnterNewPasswordStr = ReEnterNewPassword.text.toString()
-        Log.d("xxxxx",oldPasswordStr)
-        Log.d("xxxxx",newPasswordStr)
+        Log.d("xxxxx", oldPasswordStr)
+        Log.d("xxxxx", newPasswordStr)
 
-        while (oldPassword!=newPassword)
+        while (oldPassword != newPassword)
             ChangePasswordActivity()
 
-        val response = MyAPI.getAPI().postchangepassword(ChangePasswordHeader("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImtpbWtoYW5oIiwiaWF0IjoxNjI1MjQyNjU5LCJleHAiOjE2MjUzMjkwNTl9.XLckErHKKyDH6LERvzqNVShTO_M6vPadHEAC-WhybXA"),ChangePasswordPost(oldPasswordStr,newPasswordStr))
+        val token = Cache.getToken(this).toString()
+        val response = MyAPI.getAPI()
+            .postChangePassword(token, ChangePasswordPost(oldPasswordStr, newPasswordStr))
 
         response.enqueue(object : Callback<ChangePasswordResponse> {
-            override fun onResponse(call: Call<ChangePasswordResponse>, response: Response<ChangePasswordResponse>) {
+            override fun onResponse(
+                call: Call<ChangePasswordResponse>,
+                response: Response<ChangePasswordResponse>
+            ) {
                 if (response.isSuccessful) {
                     val data = response.body()
                     Log.d("ChangePasswordStatus", data.toString())

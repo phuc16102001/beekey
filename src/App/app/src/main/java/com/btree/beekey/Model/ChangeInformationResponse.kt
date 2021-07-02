@@ -2,7 +2,7 @@ package com.btree.beekey.Model
 
 import com.google.gson.annotations.SerializedName
 
-data class ChangeInformationResponse(
+class ChangeInformationResponse(
     @SerializedName("exitcode") val exitcode: Int,
-    @SerializedName("message")val message: String
+    @SerializedName("message") val message: String
 )

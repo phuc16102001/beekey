@@ -17,5 +17,10 @@ class Cache {
             val preferences = context.getSharedPreferences(PREF_NAME, PREF_MODE)
             return preferences.edit().putString(KEY, token).commit()
         }
+
+        fun clear(context: Context): Boolean {
+            val preferences = context.getSharedPreferences(PREF_NAME, PREF_MODE)
+            return preferences.edit().clear().commit()
+        }
     }
 }

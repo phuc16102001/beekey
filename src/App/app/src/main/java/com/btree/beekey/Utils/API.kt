@@ -9,24 +9,24 @@ import retrofit2.http.POST
 
 interface API {
     @POST("/account/login")
-    fun postlogin(
-       @Body login : LoginPost
+    fun postLogin(
+        @Body loginBody: LoginPost
     ): Call<LoginResponse>
 
     @POST("/account/signup")
-    fun postsignup(
-        @Body signup : SignUpPost
+    fun postSignup(
+        @Body signupBody: SignUpPost
     ): Call<SignUpResponse>
 
     @POST("/account/changePassword")
-    fun postchangepassword(
-        @Header changepasswordheader: ChangePasswordHeader,
-        @Body changepasswordbody: ChangePasswordPost
+    fun postChangePassword(
+        @Header("x-access-token") tokenHeader: String,
+        @Body changePasswordBody: ChangePasswordPost
     ): Call<ChangePasswordResponse>
 
     @POST("/account/changeInformation")
-    fun postchangeinformation(
-        @Header changeinformationheader: ChangeInformationHeader,
-        @Body changeinformationbody: ChangeInformationPost
-    ): Call<ChangePasswordResponse>
+    fun postChangeInformation(
+        @Header("x-access-token") tokenHeader: String,
+        @Body changeInformationBody: ChangeInformationPost
+    ): Call<ChangeInformationResponse>
 }

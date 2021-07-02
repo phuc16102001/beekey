@@ -16,14 +16,12 @@
     <string name="phone_number">Phone Number</string>
     <string name="home_address">Home Address</string>
     <string name="sign_up">Sign Up</string>
-    <string name="todo">TODO</string>
     <string name="ok">OK</string>
     <string name="change_pass">Change Pass</string>
     <string name="new_password">New Password</string>
     <string name="reenter_password">ReEnter Password</string>
     <string name="change_information">Change Information</string>
     <string name="name">Name</string>
-    <string name="gender">Gender</string>
     <string name="phonenumber">Phone number</string>
     <string name="my_request">My Request</string>
     <string name="backbutton">BACKBUTTON</string>

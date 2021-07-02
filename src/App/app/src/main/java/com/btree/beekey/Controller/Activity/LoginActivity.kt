@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         val passwordStr = Password.text.toString().sha256()
         Log.d("xxxxx",passwordStr)
 
-        val response = MyAPI.getAPI().postlogin(LoginPost(usernameStr, passwordStr))
+        val response = MyAPI.getAPI().postLogin(LoginPost(usernameStr, passwordStr))
 
         response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

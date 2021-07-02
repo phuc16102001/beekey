@@ -6,4 +6,5 @@ class ChangeInformationPost(
     @SerializedName("name") val name: String,
     @SerializedName("phone") val phone: String,
     @SerializedName("address") val address: String,
-    @SerializedName("gender") val gender: Boolean)
+    @SerializedName("gender") val gender: Boolean
+)

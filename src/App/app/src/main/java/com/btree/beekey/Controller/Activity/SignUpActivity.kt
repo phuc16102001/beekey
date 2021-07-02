@@ -46,7 +46,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         Log.d("check pass",passwordStr)
         val response = MyAPI.getAPI()
-            .postsignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
+            .postSignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
         if (checkFill()) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(
