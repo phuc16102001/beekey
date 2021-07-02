@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.LoginPost
 import com.btree.beekey.Model.LoginResponse
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import kotlinx.coroutines.*
@@ -64,9 +65,11 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("LoginStatus", data.toString())
                     if (data?.exitcode == 0) {
 
-//                        val cache = HashMap<Any,Any>()
-//                        cache["token"] = data.token
-//
+                        Log.d(
+                            "Token saved",
+                            Cache.saveToken(this@LoginActivity, data.token).toString()
+                        )
+
                         Intent(this@LoginActivity, ProfileActivity::class.java).also {
                             startActivity(it)
                         }
