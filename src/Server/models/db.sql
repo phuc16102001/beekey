@@ -43,7 +43,6 @@ CREATE TABLE TASK(
 CREATE TABLE FEEDBACK(
 	feedback_id INT AUTO_INCREMENT,
 	description TEXT,
-	star INT,
 	lancer_id VARCHAR(30),
 	user_id VARCHAR(30),
 	task_id INT,
