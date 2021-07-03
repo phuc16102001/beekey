@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
                         Intent(this@LoginActivity, ProfileActivity::class.java).also {
                             startActivity(it)
                             Toast.makeText(this@LoginActivity, "AutoLogin", Toast.LENGTH_LONG).show()
-                            this@LoginActivity.onDestroy()
+                            finish()
                         }
 
                     }
@@ -105,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Intent(this@LoginActivity, ProfileActivity::class.java).also {
                             startActivity(it)
-                            this@LoginActivity.onDestroy()
+                            finish()
                         }
 
                     }

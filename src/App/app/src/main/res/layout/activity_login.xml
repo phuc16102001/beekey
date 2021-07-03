@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.07"
         app:layout_constraintTop_toTopOf="@+id/login_BEEKEY"
-        android:contentDescription="@string/logintodo" />
+        android:contentDescription="@string/todo" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/LoginUsername"
