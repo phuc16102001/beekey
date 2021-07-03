@@ -24,14 +24,14 @@
         <activity android:name=".Controller.Activity.MyListRequestActivity" />
         <activity android:name=".Controller.Activity.SettingsActivity"/>
         <activity android:name=".Controller.Activity.ChangeInformationActivity" />
-        <activity android:name=".Controller.Activity.LoginActivity">
+        <activity android:name=".Controller.Activity.LoginActivity"/>
+        <activity android:name=".Controller.Activity.ReportActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
