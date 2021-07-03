@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.GetInformationResponse
 import com.btree.beekey.Model.LoginPost
 import com.btree.beekey.Model.LoginResponse
 import com.btree.beekey.R
@@ -29,6 +30,9 @@ class LoginActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.LoginButton)
         val forget: TextView = findViewById(R.id.LoginForgetPassword)
         val signup: TextView = findViewById(R.id.Loginsignup)
+        //Cache.clear(this)
+
+        AutoLogin()
 
         loginButton.setOnClickListener{
             CheckAccount()
@@ -48,15 +52,44 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    private fun AutoLogin(){
+        val token = Cache.getToken(this).toString()
+        val response = MyAPI.getAPI().getInformation(token)
+
+        response.enqueue(object : Callback<GetInformationResponse>{
+            override fun onResponse(
+                call: Call<GetInformationResponse>,
+                response: Response<GetInformationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    Log.d("AutoLoginStatus", data.toString())
+                    if (data?.exitcode == 0) {
+                        Intent(this@LoginActivity, ProfileActivity::class.java).also {
+                            startActivity(it)
+                            Toast.makeText(this@LoginActivity, "AutoLogin", Toast.LENGTH_LONG).show()
+                            this@LoginActivity.onDestroy()
+                        }
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetInformationResponse>, t: Throwable) {
+                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
     private fun CheckAccount() {
         val Username = findViewById<EditText>(R.id.LoginUsername)
         val Password = findViewById<EditText>(R.id.LoginPassword)
 
         val usernameStr = Username.text.toString()
         val passwordStr = Password.text.toString().sha256()
-        Log.d("xxxxx",passwordStr)
+        Log.d("CheckPasswordHash",passwordStr)
 
-        val response = MyAPI.getAPI().postlogin(LoginPost(usernameStr, passwordStr))
+        val response = MyAPI.getAPI().postLogin(LoginPost(usernameStr, passwordStr))
 
         response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
@@ -72,7 +105,9 @@ class LoginActivity : AppCompatActivity() {
 
                         Intent(this@LoginActivity, ProfileActivity::class.java).also {
                             startActivity(it)
+                            this@LoginActivity.onDestroy()
                         }
+
                     }
                     else if (data?.exitcode == 104){
                         Toast.makeText(this@LoginActivity, data.message, Toast.LENGTH_LONG).show()
@@ -81,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, "Click Fail", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG).show()
             }
         })
     }

@@ -2,10 +2,10 @@ package com.btree.beekey.Controller.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Cache
 
 class SettingsActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,8 @@ class SettingsActivity:AppCompatActivity() {
             }
         }
         logoutButton.setOnClickListener{
-            this.cacheDir.deleteRecursively()
-            Intent(this,LoginActivity::class.java).also {
+            Cache.clear(this)
+            Intent(this, LoginActivity::class.java).also {
                 startActivity(it)
             }
         }

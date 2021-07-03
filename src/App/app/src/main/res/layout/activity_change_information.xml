@@ -1,71 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="top|center"
-    tools:context=".Controller.Activity.MainActivity">
+    android:padding="10dp"
+    tools:context=".Controller.Activity.ProfileActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="58dp"
-        android:layout_marginTop="10dp"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        android:text="@string/change_information"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="top"
+            android:text="@string/change_information"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:background="@null"
-        android:src="@drawable/ic_avatar"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true" />
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_avatar"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/todo" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="200dp" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="200dp" />
 
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/phonenumber"
-        android:ems="10"
-        android:inputType="text|phone"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="234dp" />
+        <EditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/phonenumber"
+            android:ems="10"
+            android:inputType="text|phone"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="234dp" />
 
-    <EditText
-        android:id="@+id/editAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Address"
-        android:ems="10"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="234dp" />
+        <EditText
+            android:id="@+id/editTextAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/address"
+            android:ems="10"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="100dp"
+            tools:layout_editor_absoluteY="234dp" />
 
-    <EditText
-        android:id="@+id/editGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/gender"
-        android:ems="10"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="298dp" />
+        <TextView
+            android:id="@+id/textViewGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:textSize="18sp"
+            android:text="@string/gender" />
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+        </RadioGroup>
 
     <Button
         android:id="@+id/OkButton"
@@ -79,5 +108,6 @@
         android:backgroundTint="@color/beeyellow"
         tools:layout_editor_absoluteX="158dp"
         tools:layout_editor_absoluteY="413dp" />
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
