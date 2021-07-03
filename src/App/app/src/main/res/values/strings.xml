@@ -35,6 +35,11 @@
     <string name="help_and_support">Help and support</string>
     <string name="about_us">About us</string>
     <string name="log_out">Log Out</string>
+    <string name="report">Report</string>
+    <string name="write_here">Write here!</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="what_problem_that_you_are_facing_with_our_application_or_usser">What problem that you are facing with our application or usser?</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
