@@ -3,6 +3,7 @@ package com.btree.beekey.Utils
 import com.btree.beekey.Model.*
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -29,4 +30,10 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body changeInformationBody: ChangeInformationPost
     ): Call<ChangeInformationResponse>
+
+    @GET("/account/getInformation")
+    fun getInformation(
+        @Header("x-access-token") tokenHeader: String
+    ): Call<GetInformationResponse>
+
 }
