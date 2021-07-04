@@ -70,17 +70,15 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
-        <EditText
-            android:id="@+id/editTextOffer"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
-            android:ems="10"
             android:layout_marginTop="10dp"
-            android:hint="@string/date"
-            android:inputType="date"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="170dp" />
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -99,17 +97,16 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-            <EditText
-                android:id="@+id/editTextDeadline"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+
+            <TextView
+                android:id="@+id/textViewDollar"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
-                android:ems="10"
                 android:layout_marginTop="10dp"
-                android:hint="@string/dollars"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:text="@string/dollar"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
 
         </LinearLayout>
 
@@ -128,17 +125,15 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-            <EditText
-                android:id="@+id/editTextFileAttach"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/textViewNumbeOfFile"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
-                android:ems="10"
                 android:layout_marginTop="10dp"
-                android:hint="@string/number"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="100dp"
-                tools:layout_editor_absoluteY="170dp" />
+                android:text="@string/number_of_file"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
 
         </LinearLayout>
 

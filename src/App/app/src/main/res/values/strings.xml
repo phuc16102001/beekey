@@ -51,6 +51,9 @@
     <string name="dollars">Dollars</string>
     <string name="file_attach">File attach:</string>
     <string name="number">Number</string>
+    <string name="date">Date</string>
+    <string name="number_of_file">Number of file</string>
+    <string name="dollar">Dollar</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
