@@ -61,7 +61,7 @@ class SignUpActivity : AppCompatActivity() {
                             Intent(this@SignUpActivity, LoginActivity::class.java).also {
                                 startActivity(it)
                             }
-                            onDestroy()
+                            finish()
                         }
                         else if (data?.exitcode == 1){
                             Toast.makeText(this@SignUpActivity, data.message, Toast.LENGTH_LONG).show()

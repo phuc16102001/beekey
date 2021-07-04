@@ -8,7 +8,7 @@
     <string name="login">Login</string>
     <string name="forget_password">Forget Password?</string>
     <string name="beekey">BEEKEY</string>
-    <string name="logintodo">TODO</string>
+    <string name="todo">TODO</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="re_enter_password">Re-enter Password</string>
@@ -33,6 +33,11 @@
     <string name="help_and_support">Help and support</string>
     <string name="about_us">About us</string>
     <string name="log_out">Log Out</string>
+    <string name="report">Report</string>
+    <string name="write_here">Write here!</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="what_problem_that_you_are_facing_with_our_application_or_usser">What problem that you are facing with our application or usser?</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="female">Female</string>
