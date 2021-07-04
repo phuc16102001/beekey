@@ -42,12 +42,10 @@
     <string name="gender">Gender</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
-    <string name="todo">TODO</string>
     <string name="counter_task">Counter task</string>
     <string name="project_name">Project name</string>
     <string name="counter_offer_price">Counter-offer price</string>
     <string name="reason">Reason</string>
-    <string name="send">Send</string>
     <string name="project_information">Project information</string>
     <string name="description">Description</string>
     <string name="offer">Offer:</string>
