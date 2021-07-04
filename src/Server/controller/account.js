@@ -189,10 +189,33 @@ function changeInformation(req,res) {
     });
 }
 
+function topUp(req,res){
+    data = {
+        username: req.payload.username,
+        topUpValue: req.body.topUpValue
+    }
+    Account.topUp(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Top-up successfully"
+            })
+        }
+    })
+}
+
 module.exports = {
     login,
     signup,
     getInformation,
     changePassword,
-    changeInformation
+    changeInformation,
+    topUp
 }
