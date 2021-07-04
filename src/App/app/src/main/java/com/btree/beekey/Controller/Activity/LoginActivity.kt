@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("AutoLoginStatus", data.toString())
                     if (data?.exitcode == 0) {
-                        Intent(this@LoginActivity, ProfileActivity::class.java).also {
+                        Intent(this@LoginActivity, MainActivity::class.java).also {
                             startActivity(it)
                             Toast.makeText(this@LoginActivity, "AutoLogin", Toast.LENGTH_LONG).show()
                             finish()
@@ -103,7 +103,7 @@ class LoginActivity : AppCompatActivity() {
                             Cache.saveToken(this@LoginActivity, data.token).toString()
                         )
 
-                        Intent(this@LoginActivity, ProfileActivity::class.java).also {
+                        Intent(this@LoginActivity, MainActivity::class.java).also {
                             startActivity(it)
                             finish()
                         }
