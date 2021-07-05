@@ -51,4 +51,7 @@
     <string name="post">Post</string>
     <string name="search">Search</string>
     <string name="setting">Setting</string>
+    <string name="my_request">My Request</string>
+    <string name="on_going_task">On-going Task</string>
+    <string name="feedback">Feedback</string>
 </resources>

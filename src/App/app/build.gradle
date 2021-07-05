@@ -7,6 +7,12 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    buildFeatures  {
+        //noinspection DataBindingWithoutKapt
+        dataBinding=true
+        viewBinding = true // for view binding
+    }
+
     defaultConfig {
         applicationId "com.btree.beekey"
         minSdkVersion 24

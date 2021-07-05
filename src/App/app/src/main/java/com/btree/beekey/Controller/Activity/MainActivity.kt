@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val settingFragment=SettingFragment()
         val profileFragment=ProfileFragment()
 
-        setCurrentFragment(settingFragment)
+        setCurrentFragment(profileFragment)
         val bottomBar: BottomNavigationView = findViewById(R.id.bottom_bar)
         bottomBar.setOnItemSelectedListener {
             when(it.itemId){
