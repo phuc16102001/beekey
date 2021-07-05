@@ -39,8 +39,8 @@ class SettingFragment:Fragment(R.layout.fragment_setting) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val personalSetting=binding.personalSetting
-        val changePassword=binding.passwordSetting
+        val personalSetting=binding.layoutSettingPersonal
+        val changePassword=binding.layoutSettingPassword
         val logoutButton=binding.logoutButton
 
         personalSetting.setOnClickListener {
