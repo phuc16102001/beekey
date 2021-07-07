@@ -49,6 +49,9 @@ class ChangePasswordActivity : AppCompatActivity() {
         val response = MyAPI.getAPI()
             .postChangePassword(token, ChangePasswordPost(oldPasswordStr, newPasswordStr))
 
+        if (newPasswordStr!=ReEnterNewPasswordStr) {
+            Toast.makeText(this, "Re-enter Password wrong", Toast.LENGTH_SHORT).show()
+        } else{
         response.enqueue(object : Callback<ChangePasswordResponse> {
             override fun onResponse(
                 call: Call<ChangePasswordResponse>,
@@ -71,7 +74,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ChangePasswordResponse>, t: Throwable) {
                 Toast.makeText(this@ChangePasswordActivity, "Fail", Toast.LENGTH_LONG).show()
             }
-        })
+        })}
     }
 
 }
