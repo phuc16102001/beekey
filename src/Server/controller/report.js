@@ -1,7 +1,8 @@
 const config = require('../config/config')
 const Report = require('../models/report')
 
-function post(req,res) {
+function postReport(req,res) {
+    console.log("Make report")
     dateTime = new Date()
     data = {
         username: req.payload.username,
@@ -31,7 +32,8 @@ function post(req,res) {
     })
 }
 
-function get(req,res) {
+function getReport(req,res) {
+    console.log("Get report")
     if (req.payload.type==config.constant.ADMIN_ID){
         Report.get((err,result)=>{
             if (err) {
@@ -58,6 +60,6 @@ function get(req,res) {
 }
 
 module.exports = {
-    post,
-    get
+    post: postReport,
+    get: getReport
 }

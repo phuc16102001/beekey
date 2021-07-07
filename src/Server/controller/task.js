@@ -1,6 +1,7 @@
 const Task = require('../models/task')
 
 function getTaskByCategory(req,res) {
+    console.log("Get task by category")
     data = {
         category_id: req.body.category_id
     }
@@ -24,6 +25,7 @@ function getTaskByCategory(req,res) {
 }
 
 function getRequestByUsername(req,res) {
+    console.log("Get request by username")
     data = {
         username: req.payload.username
     }
@@ -47,6 +49,7 @@ function getRequestByUsername(req,res) {
 }
 
 function getTaskByUsername(req,res){
+    console.log("Get task by username")
     data = {
         username: req.payload.username
     }
@@ -70,6 +73,7 @@ function getTaskByUsername(req,res){
 }
 
 function postTask(req,res){
+    console.log("Make a new request")
     data = {
         title: req.body.title,
         description: req.body.description,

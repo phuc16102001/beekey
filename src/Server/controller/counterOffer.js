@@ -1,6 +1,7 @@
 const counterOffer = require('../models/counterOffer')
 
 function postOffer(req,res) {
+    console.log("Make counter-offer")
     data = {
         username: req.payload.username,
         reason: req.body.reason,
