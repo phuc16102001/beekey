@@ -17,7 +17,6 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".Controller.Activity.ForgetPasswordActivity" />
-        <activity android:name=".Controller.Activity.ChangePasswordActivity" />
         <activity android:name=".Controller.Activity.SignUpActivity" />
         <activity android:name=".Controller.Activity.MainActivity" />
         <activity android:name=".Controller.Activity.ProfileActivity" />
@@ -27,11 +26,10 @@
         <activity android:name=".Controller.Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.Activity.ReportActivity" />
+        <activity android:name=".Controller.Activity.ChangePasswordActivity"/>
     </application>
 
 </manifest>
