@@ -29,7 +29,6 @@ function login(req,res){
                 }),
                 message: "Login successfully"
             })
-            console.log("[Login]: "+data.username+"/"+data.password)
         } else {
             res.send({
                 exitcode: 104,
