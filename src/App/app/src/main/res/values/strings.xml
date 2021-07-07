@@ -56,6 +56,9 @@
     <string name="number">Number</string>
     <string name="number_of_file">Number of file</string>
     <string name="dollar">Dollar</string>
+    <string name="top_up">Top up</string>
+    <string name="how_much_money_you_want_to_top_up">How much money you want to top up?</string>
+    <string name="amount">Amount</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
