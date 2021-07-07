@@ -2,10 +2,10 @@ package com.btree.beekey.Controller.Activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.TopUpBody
 import com.btree.beekey.Model.TopUpResponse
 import com.btree.beekey.Utils.Cache
@@ -18,6 +18,7 @@ import retrofit2.Response
 class TopUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTopUpBinding
+    private val TAG = "TopUp"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class TopUpActivity : AppCompatActivity() {
                         val data = response.body()!!
                         val exitcode = data.exitcode
                         val message = data.message
-                        Log.d("TAG",message)
+                        Log.d(TAG,message)
                         Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
                         if (exitcode==0) {
                             finish()
