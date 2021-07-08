@@ -13,11 +13,7 @@ import com.btree.beekey.R
 class MyListTaskActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_list_request)
-        val resultTextView: TextView = findViewById(R.id.my_requesttask)
-        resultTextView.text = "My Task"
-        val diceImage: ImageView = findViewById(R.id.imageViewTaskRequest)
-        diceImage.setImageResource(R.drawable.task_icon)
+        setContentView(R.layout.activity_my_list_task)
 
         val TaskList = mutableListOf<TaskRequest>()
 
