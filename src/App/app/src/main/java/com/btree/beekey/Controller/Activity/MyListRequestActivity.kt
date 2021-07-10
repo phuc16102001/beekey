@@ -14,10 +14,6 @@ class MyListRequestActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_list_request)
-        val resultTextView: TextView = findViewById(R.id.my_requesttask)
-        resultTextView.text = "My Request"
-        val diceImage: ImageView = findViewById(R.id.imageViewTaskRequest)
-        diceImage.setImageResource(R.drawable.request_icon)
 
         val TaskList = mutableListOf<TaskRequest>()
 
