@@ -23,7 +23,6 @@
     <string name="change_information">Change Information</string>
     <string name="name">Name</string>
     <string name="phonenumber">Phone number</string>
-    <string name="my_request">My Request</string>
     <string name="backbutton">BACKBUTTON</string>
     <string name="requesticon">REQUESTICON</string>
     <string name="sorry_for_no_function">Sorry for no function</string>
@@ -56,6 +55,19 @@
     <string name="number">Number</string>
     <string name="number_of_file">Number of file</string>
     <string name="dollar">Dollar</string>
+    <string name="my_task">My Task</string>
+    <string name="my_request">My Request</string>
+    <string name="task">TASK</string>
+    <string name="request">REQUEST</string>
+    <string name="deadline">Deadline:</string>
+    <string name="accept_offer">Accept Offer:</string>
+    <string name="user">User:</string>
+    <string name="chat">CHAT</string>
+    <string name="cost">Cost:</string>
+    <string name="request_pending">REQUEST PENDING</string>
+    <string name="request_view_doing">REQUEST VIEW DOING</string>
+    <string name="request_doing">REQUEST DOING</string>
+    <string name="done">DONE</string>
     <string name="top_up">Top up</string>
     <string name="how_much_money_you_want_to_top_up">How much money you want to top up?</string>
     <string name="amount">Amount</string>
