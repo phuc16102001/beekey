@@ -36,4 +36,9 @@ interface API {
         @Header("x-access-token") tokenHeader: String
     ): Call<GetInformationResponse>
 
+    @POST("/account/topUp")
+    fun postTopUp(
+        @Header("x-access-token") tokenHeader: String,
+        @Body topUpBody: TopUpBody
+    ): Call<TopUpResponse>
 }

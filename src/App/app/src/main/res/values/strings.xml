@@ -68,6 +68,9 @@
     <string name="request_view_doing">REQUEST VIEW DOING</string>
     <string name="request_doing">REQUEST DOING</string>
     <string name="done">DONE</string>
+    <string name="top_up">Top up</string>
+    <string name="how_much_money_you_want_to_top_up">How much money you want to top up?</string>
+    <string name="amount">Amount</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
