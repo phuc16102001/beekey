@@ -31,12 +31,10 @@
         <activity android:name=".Controller.Activity.CounterOfferActivity" />
         <activity android:name=".Controller.Activity.ReportActivity" />
         <activity android:name=".Controller.Activity.LoginActivity">
-            <intent-filter>
+          <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

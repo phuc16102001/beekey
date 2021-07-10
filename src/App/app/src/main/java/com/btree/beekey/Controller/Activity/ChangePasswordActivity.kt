@@ -11,6 +11,7 @@ import com.btree.beekey.Model.ChangePasswordPost
 import com.btree.beekey.Model.ChangePasswordResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
+import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,19 +36,22 @@ class ChangePasswordActivity : AppCompatActivity() {
         val newPassword = findViewById<EditText>(R.id.editTextNewPassword)
         val ReEnterNewPassword = findViewById<EditText>(R.id.editReEnterPassword)
 
-        val oldPasswordStr = oldPassword.text.toString()
-        val newPasswordStr = newPassword.text.toString()
-        val ReEnterNewPasswordStr = ReEnterNewPassword.text.toString()
+        val oldPasswordStr = oldPassword.text.toString().sha256()
+        val newPasswordStr = newPassword.text.toString().sha256()
+        val ReEnterNewPasswordStr = ReEnterNewPassword.text.toString().sha256()
         Log.d("xxxxx", oldPasswordStr)
         Log.d("xxxxx", newPasswordStr)
 
-        while (oldPassword != newPassword)
+        if (newPasswordStr != ReEnterNewPasswordStr)
             ChangePasswordActivity()
 
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI()
             .postChangePassword(token, ChangePasswordPost(oldPasswordStr, newPasswordStr))
 
+        if (newPasswordStr!=ReEnterNewPasswordStr) {
+            Toast.makeText(this, "Re-enter Password wrong", Toast.LENGTH_SHORT).show()
+        } else{
         response.enqueue(object : Callback<ChangePasswordResponse> {
             override fun onResponse(
                 call: Call<ChangePasswordResponse>,
@@ -70,7 +74,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             override fun onFailure(call: Call<ChangePasswordResponse>, t: Throwable) {
                 Toast.makeText(this@ChangePasswordActivity, "Fail", Toast.LENGTH_LONG).show()
             }
-        })
+        })}
     }
 
 }
