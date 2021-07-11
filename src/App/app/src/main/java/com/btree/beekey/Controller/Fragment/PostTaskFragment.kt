@@ -45,26 +45,20 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val spinner: Spinner = binding.spinnerCategory
-
         getCategoryList()
-
-//        spinner.onItemSelectedListener = object :
-//            AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View?, position: Int, id: Long
-//            ) {
-////                Toast.makeText(
-////                    context,
-////                    category[position], Toast.LENGTH_LONG
-////                ).show()
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>) {
-//
-//            }
-//        }
+        binding.spinnerCategory.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?, position: Int, id: Long
+            ) {
+                Toast.makeText(
+                    context,
+                    categoryList!![position].categoryId.toString(),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 
     private fun loadAdapter(){
@@ -82,7 +76,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                 android.R.layout.simple_spinner_item,
                 nameList
             ).also {
-                    adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerCategory.adapter = adapter
             }
         }
