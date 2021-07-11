@@ -58,6 +58,10 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                     Toast.LENGTH_LONG
                 ).show()
             }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
         }
     }
 
