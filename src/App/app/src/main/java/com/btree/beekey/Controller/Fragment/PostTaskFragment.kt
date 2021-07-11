@@ -1,18 +1,18 @@
 package com.btree.beekey.Controller.Fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.btree.beekey.Controller.Adapter.Feedback
-import com.btree.beekey.Controller.Adapter.FeedbackAdapter
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil.setContentView
 import com.btree.beekey.R
 import com.btree.beekey.databinding.FragmentPostTaskBinding
-import com.btree.beekey.databinding.FragmentProfileBinding
 
-class PostTaskFragment:Fragment(R.layout.fragment_post_task){
+class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     private var _binding: FragmentPostTaskBinding? = null
 
@@ -25,6 +25,7 @@ class PostTaskFragment:Fragment(R.layout.fragment_post_task){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentPostTaskBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -35,5 +36,30 @@ class PostTaskFragment:Fragment(R.layout.fragment_post_task){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val spinner = binding.spinnerCategory
+        val category = resources.getStringArray(R.array.Category)
+        val adapter = context?.let {
+            ArrayAdapter(
+                it, android.R.layout.simple_spinner_item, category
+            ).also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
+        }
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View, position: Int, id: Long
+            ) {
+//                Toast.makeText(
+//                    context,
+//                    category[position], Toast.LENGTH_LONG
+//                ).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
     }
 }
