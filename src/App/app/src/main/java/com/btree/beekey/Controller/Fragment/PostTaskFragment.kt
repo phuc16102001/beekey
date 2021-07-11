@@ -1,12 +1,15 @@
 package com.btree.beekey.Controller.Fragment
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil.setContentView
 import com.btree.beekey.R
@@ -36,7 +39,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val spinner = binding.spinnerCategory
+        val spinner:Spinner = view.findViewById(R.id.spinnerCategory)
         val category = resources.getStringArray(R.array.Category)
         val adapter = context?.let {
             ArrayAdapter(
@@ -49,7 +52,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
-                view: View, position: Int, id: Long
+                view: View?, position: Int, id: Long
             ) {
 //                Toast.makeText(
 //                    context,

@@ -6,15 +6,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.Activity.MainActivity">
+    tools:context=".Controller.Activity.MainActivity"
+    android:weightSum="10">
 
     <FrameLayout
         android:id="@+id/flFragment"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="670dp"/>
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_bar"
+        android:layout_weight="9"
         android:layout_gravity="bottom"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:background="@color/white"
