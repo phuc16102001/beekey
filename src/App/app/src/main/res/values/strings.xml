@@ -46,7 +46,6 @@
     <string name="counter_offer_price">Counter-offer price</string>
     <string name="reason">Reason</string>
     <string name="project_information">Project information</string>
-    <string name="description">Description</string>
     <string name="offer">Offer:</string>
     <string name="date">Date</string>
     <string name="deadline">Deadline:</string>
@@ -56,10 +55,7 @@
     <string name="number_of_file">Number of file</string>
     <string name="dollar">Dollar</string>
     <string name="my_task">My Task</string>
-    <string name="my_request">My Request</string>
     <string name="task">TASK</string>
-    <string name="request">REQUEST</string>
-    <string name="deadline">Deadline:</string>
     <string name="accept_offer">Accept Offer:</string>
     <string name="user">User:</string>
     <string name="chat">CHAT</string>
