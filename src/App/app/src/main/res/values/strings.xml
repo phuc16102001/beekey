@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BeeKey</string>
     <string name="display_name">Display name</string>
     <string name="example_gmail_com">example@gmail.com</string>
@@ -56,10 +56,7 @@
     <string name="number_of_file">Number of file</string>
     <string name="dollar">Dollar</string>
     <string name="my_task">My Task</string>
-    <string name="my_request">My Request</string>
     <string name="task">TASK</string>
-    <string name="request">REQUEST</string>
-    <string name="deadline">Deadline:</string>
     <string name="accept_offer">Accept Offer:</string>
     <string name="user">User:</string>
     <string name="chat">CHAT</string>
@@ -85,7 +82,6 @@
     <string name="request">Request</string>
     <string name="post">Post</string>
     <string name="title">Title</string>
-    <string name="description">Description</string>
     <string name="category">Category</string>
 
     <string-array name="Category">

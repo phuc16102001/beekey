@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".Controller.Fragment.PostTaskFragment"
-    android:orientation="vertical">
+    tools:context=".Controller.Fragment.PostTaskFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,28 +21,27 @@
             android:text="@string/request"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:focusable="true"
             android:fontFamily="sans-serif"
             android:text="@string/post"
             android:textColor="@color/beeyellow"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            />
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="@string/title"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:hint="@string/title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -50,18 +49,19 @@
             android:maxLength="20" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:hint="@string/description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:maxLength="500"/>
+            android:hint="@string/description"
+            android:maxLength="500" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -69,28 +69,82 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_category"
+            app:tint="#0CA789" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
             android:text="@string/category"
-            android:layout_marginStart="2dp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_marginStart="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             app:cardUseCompatPadding="true"
-            app:strokeColor="#60000000"
+            app:strokeColor="@color/border"
             app:strokeWidth="1dp">
 
             <Spinner
                 android:id="@+id/spinnerCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overlapAnchor="false"
+                android:overlapAnchor="false" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_deadline"
+            app:tint="@color/deadline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="Deadline"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginStart="10dp"
+            app:strokeColor="@color/border"
+            app:strokeWidth="1dp">
+
+            <EditText
+                android:id="@+id/deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="10dp"
+                android:hint="YYYY-MM-DD at hh:mm:ss"
+                android:focusable="false"
                 />
+
         </com.google.android.material.card.MaterialCardView>
 
 
