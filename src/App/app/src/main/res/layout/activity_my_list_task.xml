@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.Activity.MyListRequestActivity">
+    tools:context=".Controller.Activity.MyListTaskActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -17,11 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toprequest"
+        app:layout_constraintTop_toBottomOf="@+id/toptask"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/toprequest"
+        android:id="@+id/toptask"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="vertical"
@@ -31,16 +31,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/my_request"
+            android:id="@+id/my_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="serif"
-            android:text="@string/my_request"
+            android:text="@string/my_task"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewRequest"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewTask"
             app:layout_constraintHorizontal_bias="0.698"
             app:layout_constraintStart_toEndOf="@+id/back_button"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,7 +60,7 @@
             app:srcCompat="@drawable/ic_arrow_back" />
 
         <ImageView
-            android:id="@+id/imageViewRequest"
+            android:id="@+id/imageViewTask"
             android:layout_width="83dp"
             android:layout_height="81dp"
             android:contentDescription="@string/requesticon"
@@ -70,7 +70,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.324"
-            app:srcCompat="@drawable/request_icon" />
+            app:srcCompat="@drawable/task_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

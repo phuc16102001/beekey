@@ -15,23 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeeKey"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".Controller.Activity.MainActivity" />
+        <activity android:name=".Controller.Activity.RequestViewDoingActivity"/>
+        <activity android:name=".Controller.Activity.RequestViewPendingActivity" />
+        <activity android:name=".Controller.Activity.TaskViewActivity"/>
+        <activity android:name=".Controller.Activity.TopUpActivity"/>
         <activity android:name=".Controller.Activity.ForgetPasswordActivity" />
+        <activity android:name=".Controller.Activity.ChangeInformationActivity" />
         <activity android:name=".Controller.Activity.ChangePasswordActivity" />
         <activity android:name=".Controller.Activity.SignUpActivity" />
-        <activity android:name=".Controller.Activity.MainActivity" />
         <activity android:name=".Controller.Activity.ProfileActivity" />
         <activity android:name=".Controller.Activity.MyListRequestActivity" />
-        <activity android:name=".Controller.Activity.SettingsActivity"/>
-        <activity android:name=".Controller.Activity.ChangeInformationActivity" />
+        <activity android:name=".Controller.Activity.MyListTaskActivity" />
+        <activity android:name=".Controller.Activity.SettingsActivity" />
+        <activity android:name=".Controller.Activity.CounterOfferActivity" />
+        <activity android:name=".Controller.Activity.ReportActivity" />
         <activity android:name=".Controller.Activity.LoginActivity">
-            <intent-filter>
+          <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controller.Activity.ReportActivity" />
     </application>
-
 </manifest>
