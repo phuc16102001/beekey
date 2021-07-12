@@ -142,8 +142,8 @@
                 android:gravity="center"
                 android:layout_marginStart="10dp"
                 android:hint="YYYY-MM-DD at hh:mm:ss"
-                android:focusable="false"
-                />
+                android:inputType="none"
+                android:focusable="false" />
 
         </com.google.android.material.card.MaterialCardView>
 

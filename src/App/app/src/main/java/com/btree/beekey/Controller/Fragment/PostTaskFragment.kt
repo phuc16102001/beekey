@@ -1,17 +1,13 @@
 package com.btree.beekey.Controller.Fragment
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.text.InputType
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import com.btree.beekey.Controller.Activity.MainActivity
 import com.btree.beekey.Controller.Adapter.Category
 import com.btree.beekey.Model.CategoryResponse
 import com.btree.beekey.R
@@ -21,16 +17,19 @@ import com.btree.beekey.databinding.FragmentPostTaskBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Month
+import java.time.Year
 import java.util.*
-import java.util.Calendar.MONTH
-import javax.xml.datatype.DatatypeConstants.MONTHS
 import kotlin.collections.ArrayList
+import kotlin.math.min
 
 class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     private var _binding: FragmentPostTaskBinding? = null
     private var categoryAdapter: ArrayAdapter<String>? = null
     private var categoryList: List<Category>? = null
+    private var dateString:String? = null
+    private var timeString:String? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -70,8 +69,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             }
         }
 
-        selectDueDate()
-
+        binding.deadline.setOnClickListener { getDeadlineFromUser() }
     }
 
     private fun loadAdapter() {
@@ -120,17 +118,46 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         })
     }
 
-    private fun selectDueDate(){
-        val eText: EditText = binding.deadline;
-        eText.inputType = InputType.TYPE_NULL;
-        eText.setOnClickListener { eText.setText(selectDate()) }
+    private fun getDeadlineFromUser(){
+        getDateFromUser()
+    }
+
+    private fun getTimeFromUser() {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+        val timePicker = context?.let {
+            TimePickerDialog(it, { view, hourOfDay, minute ->
+                timeString = "$hour:$minute:00"
+                binding.deadline.setText("$dateString at $timeString")
+            },hour, minute, true)
         }
+        timePicker?.show()
+
+    }
+
+    private fun getDateFromUser() {
+        val calendar = Calendar.getInstance()
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        var month = calendar.get(Calendar.MONTH)+1
+        val year = calendar.get(Calendar.YEAR)
+        val datePicker = context?.let {
+            DatePickerDialog(it,
+                { view, year, month, dayOfMonth ->
+                    dateString= "$day/${month+1}/$year"
+                    getTimeFromUser()
+                },
+                year,month,day)
+        }
+        datePicker?.show()
+    }
 
     private fun selectDate(): String {
         val calendar = Calendar.getInstance()
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         var month = calendar.get(Calendar.MONTH)+1
         val year = calendar.get(Calendar.YEAR)
+
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
         val second = calendar.get(Calendar.SECOND)
@@ -151,7 +178,6 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             }
         datePicker?.show()
         return string.toString()
-
     }
 }
 
