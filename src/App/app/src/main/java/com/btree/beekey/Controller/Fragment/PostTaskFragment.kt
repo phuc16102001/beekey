@@ -124,13 +124,13 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     private fun getTimeFromUser() {
         val calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
+        val curHour = calendar.get(Calendar.HOUR_OF_DAY)
+        val curMinute = calendar.get(Calendar.MINUTE)
         val timePicker = context?.let {
-            TimePickerDialog(it, { view, hourOfDay, minute ->
+            TimePickerDialog(it, { view, hour, minute ->
                 timeString = "$hour:$minute:00"
                 binding.deadline.setText("$dateString at $timeString")
-            },hour, minute, true)
+            },curHour, curMinute, true)
         }
         timePicker?.show()
 
@@ -138,46 +138,18 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     private fun getDateFromUser() {
         val calendar = Calendar.getInstance()
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        var month = calendar.get(Calendar.MONTH)+1
-        val year = calendar.get(Calendar.YEAR)
+        val curDay = calendar.get(Calendar.DAY_OF_MONTH)
+        var curMonth = calendar.get(Calendar.MONTH)+1
+        val curYear = calendar.get(Calendar.YEAR)
         val datePicker = context?.let {
             DatePickerDialog(it,
-                { view, year, month, dayOfMonth ->
+                { view, year, month, day ->
                     dateString= "$day/${month+1}/$year"
                     getTimeFromUser()
                 },
-                year,month,day)
+                curYear,curMonth,curDay)
         }
         datePicker?.show()
-    }
-
-    private fun selectDate(): String {
-        val calendar = Calendar.getInstance()
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        var month = calendar.get(Calendar.MONTH)+1
-        val year = calendar.get(Calendar.YEAR)
-
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
-        val second = calendar.get(Calendar.SECOND)
-        val string: EditText? =null
-        // date picker dialog
-        val datePicker =
-            context?.let { it1 ->
-                DatePickerDialog(
-                    it1,
-                    DatePickerDialog.OnDateSetListener { view, year, month, day ->
-                        val monthI = month+1
-                        string?.setText(("$day/$monthI/$year").toString())
-                    },
-                    year,
-                    month,
-                    day,
-                )
-            }
-        datePicker?.show()
-        return string.toString()
     }
 }
 
