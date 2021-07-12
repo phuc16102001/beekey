@@ -36,6 +36,11 @@ interface API {
         @Header("x-access-token") tokenHeader: String
     ): Call<GetInformationResponse>
 
+    @GET("/category")
+    fun getCategoryList(
+        @Header("x-access-token") tokenHeader: String
+    ): Call<CategoryResponse>
+  
     @POST("/account/topUp")
     fun postTopUp(
         @Header("x-access-token") tokenHeader: String,

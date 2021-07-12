@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dp">
     <LinearLayout
         android:orientation="vertical"
@@ -30,7 +30,8 @@
             android:background="@null"
             android:src="@drawable/ic_avatar"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            tools:ignore="ContentDescription"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
             android:layout_marginTop="15dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_setting_personal"
+            android:id="@+id/layoutSettingPersonal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -64,7 +65,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/ic_personal_information"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 android:id="@+id/personal_setting"
@@ -87,14 +89,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/ic_arrow_right"
-                />
+                tools:ignore="ContentDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View style="@style/Divider"
             android:layout_marginTop="15dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_setting_password"
+            android:id="@+id/layoutSettingPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -111,7 +113,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/ic_password"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 android:id="@+id/password_setting"
@@ -134,7 +137,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/ic_arrow_right"
-                />
+                tools:ignore="ContentDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View style="@style/Divider"
@@ -158,7 +161,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/ic_report"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -180,7 +184,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="5dp"
                 android:src="@drawable/ic_arrow_right"
-                />
+                tools:ignore="ContentDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View style="@style/Divider"
@@ -195,6 +199,7 @@
             android:focusable="true">
 
             <ImageView
+                tools:ignore="ContentDescription"
                 android:id="@+id/about_us_ic"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

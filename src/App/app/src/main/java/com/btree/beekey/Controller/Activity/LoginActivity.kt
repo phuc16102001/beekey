@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
         AutoLogin()
 
-        loginButton.setOnClickListener{
+        loginButton.setOnClickListener {
             CheckAccount()
         }
 
@@ -52,11 +52,11 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun AutoLogin(){
+    private fun AutoLogin() {
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI().getInformation(token)
 
-        response.enqueue(object : Callback<GetInformationResponse>{
+        response.enqueue(object : Callback<GetInformationResponse> {
             override fun onResponse(
                 call: Call<GetInformationResponse>,
                 response: Response<GetInformationResponse>
@@ -65,9 +65,10 @@ class LoginActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("AutoLoginStatus", data.toString())
                     if (data?.exitcode == 0) {
-                        Intent(this@LoginActivity, ProfileActivity::class.java).also {
+                        Intent(this@LoginActivity, MainActivity::class.java).also {
                             startActivity(it)
-                            Toast.makeText(this@LoginActivity, "AutoLogin", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@LoginActivity, "AutoLogin", Toast.LENGTH_LONG)
+                                .show()
                             finish()
                         }
 
@@ -76,7 +77,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<GetInformationResponse>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG)
+                    .show()
             }
         })
     }
@@ -87,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
 
         val usernameStr = Username.text.toString()
         val passwordStr = Password.text.toString().sha256()
-        Log.d("CheckPasswordHash",passwordStr)
+        Log.d("CheckPasswordHash", passwordStr)
 
         val response = MyAPI.getAPI().postLogin(LoginPost(usernameStr, passwordStr))
 
@@ -103,20 +105,20 @@ class LoginActivity : AppCompatActivity() {
                             Cache.saveToken(this@LoginActivity, data.token).toString()
                         )
 
-                        Intent(this@LoginActivity, ProfileActivity::class.java).also {
+                        Intent(this@LoginActivity, MainActivity::class.java).also {
                             startActivity(it)
                             finish()
                         }
 
-                    }
-                    else if (data?.exitcode == 104){
+                    } else if (data?.exitcode == 104) {
                         Toast.makeText(this@LoginActivity, data.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Fail connection to server", Toast.LENGTH_LONG)
+                    .show()
             }
         })
     }
