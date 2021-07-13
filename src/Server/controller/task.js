@@ -1,6 +1,8 @@
 const Task = require('../models/task')
+const config = require('../config/config')
 
 function getTaskByCategory(req,res) {
+    console.log("Get task by category")
     data = {
         category_id: req.body.category_id
     }
@@ -24,6 +26,7 @@ function getTaskByCategory(req,res) {
 }
 
 function getRequestByUsername(req,res) {
+    console.log("Get request by username")
     data = {
         username: req.payload.username
     }
@@ -47,6 +50,7 @@ function getRequestByUsername(req,res) {
 }
 
 function getTaskByUsername(req,res){
+    console.log("Get task by username")
     data = {
         username: req.payload.username
     }
@@ -70,6 +74,7 @@ function getTaskByUsername(req,res){
 }
 
 function postTask(req,res){
+    console.log("Make a new request")
     data = {
         title: req.body.title,
         description: req.body.description,
@@ -97,9 +102,92 @@ function postTask(req,res){
     })
 }
 
+function doneTask(req,res) {
+    console.log("Done task")
+
+    data = {
+        task_id: req.body.task_id
+    }
+
+    Task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result[0]!=undefined) {
+            if (result[0].status!=config.constant.STATUS.ACCEPTED) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            } else {
+                Task.done(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                        return
+                    }
+                    
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Done task successfully"
+                        })
+                    }
+                })
+            }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
+        }
+    })
+}
+
+function viewDetail(req,res) {
+    console.log("View task detail")
+
+    data = {
+        task_id: req.body.task_id
+    }
+
+    Task.viewDetail(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        console.log(result)
+        if (result[0]!=undefined) {
+            res.send({
+                exitcode: 0,
+                message: "Get task detail successfully",
+                task: result[0]
+            })
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
+        }
+    })
+}
+
 module.exports = {
     getTaskByCategory,
     getRequestByUsername,
     getTaskByUsername,
-    postTask
+    postTask,
+    doneTask,
+    viewDetail
 }

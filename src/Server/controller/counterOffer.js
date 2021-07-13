@@ -1,13 +1,66 @@
 const counterOffer = require('../models/counterOffer')
+const task = require("../models/task")
+const config = require("../config/config")
 
 function postOffer(req,res) {
+    console.log("Make counter-offer")
     data = {
-        username: req.payload.username,
+        task_id: req.body.task_id,
+        lancer_id: req.payload.username,
         reason: req.body.reason,
         offer: req.body.offer
     }
 
-    counterOffer.postOffer(data,(err,result)=>{
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result[0]!=undefined) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            } else {       
+                counterOffer.postOffer(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Create counter-offer successfully"
+                        })
+                    }
+                })
+            }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
+        }
+    })
+
+}
+
+function getByRequest(req,res) {
+    console.log("Get counter-offer by request")
+    data = {
+        task_id: req.body.task_id
+    }
+
+    counterOffer.getByRequest(data,(err,result)=>{
         if (err) {
             res.send({
                 exitcode: 1,
@@ -18,12 +71,115 @@ function postOffer(req,res) {
         if (result) {
             res.send({
                 exitcode: 0,
-                message: "Create counter-offer successfully"
+                message: "Get counter-offer by request successfully",
+                offers: result
+            })
+        }
+    })
+}
+
+function accept(req,res){
+    console.log("Accept counter-offer")
+    data = {
+        task_id: req.body.task_id,
+        lancer_id: req.body.lancer_id
+    }
+
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result[0]!=undefined) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            } else {
+                counterOffer.accept(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+            
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Accept counter-offer successfully"
+                        })
+                    }
+                })
+            }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
+        }
+    })
+}
+
+function decline(req,res){
+    console.log("Decline counter-offer")
+
+    data = {
+        task_id: req.body.task_id,
+        lancer_id: req.body.lancer_id
+    }
+
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result[0]!=undefined) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            } else {
+                counterOffer.decline(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+            
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Decline counter-offer successfully"
+                        })
+                    }
+                })
+            }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
             })
         }
     })
 }
 
 module.exports = {
-    postOffer
+    postOffer,
+    getByRequest,
+    accept,
+    decline
 }

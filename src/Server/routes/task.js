@@ -5,6 +5,8 @@ function assignRoutes(app) {
    app.post("/task/post",task.postTask)
    app.get("/task/getMyTask",task.getTaskByUsername)
    app.get("/task/getMyRequest",task.getRequestByUsername)
+   app.post("/task/done",task.doneTask)
+   app.post("/task/viewDetail",task.viewDetail)
 }
 
 module.exports = {

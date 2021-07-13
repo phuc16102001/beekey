@@ -2,6 +2,7 @@ const config = require('../config/config')
 const Report = require('../models/report')
 
 function post(req,res) {
+    console.log("Make report")
     dateTime = new Date()
     data = {
         username: req.payload.username,
@@ -32,29 +33,23 @@ function post(req,res) {
 }
 
 function get(req,res) {
-    if (req.payload.type==config.constant.ADMIN_ID){
-        Report.get((err,result)=>{
-            if (err) {
-                res.send({
-                    exitcode: 1,
-                    message: err
-                })
-            }
+    console.log("Get report")
+    Report.get((err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
 
-            if (result) {
-                res.send({
-                    exitcode: 0,
-                    message: "Get all report successfully",
-                    reports: result
-                })
-            }
-        })
-    } else {
-        res.send({
-            exitcode: 2,
-            message: "Please login with admin account"
-        })
-    }
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Get all report successfully",
+                reports: result
+            })
+        }
+    })
 }
 
 module.exports = {

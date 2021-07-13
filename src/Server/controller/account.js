@@ -3,6 +3,7 @@ const Account = require('../models/account')
 const config = require('../config/config')
 
 function login(req,res){
+    console.log("Login")
     data = {
         username: req.body.username,
         password: req.body.password,
@@ -39,12 +40,12 @@ function login(req,res){
 }
 
 function signup(req,res){
+    console.log("Signup")
     data = {
         username: req.body.username,
         password: req.body.password,
-        gender: req.body.gender,
         phone: req.body.phone,
-        address: req.body.address,
+        email: req.body.email,
         name: req.body.name
     }
 
@@ -66,6 +67,7 @@ function signup(req,res){
 }
 
 function getInformation(req,res){
+    console.log("Get information")
     data = {
         username: req.payload.username
     }
@@ -85,9 +87,8 @@ function getInformation(req,res){
                 message: "Successfully get information",
                 username: account.username,
                 name: account.name,
-                gender: account.gender,
                 phone: account.phone,
-                address: account.address,
+                email: account.email,
                 coin: account.coin
             })
         } else {
@@ -100,6 +101,7 @@ function getInformation(req,res){
 }
 
 function changePassword(req,res) {
+    console.log("Change password")
     data = {
         username: req.payload.username,
         newPassword: req.body.newPassword,
@@ -148,11 +150,10 @@ function changePassword(req,res) {
 }
 
 function changeInformation(req,res) {
+    console.log("Change information")
     changes = {
         phone: req.body.phone,
-        address: req.body.address,
         name: req.body.name,
-        gender: req.body.gender
     }
     Object.keys(changes).forEach(key=>{
         if (changes[key]===undefined) {
@@ -187,10 +188,34 @@ function changeInformation(req,res) {
     });
 }
 
+function topUp(req,res){
+    console.log("Top up")
+    data = {
+        username: req.payload.username,
+        topUpValue: req.body.topUpValue
+    }
+    Account.topUp(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Top-up successfully"
+            })
+        }
+    })
+}
+
 module.exports = {
     login,
     signup,
     getInformation,
     changePassword,
-    changeInformation
+    changeInformation,
+    topUp
 }

@@ -40,42 +40,57 @@ Account.getInformation = function(data,resultCallback) {
     })
 }
 
-Account.getPassword = function(data,resultCallBack){
+Account.getPassword = function(data,resultCallback){
     sql.query("SELECT password FROM ACCOUNT WHERE username=?",[data.username],(err,res)=>{
         if (err){
             console.log("Fail to get password: ",err)
-            resultCallBack(err,null)
+            resultCallback(err,null)
             return;
         }
 
-        resultCallBack(null,res)
+        resultCallback(null,res)
     })
 }
 
-Account.changePassword = function(data,resultCallBack) {
+Account.changePassword = function(data,resultCallback) {
     sql.query("UPDATE ACCOUNT SET password=? WHERE username=?",[data.newPassword,data.username],(err,res)=>{
         if (err) {
             console.log("Fail to change password: ",err)
-            resultCallBack(err,null)
+            resultCallback(err,null)
             return;
         }
 
-        resultCallBack(null,res)
+        resultCallback(null,res)
     })
 }
 
-Account.changeInformation = function(data,resultCallBack){
+Account.changeInformation = function(data,resultCallback){
     sql.query(
         "UPDATE ACCOUNT SET ? WHERE username=?",
         [data.changes,data.username],
         (err,res)=>{
             if (err) {
-                resultCallBack(err,null)
+                resultCallback(err,null)
                 return
             }
 
-            resultCallBack(null,res)
+            resultCallback(null,res)
         })
+}
+
+Account.topUp = function(data,resultCallback) {
+    sql.query(
+        "UPDATE ACCOUNT SET coin=coin+? WHERE username=?",
+        [data.topUpValue,data.username],
+        (err,res)=>{
+            if (err) {
+                resultCallback(err,null)
+                return
+            }
+
+            resultCallback(null,res)
+        }
+    )
 }
 
 module.exports = Account
