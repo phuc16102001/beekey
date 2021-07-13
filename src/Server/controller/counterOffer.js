@@ -72,7 +72,100 @@ function getByRequest(req,res) {
     })
 }
 
+function accept(req,res){
+    console.log("Accept counter-offer")
+    data = {
+        task_id: req.body.task_id,
+        lancer_id: req.body.lancer_id
+    }
+
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result) {
+            if (result.status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            }
+        }
+    })
+
+    counterOffer.accept(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Accept counter-offer successfully",
+                offers: result
+            })
+        }
+    })
+}
+
+function decline(req,res){
+    console.log("Decline counter-offer")
+
+    data = {
+        task_id: req.body.task_id,
+        lancer_id: req.body.lancer_id
+    }
+
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result) {
+            if (result.status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            }
+        }
+    })
+
+    counterOffer.decline(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Decline counter-offer successfully",
+                offers: result
+            })
+        }
+    })
+}
+
 module.exports = {
     postOffer,
-    getByRequest
+    getByRequest,
+    accept,
+    decline
 }
