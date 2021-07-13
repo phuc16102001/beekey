@@ -5,12 +5,12 @@ CREATE DATABASE BEEKEY;
 USE BEEKEY;
 
 CREATE TABLE ACCOUNT(
-	username VARCHAR(30),
-	name VARCHAR(30),
-	password CHAR(64),
-	phone VARCHAR(12),
-	email VARCHAR(30),
-	coin INT,
+	username VARCHAR(30) NOT NULL,
+	name VARCHAR(30) NOT NULL,
+	password CHAR(64) NOT NULL,
+	phone VARCHAR(12) NOT NULL,
+	email VARCHAR(30) NOT NULL,
+	coin INT NOT NULL,
 	
 	PRIMARY KEY(username)
 );
@@ -95,7 +95,7 @@ CREATE TABLE REPORT(
 --------------------------------------------------------------------
 
 INSERT INTO ACCOUNT(username,password,coin) VALUES
-("admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",0);
+("admin","admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","","",0);
 
 INSERT INTO CATEGORY(category_name) VALUES
 ("Testing"),
