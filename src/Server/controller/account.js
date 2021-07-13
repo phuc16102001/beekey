@@ -46,7 +46,7 @@ function signup(req,res){
         password: req.body.password,
         gender: req.body.gender,
         phone: req.body.phone,
-        address: req.body.address,
+        email: req.body.email,
         name: req.body.name
     }
 
@@ -158,7 +158,7 @@ function changeInformation(req,res) {
         phone: req.body.phone,
         address: req.body.address,
         name: req.body.name,
-        gender: req.body.gender
+        email: req.body.email
     }
     Object.keys(changes).forEach(key=>{
         if (changes[key]===undefined) {
