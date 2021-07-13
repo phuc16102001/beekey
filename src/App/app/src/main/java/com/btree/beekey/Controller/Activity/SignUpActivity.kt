@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.btree.beekey.Model.Account
 import com.btree.beekey.Model.SignUpPost
 import com.btree.beekey.Model.SignUpResponse
 import com.btree.beekey.R
@@ -46,7 +47,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         Log.d("check pass",passwordStr)
         val response = MyAPI.getAPI()
-            .postSignup(SignUpPost(usernameStr, passwordStr, PhoneNumStr, HomeaddStr, GenderBool))
+            .postSignup(SignUpPost(usernameStr,passwordStr,PhoneNumStr,""))
         if (checkFill()) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(

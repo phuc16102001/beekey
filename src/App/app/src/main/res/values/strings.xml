@@ -83,6 +83,7 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="category">Category</string>
+    <string name="coin">Coin</string>
 
     <string-array name="Category">
         <item>Java</item>
