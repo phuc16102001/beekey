@@ -167,11 +167,17 @@ function viewDetail(req,res) {
             })
         }
 
-        if (result) {
+        console.log(result)
+        if (result[0]!=undefined) {
             res.send({
                 exitcode: 0,
                 message: "Get task detail successfully",
-                task: result
+                task: result[0]
+            })
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
             })
         }
     })
