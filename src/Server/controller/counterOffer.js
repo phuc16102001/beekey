@@ -27,25 +27,26 @@ function postOffer(req,res) {
                     message: "Task status not valid"
                 })
                 return;
+            } else {       
+                counterOffer.postOffer(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Create counter-offer successfully"
+                        })
+                    }
+                })
             }
         }
     })
 
-    counterOffer.postOffer(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-        }
-
-        if (result) {
-            res.send({
-                exitcode: 0,
-                message: "Create counter-offer successfully"
-            })
-        }
-    })
 }
 
 function getByRequest(req,res) {
@@ -95,24 +96,24 @@ function accept(req,res){
                     message: "Task status not valid"
                 })
                 return;
+            } else {
+                counterOffer.accept(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+            
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Accept counter-offer successfully",
+                            offers: result
+                        })
+                    }
+                })
             }
-        }
-    })
-
-    counterOffer.accept(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-        }
-
-        if (result) {
-            res.send({
-                exitcode: 0,
-                message: "Accept counter-offer successfully",
-                offers: result
-            })
         }
     })
 }
@@ -141,26 +142,27 @@ function decline(req,res){
                     message: "Task status not valid"
                 })
                 return;
+            } else {
+                counterOffer.decline(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+            
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Decline counter-offer successfully",
+                            offers: result
+                        })
+                    }
+                })
             }
         }
     })
 
-    counterOffer.decline(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-        }
-
-        if (result) {
-            res.send({
-                exitcode: 0,
-                message: "Decline counter-offer successfully",
-                offers: result
-            })
-        }
-    })
 }
 
 module.exports = {
