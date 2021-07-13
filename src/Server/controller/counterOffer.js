@@ -21,6 +21,7 @@ function postOffer(req,res) {
         }
 
         if (result) {
+            console.log(result)
             if (result.status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
