@@ -1,16 +1,16 @@
-const config = require('../config/config')
-const Report = require('../models/report')
+const Feedback = require('../models/feedback')
 
 function post(req,res) {
-    console.log("Make report")
-    dateTime = new Date()
+    console.log("Make feedback")
+
     data = {
-        username: req.payload.username,
-        content: req.body.content,
-        date_time: dateTime
+        user_id: req.payload.username,
+        task_id: req.body.task_id,
+        title: req.body.title,
+        description: req.body.description
     }
 
-    Report.post(data,(err,result)=>{
+    Feedback.post(data,(err,result)=>{
         if (err) {
             res.send({
                 exitcode: 1,
@@ -21,20 +21,23 @@ function post(req,res) {
         if (result){
             res.send({
                 exitcode: 0,
-                message: "Create report successfully"
+                message: "Create feedback successfully"
             })
         } else {
             res.send({
-                exitcode: 3,
-                message: "Username not found"
+                exitcode: 1,
+                message: "Cannot create feedback"
             })
         }
     })
 }
 
 function get(req,res) {
-    console.log("Get report")
-    Report.get((err,result)=>{
+    console.log("Get feedback")
+    data = {
+        username: req.payload.username
+    }
+    Feedback.get((err,result)=>{
         if (err) {
             res.send({
                 exitcode: 1,
@@ -45,11 +48,12 @@ function get(req,res) {
         if (result) {
             res.send({
                 exitcode: 0,
-                message: "Get all report successfully",
-                reports: result
+                message: "Get all feedback successfully",
+                feedbacks: result
             })
         }
     })
+
 }
 
 module.exports = {
