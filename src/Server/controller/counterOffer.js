@@ -160,7 +160,6 @@ function decline(req,res){
             }
         }
     })
-
 }
 
 module.exports = {

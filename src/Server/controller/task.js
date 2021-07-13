@@ -1,4 +1,5 @@
 const Task = require('../models/task')
+const config = require('../config/config')
 
 function getTaskByCategory(req,res) {
     console.log("Get task by category")
@@ -101,9 +102,55 @@ function postTask(req,res){
     })
 }
 
+function doneTask(req,res) {
+    console.log("Done task")
+
+    data = {
+        task_id: req.body.task_id
+    }
+
+    Task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result) {
+            if (result[0].status!=config.constant.STATUS.ACCEPTED) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            } else {
+                Task.done(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                        return
+                    }
+                    
+                    if (result) {
+                        res.send({
+                            exitcode: 1,
+                            message: "Done task successfully"
+                        })
+                    }
+                })
+            }
+        }
+    })
+}
+
 module.exports = {
     getTaskByCategory,
     getRequestByUsername,
     getTaskByUsername,
-    postTask
+    postTask,
+    doneTask
 }
