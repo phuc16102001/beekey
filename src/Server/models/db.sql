@@ -94,7 +94,7 @@ CREATE TABLE REPORT(
 
 --------------------------------------------------------------------
 
-INSERT INTO ACCOUNT(username,password,coin) VALUES
+INSERT INTO ACCOUNT VALUES
 ("admin","admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","","",0);
 
 INSERT INTO CATEGORY(category_name) VALUES
