@@ -17,7 +17,7 @@ Feedback.post = function(data,resultCallback) {
 }
 
 Feedback.get = function(resultCallback) {
-    sql.query("SELECT * FROM FEEDBACK WHERE USERNAME=?",[data.username],function(err,res) {
+    sql.query("SELECT * FROM FEEDBACK WHERE lancer_id=?",[data.username],function(err,res) {
         if (err) {
             console.log("Fail to get: ",err);
             resultCallback(err,null);
