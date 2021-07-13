@@ -62,7 +62,6 @@ function signup(req,res){
                 exitcode: 0,
                 message: "Create account successfully"
             })
-            console.log("[Signup]: "+data.username)
         }
     })
 }
