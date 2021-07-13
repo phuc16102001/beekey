@@ -31,7 +31,7 @@ CounterOffer.getByRequest = function(data,resultCallback) {
 }
 
 CounterOffer.decline = function(data,resultCallback) {
-    sql.query("DELETE * FROM COUNTER_OFFER WHERE task_id=? AND lancer_id=?",
+    sql.query("DELETE FROM COUNTER_OFFER WHERE task_id=? AND lancer_id=?",
         [data.task_id,data.lancer_id],
         function(err,res){
             if (err) {
@@ -45,7 +45,7 @@ CounterOffer.decline = function(data,resultCallback) {
 }
 
 CounterOffer.accept = function(data,resultCallback) {
-    sql.query("UPDATE TASK SET status=?, lancer_id=? WHERE task_id=?;DELETE FROM COUNTER_OFFER WHERE task_id=?",
+    sql.query("UPDATE TASK SET status=?, lancer_id=? WHERE task_id=?; DELETE FROM COUNTER_OFFER WHERE task_id=?",
         [config.constant.STATUS.ACCEPTED,data.lancer_id,data.task_id,data.task_id],
         function(err,res){
             if (err) {
