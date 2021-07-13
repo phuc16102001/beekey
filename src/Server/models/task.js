@@ -3,6 +3,18 @@ const   sql = require('./db')
 
 const Task = function(){};
 
+Task.getStatus = function(data,resultCallback) {
+    sql.query("SELECT status FROM TASK WHERE task_id=?",data.task_id,(err,res)=>{
+        if (err) {
+            console.log("Fail to get: ",err);
+            resultCallback(err,null);
+            return;
+        }
+
+        resultCallback(null,res)
+    })
+}
+
 Task.getByCategory = function(data,resultCallback) {
     sql.query("SELECT * FROM TASK WHERE category_id=? AND status=?",
     [data.category_id,config.constant.STATUS.PENDING],
@@ -29,7 +41,6 @@ Task.postTask = function(data,resultCallback) {
         resultCallback(null,res);
     })
 }
-
 
 Task.getRequestByUsername = function(data,resultCallback) {
     sql.query("SELECT * FROM TASK WHERE user_id=?",data.username,(err,res)=>{

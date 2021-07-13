@@ -1,4 +1,6 @@
 const Feedback = require('../models/feedback')
+const Task = require('../models/task')
+const config = require('../config/config')
 
 function post(req,res) {
     console.log("Make feedback")
@@ -9,6 +11,24 @@ function post(req,res) {
         title: req.body.title,
         description: req.body.description
     }
+
+    Task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result.status!=config.constant.STATUS.DONE) {
+            res.send({
+                exitcode: 4,
+                message: "Task status not valid"
+            })
+            return
+        }
+    })
 
     Feedback.post(data,(err,result)=>{
         if (err) {
