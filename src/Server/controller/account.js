@@ -44,7 +44,6 @@ function signup(req,res){
     data = {
         username: req.body.username,
         password: req.body.password,
-        gender: req.body.gender,
         phone: req.body.phone,
         email: req.body.email,
         name: req.body.name
@@ -89,9 +88,8 @@ function getInformation(req,res){
                 message: "Successfully get information",
                 username: account.username,
                 name: account.name,
-                gender: account.gender,
                 phone: account.phone,
-                address: account.address,
+                email: account.email,
                 coin: account.coin
             })
         } else {
