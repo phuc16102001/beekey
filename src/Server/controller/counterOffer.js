@@ -3,6 +3,7 @@ const counterOffer = require('../models/counterOffer')
 function postOffer(req,res) {
     console.log("Make counter-offer")
     data = {
+        task_id: req.body.task_id,
         lancer_id: req.payload.username,
         reason: req.body.reason,
         offer: req.body.offer
