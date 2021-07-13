@@ -20,7 +20,7 @@ function postOffer(req,res) {
             return
         }
 
-        if (result) {
+        if (result[0]!=undefined) {
             if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
@@ -44,6 +44,11 @@ function postOffer(req,res) {
                     }
                 })
             }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
         }
     })
 
@@ -89,7 +94,7 @@ function accept(req,res){
             return
         }
 
-        if (result) {
+        if (result[0]!=undefined) {
             if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
@@ -113,6 +118,11 @@ function accept(req,res){
                     }
                 })
             }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
         }
     })
 }
@@ -134,7 +144,7 @@ function decline(req,res){
             return
         }
 
-        if (result) {
+        if (result[0]!=undefined) {
             if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
@@ -158,6 +168,11 @@ function decline(req,res){
                     }
                 })
             }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
         }
     })
 }

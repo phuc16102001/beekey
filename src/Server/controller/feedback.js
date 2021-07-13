@@ -21,31 +21,38 @@ function post(req,res) {
             return
         }
 
-        if (result.status!=config.constant.STATUS.DONE) {
-            res.send({
-                exitcode: 4,
-                message: "Task status not valid"
-            })
+        if (result[0]!=undefined) {
+            if (result.status!=config.constant.STATUS.DONE) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+            } else {
+                Feedback.post(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                    }
+            
+                    if (result){
+                        res.send({
+                            exitcode: 0,
+                            message: "Create feedback successfully"
+                        })
+                    } else {
+                        res.send({
+                            exitcode: 1,
+                            message: "Cannot create feedback"
+                        })
+                    }
+                })
+            }
         } else {
-            Feedback.post(data,(err,result)=>{
-                if (err) {
-                    res.send({
-                        exitcode: 1,
-                        message: err
-                    })
-                }
-        
-                if (result){
-                    res.send({
-                        exitcode: 0,
-                        message: "Create feedback successfully"
-                    })
-                } else {
-                    res.send({
-                        exitcode: 1,
-                        message: "Cannot create feedback"
-                    })
-                }
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
             })
         }
     })
