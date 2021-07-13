@@ -21,8 +21,7 @@ function postOffer(req,res) {
         }
 
         if (result) {
-            console.log(result)
-            if (result.status!=config.constant.STATUS.PENDING) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
                     message: "Task status not valid"
@@ -91,7 +90,7 @@ function accept(req,res){
         }
 
         if (result) {
-            if (result.status!=config.constant.STATUS.PENDING) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
                     message: "Task status not valid"
@@ -137,7 +136,7 @@ function decline(req,res){
         }
 
         if (result) {
-            if (result.status!=config.constant.STATUS.PENDING) {
+            if (result[0].status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
                     message: "Task status not valid"
