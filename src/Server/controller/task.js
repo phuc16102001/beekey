@@ -118,7 +118,7 @@ function doneTask(req,res) {
             return
         }
 
-        if (result) {
+        if (result[0]!=undefined) {
             if (result[0].status!=config.constant.STATUS.ACCEPTED) {
                 res.send({
                     exitcode: 4,
@@ -137,12 +137,17 @@ function doneTask(req,res) {
                     
                     if (result) {
                         res.send({
-                            exitcode: 1,
+                            exitcode: 0,
                             message: "Done task successfully"
                         })
                     }
                 })
             }
+        } else {
+            res.send({
+                exitcode: 1,
+                message: "Task not found"
+            })
         }
     })
 }
