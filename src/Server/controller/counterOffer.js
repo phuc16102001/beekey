@@ -3,7 +3,7 @@ const counterOffer = require('../models/counterOffer')
 function postOffer(req,res) {
     console.log("Make counter-offer")
     data = {
-        username: req.payload.username,
+        lancer_id: req.payload.username,
         reason: req.body.reason,
         offer: req.body.offer
     }
