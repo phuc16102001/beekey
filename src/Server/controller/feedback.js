@@ -26,27 +26,26 @@ function post(req,res) {
                 exitcode: 4,
                 message: "Task status not valid"
             })
-            return
-        }
-    })
-
-    Feedback.post(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-        }
-
-        if (result){
-            res.send({
-                exitcode: 0,
-                message: "Create feedback successfully"
-            })
         } else {
-            res.send({
-                exitcode: 1,
-                message: "Cannot create feedback"
+            Feedback.post(data,(err,result)=>{
+                if (err) {
+                    res.send({
+                        exitcode: 1,
+                        message: err
+                    })
+                }
+        
+                if (result){
+                    res.send({
+                        exitcode: 0,
+                        message: "Create feedback successfully"
+                    })
+                } else {
+                    res.send({
+                        exitcode: 1,
+                        message: "Cannot create feedback"
+                    })
+                }
             })
         }
     })
