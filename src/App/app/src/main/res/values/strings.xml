@@ -83,6 +83,11 @@
     <string name="post">Post</string>
     <string name="title">Title</string>
     <string name="category">Category</string>
+    <string name="yyyy_mm_dd_at_hh_mm_ss">YYYY-MM-DD at hh:mm:ss</string>
+    <string name="file_attachment">File Attachment</string>
+    <string name="deadline_">Deadline</string>
+    <string name="starting_at">Starting at $</string>
+    <string name="price">Price</string>
 
     <string-array name="Category">
         <item>Java</item>
