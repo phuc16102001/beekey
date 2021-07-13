@@ -156,9 +156,7 @@ function changeInformation(req,res) {
     console.log("Change information")
     changes = {
         phone: req.body.phone,
-        address: req.body.address,
         name: req.body.name,
-        email: req.body.email
     }
     Object.keys(changes).forEach(key=>{
         if (changes[key]===undefined) {
