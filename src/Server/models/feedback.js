@@ -3,7 +3,7 @@ const sql = require('./db')
 const Feedback = function(){};
 
 Feedback.post = function(data,resultCallback) {
-    sql.query("INSERT INTO FEEDBACK(title,description,user_id,task_id,lancer_id) SELECT (?,?,?,?,lancer_id) FROM TASK WHERE task_id=?",
+    sql.query("INSERT INTO FEEDBACK(title,description,user_id,task_id,lancer_id) SELECT ?,?,?,?,lancer_id FROM TASK WHERE task_id=?",
     [data.title,data.description,data.user_id,data.task_id,data.task_id],
     function(err,res){
         if (err) {
