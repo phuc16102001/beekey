@@ -1,4 +1,6 @@
 const counterOffer = require('../models/counterOffer')
+const task = require("../models/task")
+const config = require("../config/config")
 
 function postOffer(req,res) {
     console.log("Make counter-offer")
@@ -8,6 +10,26 @@ function postOffer(req,res) {
         reason: req.body.reason,
         offer: req.body.offer
     }
+
+    task.getStatus(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+            return
+        }
+
+        if (result) {
+            if (result.status!=config.constant.STATUS.PENDING) {
+                res.send({
+                    exitcode: 4,
+                    message: "Task status not valid"
+                })
+                return;
+            }
+        }
+    })
 
     counterOffer.postOffer(data,(err,result)=>{
         if (err) {
@@ -48,7 +70,6 @@ function getByRequest(req,res) {
             })
         }
     })
-
 }
 
 module.exports = {
