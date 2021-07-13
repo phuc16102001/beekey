@@ -20,7 +20,8 @@ function postOffer(req,res) {
         if (result) {
             res.send({
                 exitcode: 0,
-                message: "Create counter-offer successfully"
+                message: "Create counter-offer successfully",
+                offers: result
             })
         }
     })
