@@ -156,7 +156,7 @@ function viewDetail(req,res) {
     console.log("View task detail")
 
     data = {
-        task_id: data.req.task_id
+        task_id: req.task_id
     }
 
     Task.viewDetail(data,(err,result)=>{
