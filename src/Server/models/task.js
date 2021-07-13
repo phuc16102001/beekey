@@ -94,4 +94,19 @@ Task.done = function(data,resultCallback) {
     )
 }
 
+Task.viewDetail = function(data,resultCallback) {
+    sql.query("SELECT * FROM TASK WHERE task_id=?",
+        [data.task_id],
+        (err,res)=>{
+            if (err) {
+                console.log("Fail to get task detail: ",err)
+                resultCallback(err,null)
+                return;
+            }
+
+            resultCallback(null,res)
+        }
+    )
+}
+
 module.exports = Task

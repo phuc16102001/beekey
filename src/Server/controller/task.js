@@ -152,10 +152,36 @@ function doneTask(req,res) {
     })
 }
 
+function viewDetail(req,res) {
+    console.log("View task detail")
+
+    data = {
+        task_id: data.req.task_id
+    }
+
+    Task.viewDetail(data,(err,result)=>{
+        if (err) {
+            res.send({
+                exitcode: 1,
+                message: err
+            })
+        }
+
+        if (result) {
+            res.send({
+                exitcode: 0,
+                message: "Get task detail successfully",
+                task: result
+            })
+        }
+    })
+}
+
 module.exports = {
     getTaskByCategory,
     getRequestByUsername,
     getTaskByUsername,
     postTask,
-    doneTask
+    doneTask,
+    viewDetail
 }
