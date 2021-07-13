@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:text="@string/request"
+            android:layout_alignParentLeft="true"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -26,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="sans-serif"
@@ -124,14 +125,14 @@
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:gravity="center_vertical"
-            android:text="Deadline"
+            android:text="@string/deadline"
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
             android:layout_marginStart="10dp"
+            app:cardUseCompatPadding="true"
             app:strokeColor="@color/border"
             app:strokeWidth="1dp">
 
@@ -139,17 +140,40 @@
                 android:id="@+id/deadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginStart="10dp"
-                android:hint="YYYY-MM-DD at hh:mm:ss"
-                android:inputType="none"
-                android:focusable="false" />
+                android:focusable="false"
+                android:hint="@string/yyyy_mm_dd_at_hh_mm_ss"
+                android:inputType="none" />
 
         </com.google.android.material.card.MaterialCardView>
-
-
-
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_attachment"
+            app:tint="#2D9BF0"/>
+
+        <TextView
+            android:id="@+id/fileAttachTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/file_attachment"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
 
 </LinearLayout>

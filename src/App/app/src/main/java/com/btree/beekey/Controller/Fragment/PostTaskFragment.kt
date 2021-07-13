@@ -2,7 +2,9 @@ package com.btree.beekey.Controller.Fragment
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,19 +19,17 @@ import com.btree.beekey.databinding.FragmentPostTaskBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.time.Month
-import java.time.Year
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.math.min
+
 
 class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     private var _binding: FragmentPostTaskBinding? = null
     private var categoryAdapter: ArrayAdapter<String>? = null
     private var categoryList: List<Category>? = null
-    private var dateString:String? = null
-    private var timeString:String? = null
+    private var dateString: String? = null
+    private var timeString: String? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -70,6 +70,9 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         }
 
         binding.deadline.setOnClickListener { getDeadlineFromUser() }
+        binding.fileAttachTxt.setOnClickListener {
+            fileChooser()
+        }
     }
 
     private fun loadAdapter() {
@@ -118,7 +121,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         })
     }
 
-    private fun getDeadlineFromUser(){
+    private fun getDeadlineFromUser() {
         getDateFromUser()
     }
 
@@ -130,7 +133,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             TimePickerDialog(it, { view, hour, minute ->
                 timeString = "$hour:$minute:00"
                 binding.deadline.setText("$dateString at $timeString")
-            },curHour, curMinute, true)
+            }, curHour, curMinute, true)
         }
         timePicker?.show()
 
@@ -139,19 +142,38 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
     private fun getDateFromUser() {
         val calendar = Calendar.getInstance()
         val curDay = calendar.get(Calendar.DAY_OF_MONTH)
-        var curMonth = calendar.get(Calendar.MONTH)+1
+        var curMonth = calendar.get(Calendar.MONTH)
         val curYear = calendar.get(Calendar.YEAR)
         val datePicker = context?.let {
-            DatePickerDialog(it,
+            DatePickerDialog(
+                it,
                 { view, year, month, day ->
-                    dateString= "$day/${month+1}/$year"
+                    dateString = "$day/${month + 1}/$year"
                     getTimeFromUser()
                 },
-                curYear,curMonth,curDay)
+                curYear, curMonth, curDay
+            )
         }
         datePicker?.show()
     }
+
+    private fun fileChooser() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+
+        intent.type = "*/*"
+
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
+        super.startActivityForResult(Intent.createChooser(intent, "Select file"),11)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+    }
 }
+
+
+
 
 
 
