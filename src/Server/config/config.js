@@ -10,7 +10,7 @@ exports.database = {
     user: 'root',
     password: 'Phuc16102001',
     database: 'BEEKEY',
-    multipleStatments: true,
+    multipleStatements: true,
     connectionLimit: 3
 }
 
