@@ -108,8 +108,7 @@ function accept(req,res){
                     if (result) {
                         res.send({
                             exitcode: 0,
-                            message: "Accept counter-offer successfully",
-                            offers: result
+                            message: "Accept counter-offer successfully"
                         })
                     }
                 })
@@ -154,8 +153,7 @@ function decline(req,res){
                     if (result) {
                         res.send({
                             exitcode: 0,
-                            message: "Decline counter-offer successfully",
-                            offers: result
+                            message: "Decline counter-offer successfully"
                         })
                     }
                 })

@@ -31,7 +31,7 @@ CounterOffer.getByRequest = function(data,resultCallback) {
 }
 
 CounterOffer.decline = function(data,resultCallback) {
-    sql.query("DELETE FROM COUNTER_OFFER WHERE task_id=? AND lancer_id=?",
+    sql.query("DELETE * FROM COUNTER_OFFER WHERE task_id=? AND lancer_id=?",
         [data.task_id,data.lancer_id],
         function(err,res){
             if (err) {
