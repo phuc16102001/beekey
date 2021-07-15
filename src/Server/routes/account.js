@@ -6,6 +6,7 @@ function assignRoutes(app) {
     app.get('/account/getInformation',account.getInformation);
     app.post('/account/changePassword',account.changePassword);
     app.post('/account/changeInformation',account.changeInformation)
+    app.post('/account/topUp',account.topUp)
 }
 
 module.exports = {

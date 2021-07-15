@@ -1,6 +1,7 @@
 const Category = require('../models/category')
 
 function getCategory(req,res) {
+    console.log("Get category")
     Category.get(null,(err,result)=>{
         if (err) {
             res.send({

@@ -46,7 +46,6 @@
     <string name="counter_offer_price">Counter-offer price</string>
     <string name="reason">Reason</string>
     <string name="project_information">Project information</string>
-    <string name="description">Description</string>
     <string name="offer">Offer:</string>
     <string name="date">Date</string>
     <string name="deadline">Deadline:</string>
@@ -88,6 +87,7 @@
     <string name="deadline_">Deadline</string>
     <string name="starting_at">Starting at $</string>
     <string name="price">Price</string>
+    <string name="coin">Coin</string>
 
     <string-array name="Category">
         <item>Java</item>

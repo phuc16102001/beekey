@@ -4,12 +4,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.Feedback
 import com.btree.beekey.Controller.Adapter.FeedbackAdapter
+import com.btree.beekey.Model.Account
+import com.btree.beekey.Model.GetInformationResponse
 import com.btree.beekey.R
+import com.btree.beekey.Utils.Cache
+import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.FragmentProfileBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProfileFragment:Fragment(R.layout.fragment_profile){
 
@@ -34,6 +42,40 @@ class ProfileFragment:Fragment(R.layout.fragment_profile){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loadFeedback()
+        requestInformation()
+    }
+
+    private fun loadInformation(account : Account) {
+        binding.txtDisplayName.setText(account.displayName)
+        binding.txtEmail.setText(account.email)
+        binding.txtCoin.setText(account.coin.toString())
+        binding.txtPhone.setText(account.phone)
+    }
+
+    private fun requestInformation() {
+        val token = context?.let { Cache.getToken(it) }
+        val request = token?.let { MyAPI.getAPI().getInformation(it) }
+        request?.enqueue(object : Callback<GetInformationResponse>{
+            override fun onResponse(
+                call: Call<GetInformationResponse>,
+                response: Response<GetInformationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data?.exitcode==0){
+                        loadInformation(Account(data.username,data.displayName,data.phone,data.email,data.coin))
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<GetInformationResponse>, t: Throwable) {
+                Toast.makeText(context,"Fail to connect to server",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun loadFeedback() {
         val userList = mutableListOf<Feedback>()
         userList.add(Feedback("Good","Description: Test test test","Thanh"))
         userList.add(Feedback("Good","Description: Test test test","Phuc"))
