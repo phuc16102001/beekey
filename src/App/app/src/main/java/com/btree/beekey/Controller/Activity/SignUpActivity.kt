@@ -1,5 +1,6 @@
 package com.btree.beekey.Controller.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,44 +12,34 @@ import com.btree.beekey.Model.SignUpResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
+import com.btree.beekey.databinding.ActivitySignUpBinding
+import com.btree.beekey.databinding.FragmentPostTaskBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
+    private lateinit var binding:ActivitySignUpBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val button : Button = findViewById(R.id.button_signup)
-
-        button.setOnClickListener {
-            Signupaccount()
+        binding.btnSignup.setOnClickListener {
+            SignUp(this)
         }
     }
 
-    private fun Signupaccount(){
-        val Username = findViewById<EditText>(R.id.SignUpUserName)
-        val Password = findViewById<EditText>(R.id.SignUpPassword)
-        val PhoneNum = findViewById<EditText>(R.id.SignUpPhoneNumer)
-        val Homeadd = findViewById<EditText>(R.id.SignUpHomeAdd)
-        val Gender = findViewById<Spinner>(R.id.SignUpGender)
+    private fun SignUp(context: Context){
+        val username = binding.edtUsername.text.toString()
+        val password = binding.edtPassword.text.toString()
+        val rePassword = binding.edtPassword.text.toString()
+        val phone = binding.edtPhone.text.toString()
+        val email = binding.edtEmail.text.toString()
 
-
-        val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString().sha256()
-        val PhoneNumStr = PhoneNum.text.toString()
-        val HomeaddStr = Homeadd.text.toString()
-        val GenderStr = Gender.selectedItem.toString()
-        var GenderBool = true
-
-        if (GenderStr == "Female") {
-            GenderBool = false
-        }
-        Log.d("check pass",passwordStr)
-        val response = MyAPI.getAPI()
-            .postSignup(SignUpPost(usernameStr,passwordStr,PhoneNumStr,""))
-        if (checkFill()) {
+        val response = MyAPI.getAPI().postSignup(SignUpPost(username, password.sha256(), phone, email))
+        if (checkFill(username, password, rePassword, phone, email)) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(
                     call: Call<SignUpResponse>,
@@ -58,42 +49,28 @@ class SignUpActivity : AppCompatActivity() {
                         val data = response.body()
                         Log.d("LoginStatus",data.toString())
                         if (data?.exitcode == 0) {
-                            Toast.makeText(this@SignUpActivity, data.message, Toast.LENGTH_LONG).show()
-                            Intent(this@SignUpActivity, LoginActivity::class.java).also {
-                                startActivity(it)
-                            }
+                            Toast.makeText(context, data.message, Toast.LENGTH_LONG).show()
                             finish()
                         }
                         else if (data?.exitcode == 1){
-                            Toast.makeText(this@SignUpActivity, data.message, Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, data.message, Toast.LENGTH_LONG).show()
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
-                    Toast.makeText(this@SignUpActivity, "Click Fail", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Click Fail", Toast.LENGTH_LONG).show()
                 }
             })
         }
     }
 
-    private fun checkFill():Boolean{
-        val Username = findViewById<EditText>(R.id.SignUpUserName)
-        val Password = findViewById<EditText>(R.id.SignUpPassword)
-        val reenterPassword = findViewById<EditText>(R.id.SignUpReEnterPass)
-        val PhoneNum = findViewById<EditText>(R.id.SignUpPhoneNumer)
-        val Homeadd = findViewById<EditText>(R.id.SignUpHomeAdd)
-
-        val usernameStr = Username.text.toString()
-        val passwordStr = Password.text.toString()
-        val reenterPasswordStr = reenterPassword.text.toString()
-        val PhoneNumStr = PhoneNum.text.toString()
-        val HomeaddStr = Homeadd.text.toString()
-        if (usernameStr == "" || passwordStr == "" || reenterPasswordStr == "" || PhoneNumStr == "" || HomeaddStr == ""){
+    private fun checkFill(username:String, password:String, rePassword: String, phone:String, email:String):Boolean{
+        if (username == "" || password == "" || rePassword == "" || phone == "" || email == ""){
             Toast.makeText(this, "Must fill all plain", Toast.LENGTH_SHORT).show()
             return false
         }
-        else if (passwordStr!=reenterPasswordStr){
+        if (password!=rePassword){
             Toast.makeText(this, "Re-enter Password wrong", Toast.LENGTH_SHORT).show()
             return false
         }

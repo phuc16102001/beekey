@@ -88,6 +88,8 @@
     <string name="starting_at">Starting at $</string>
     <string name="price">Price</string>
     <string name="coin">Coin</string>
+    <string name="email">Email</string>
+    <string name="description">Description</string>
 
     <string-array name="Category">
         <item>Java</item>
