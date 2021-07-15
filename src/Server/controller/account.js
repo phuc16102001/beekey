@@ -43,11 +43,10 @@ function signup(req,res){
     console.log("Signup")
     data = {
         username: req.body.username,
-        name: req.body.name,
+        name: req.body.username,
         password: req.body.password,
         phone: req.body.phone,
-        email: req.body.email,
-        name: req.body.name
+        email: req.body.email
     }
 
     Account.signup(data,(err,result)=>{
