@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".ProfileActivity">
+    tools:context=".Controller.Activity.ProfileActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -45,6 +44,7 @@
                 app:cardUseCompatPadding="true"
                 app:strokeColor="@color/greyborder"
                 app:strokeWidth="1dp"
+                app:cardCornerRadius="15dp"
                 android:layout_marginStart="5dp">
 
                 <LinearLayout
@@ -113,21 +113,21 @@
                         android:layout_marginTop="8dp">
 
                         <ImageView
-                            android:id="@+id/location_ic"
+                           android:id="@+id/imgCoin"
                             app:tint="@color/beegrey"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:adjustViewBounds="true"
                             android:background="@null"
                             android:scaleType="fitCenter"
-                            android:src="@drawable/ic_location" />
+                            android:src="@drawable/ic_coin" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="15dp"
                             android:gravity="center_vertical"
-                            android:text="@string/vietnam" />
+                            android:text="@string/coin" />
 
                     </LinearLayout>
 
@@ -143,6 +143,7 @@
             android:layout_height="match_parent"
             app:cardUseCompatPadding="true"
             app:strokeColor="@color/greyborder"
+            app:cardCornerRadius="15dp"
             app:strokeWidth="1dp"
             >
             <LinearLayout

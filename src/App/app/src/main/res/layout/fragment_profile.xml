@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Controller.Fragment.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtDisplayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/display_name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:background="@null"
+                    android:src="@drawable/ic_avatar"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@color/greyborder"
+                    app:strokeWidth="1dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginStart="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/email_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/email_ic"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:adjustViewBounds="true"
+                                android:background="@null"
+                                app:tint="@color/beegrey"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_email" />
+
+                            <TextView
+                                android:id="@+id/txtEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/example_gmail_com" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/phone_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/phone_ic"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:adjustViewBounds="true"
+                                android:background="@null"
+                                android:scaleType="fitCenter"
+                                app:tint="@color/beegrey"
+                                android:src="@drawable/ic_phone" />
+
+                            <TextView
+                                android:id="@+id/txtPhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:gravity="center_vertical"
+                                android:text="070 201 2607" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/location_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:id="@+id/location_ic"
+                                app:tint="@color/beegrey"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:adjustViewBounds="true"
+                                android:background="@null"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_coin" />
+
+                            <TextView
+                                android:id="@+id/txtCoin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="15dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/coin" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardUseCompatPadding="true"
+                app:strokeColor="@color/greyborder"
+                app:cardCornerRadius="15dp"
+                app:strokeWidth="1dp"
+                >
+                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:id="@+id/task_ic"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_task"
+                        app:tint="#2D9BF0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/on_going_task"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <ImageView
+                        android:layout_marginStart="60dp"
+                        android:id="@+id/request_ic"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_request"
+                        app:tint="#BF2000"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/my_request"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="10dp"
+                        android:textSize="15sp"
+
+                        android:textColor="@color/black"
+                        android:clickable="true"
+                        />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_feedback"
+                    app:tint="@color/beeyellow"
+                    />
+
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/feedback"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
