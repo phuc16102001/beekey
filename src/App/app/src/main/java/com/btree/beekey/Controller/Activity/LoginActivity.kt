@@ -30,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.LoginButton)
         val forget: TextView = findViewById(R.id.LoginForgetPassword)
         val signup: TextView = findViewById(R.id.Loginsignup)
-        //Cache.clear(this)
 
         AutoLogin()
 
