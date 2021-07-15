@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BeeKey</string>
     <string name="display_name">Display name</string>
     <string name="example_gmail_com">example@gmail.com</string>
@@ -81,8 +81,12 @@
     <string name="request">Request</string>
     <string name="post">Post</string>
     <string name="title">Title</string>
-    <string name="description">Description</string>
     <string name="category">Category</string>
+    <string name="yyyy_mm_dd_at_hh_mm_ss">YYYY-MM-DD at hh:mm:ss</string>
+    <string name="file_attachment">File Attachment</string>
+    <string name="deadline_">Deadline</string>
+    <string name="starting_at">Starting at $</string>
+    <string name="price">Price</string>
     <string name="coin">Coin</string>
 
     <string-array name="Category">
