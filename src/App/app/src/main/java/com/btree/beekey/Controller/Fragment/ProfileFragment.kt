@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.os.Bundle
 import android.renderscript.ScriptGroup
 import android.util.Log
@@ -7,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.btree.beekey.Controller.Activity.MyListRequestActivity
+import com.btree.beekey.Controller.Activity.MyListTaskActivity
 import com.btree.beekey.Controller.Adapter.Feedback
 import com.btree.beekey.Controller.Adapter.FeedbackAdapter
 import com.btree.beekey.Model.Account
@@ -44,6 +47,17 @@ class ProfileFragment:Fragment(R.layout.fragment_profile){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadFeedback()
         requestInformation()
+
+        binding.requestIc.setOnClickListener {
+            Intent(getActivity(), MyListRequestActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.taskIc.setOnClickListener {
+            Intent(getActivity(), MyListTaskActivity::class.java).also {
+                startActivity(it)
+            }
+        }
     }
 
     private fun loadInformation(account : Account) {

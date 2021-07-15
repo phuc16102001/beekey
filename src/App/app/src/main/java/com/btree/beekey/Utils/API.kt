@@ -46,4 +46,14 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body topUpBody: TopUpBody
     ): Call<TopUpResponse>
+
+    @GET("/task/getMyRequest")
+    fun getMyRequest(
+        @Header("x-access-token") tokenHeader: String
+    ):Call<getMyRequestResponse>
+
+    @GET("/task/getMyTask")
+    fun getMyTask(
+        @Header("x-access-token") tokenHeader: String
+    ):Call<getMyTaskResponse>
 }
