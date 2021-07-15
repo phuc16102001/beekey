@@ -43,6 +43,7 @@ function signup(req,res){
     console.log("Signup")
     data = {
         username: req.body.username,
+        name: req.body.name,
         password: req.body.password,
         phone: req.body.phone,
         email: req.body.email,
