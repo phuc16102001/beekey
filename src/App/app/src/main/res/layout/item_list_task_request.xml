@@ -16,26 +16,12 @@
             android:id="@+id/clientname_taskrequest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="client name"
-            android:textSize="20dp"
+            android:text="title"
+            android:textSize="20sp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.023" />
-
-        <TextView
-            android:id="@+id/category_taskrequest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="category"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.92"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023" />
@@ -46,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="deadline"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="Offer: "
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.038"
@@ -69,18 +55,47 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.855" />
 
-        <TextView
-            android:id="@+id/context_taskrequest"
-            android:layout_width="333dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="280dp"
             android:layout_height="96dp"
-            android:text="Some thing in here"
-            android:textSize="16dp"
+
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintHorizontal_bias="0.15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.394" />
+            app:layout_constraintVertical_bias="0.394"
+            android:padding="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardUseCompatPadding="true"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/greyborder"
+            >
+            <TextView
+                android:id="@+id/context_taskrequest"
+                android:text="Some thing in here"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                />
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/complete_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/complete" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
