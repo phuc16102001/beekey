@@ -16,15 +16,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListTaskActivity:AppCompatActivity() {
-    private var TasksListAPI: List<Tasks>? = null
-    private var TaskList = mutableListOf<Tasks>()
+    private lateinit var TasksListAPI: List<Tasks>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_list_task)
         getListRequest(this)
 
-        Log.d("MyListRequestActivity",TaskList.toString())
+        Log.d("MyListRequestActivity",TasksListAPI.toString())
 
     }
 
@@ -32,13 +31,9 @@ class MyListTaskActivity:AppCompatActivity() {
         if (TasksListAPI == null) {
             return
         }
-        for (task in TasksListAPI!!) {
-            Log.d("abbbccc", task.description)
-            TaskList.add(task)
-        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = TasksAdapter(TaskList)
+        recyclerView.adapter = TasksAdapter(TasksListAPI)
 
         recyclerView.setHasFixedSize(true)
     }
