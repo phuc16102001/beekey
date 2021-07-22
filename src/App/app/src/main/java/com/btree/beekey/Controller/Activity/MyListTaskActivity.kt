@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.Tasks
 import com.btree.beekey.Controller.Adapter.TasksAdapter
-import com.btree.beekey.Model.getMyTaskResponse
+import com.btree.beekey.Model.GetMyTaskResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -34,10 +34,10 @@ class MyListTaskActivity:AppCompatActivity() {
         val token = Cache.getToken(context).toString()
         val response = MyAPI.getAPI().getMyTask(token)
 
-        response.enqueue(object : Callback<getMyTaskResponse> {
+        response.enqueue(object : Callback<GetMyTaskResponse> {
             override fun onResponse(
-                call: Call<getMyTaskResponse>,
-                response: Response<getMyTaskResponse>
+                call: Call<GetMyTaskResponse>,
+                response: Response<GetMyTaskResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -49,7 +49,7 @@ class MyListTaskActivity:AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<getMyTaskResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetMyTaskResponse>, t: Throwable) {
                 TODO("Not yet implemented")
             }
         })

@@ -50,10 +50,10 @@ interface API {
     @GET("/task/getMyRequest")
     fun getMyRequest(
         @Header("x-access-token") tokenHeader: String
-    ):Call<getMyRequestResponse>
+    ):Call<GetMyRequestResponse>
 
     @GET("/task/getMyTask")
     fun getMyTask(
         @Header("x-access-token") tokenHeader: String
-    ):Call<getMyTaskResponse>
+    ):Call<GetMyTaskResponse>
 }
