@@ -4,10 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.btree.beekey.Controller.Activity.ChangeInformationActivity
-import com.btree.beekey.Controller.Activity.ChangePasswordActivity
-import com.btree.beekey.Controller.Activity.LoginActivity
-import com.btree.beekey.Controller.Activity.TopUpActivity
+import com.btree.beekey.Controller.Activity.*
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.databinding.FragmentSettingBinding
@@ -39,26 +36,11 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val personalBtn = binding.layoutPersonal
-        val changePasswordBtn = binding.layoutPassword
-        val topUpBtn = binding.layoutTopUp
-        val logoutButton = binding.logoutButton
-
-        personalBtn.setOnClickListener {
-            clickPersonal()
-        }
-
-        changePasswordBtn.setOnClickListener {
-            clickChangePassword()
-        }
-
-        topUpBtn.setOnClickListener {
-            clickTopUp()
-        }
-
-        logoutButton.setOnClickListener{
-            clickLogout()
-        }
+        binding.layoutPersonal.setOnClickListener { clickPersonal() }
+        binding.layoutPassword.setOnClickListener { clickChangePassword() }
+        binding.layoutTopUp.setOnClickListener { clickTopUp() }
+        binding.layoutReport.setOnClickListener { clickReport() }
+        binding.logoutButton.setOnClickListener{ clickLogout() }
     }
 
     private fun clickPersonal() {
@@ -78,6 +60,13 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
     private fun clickTopUp(){
         activity?.let{
             val intent = Intent (it, TopUpActivity::class.java)
+            it.startActivity(intent)
+        }
+    }
+
+    private fun clickReport(){
+        activity?.let{
+            val intent = Intent (it, ReportActivity::class.java)
             it.startActivity(intent)
         }
     }
