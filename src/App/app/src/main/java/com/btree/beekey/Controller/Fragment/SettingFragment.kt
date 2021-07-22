@@ -87,6 +87,7 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
             Cache.clear(it)
             val intent = Intent (it, LoginActivity::class.java)
             it.startActivity(intent)
+            it.finish()
         }
     }
 }
