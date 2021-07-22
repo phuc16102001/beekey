@@ -1,5 +1,6 @@
 package com.btree.beekey.Controller.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,42 +11,36 @@ import com.btree.beekey.Model.ChangeInformationResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
+import com.btree.beekey.databinding.ActivityChangeInformationBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class ChangeInformationActivity : AppCompatActivity() {
     private var TAG = "ChangeInformationActivity"  //for debug
+    private lateinit var binding : ActivityChangeInformationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_change_information)
+        binding = ActivityChangeInformationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val OkButton: Button = findViewById(R.id.OkButton)
+        val changeButton: Button = findViewById(R.id.btnChange)
 
-        OkButton.setOnClickListener{
-            ChangeInformation()
+        changeButton.setOnClickListener{
+            clickChangeBtn(this)
         }
     }
 
 
-    private fun ChangeInformation() {
-        val name = findViewById<EditText>(R.id.editTextName)
-        val phone = findViewById<EditText>(R.id.editTextPhone)
-        val address = findViewById<EditText>(R.id.editTextAddress)
-        val genderMale = findViewById<RadioButton>(R.id.radioButtonMale)
-
-        val nameStr = name.text.toString()
-        val phoneStr = phone.text.toString()
-        val addressStr = address.text.toString()
-
-        val genderStr: Boolean = genderMale.isChecked
+    private fun clickChangeBtn(context: Context) {
+        val name = binding.edtName.text.toString()
+        val phone = binding.edtPhone.text.toString()
 
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI().postChangeInformation(
             token,
-            ChangeInformationPost(nameStr, phoneStr, addressStr, genderStr)
+            ChangeInformationPost(name, phone)
         )
 
         response.enqueue(object : Callback<ChangeInformationResponse> {
@@ -57,18 +52,16 @@ class ChangeInformationActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("ChangePasswordStatus", data.toString())
                     if (data?.exitcode == 0) {
-                        Intent(this@ChangeInformationActivity, ProfileActivity::class.java).also {
-                            startActivity(it)
-                        }
+                        finish()
                     }
                     else if (data?.exitcode == 104){
-                        Toast.makeText(this@ChangeInformationActivity, data.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, data.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
 
             override fun onFailure(call: Call<ChangeInformationResponse>, t: Throwable) {
-                Toast.makeText(this@ChangeInformationActivity, "Fail", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
             }
         })
     }

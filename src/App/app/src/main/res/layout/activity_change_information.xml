@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".Controller.Activity.ProfileActivity">
+    tools:context=".Controller.Activity.ChangeInformationActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/textView"
@@ -28,87 +29,55 @@
             android:id="@+id/avatar"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:layout_gravity="center"
             android:src="@drawable/ic_avatar"
             android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/todo" />
+            android:adjustViewBounds="true"/>
 
-        <EditText
-            android:id="@+id/editTextName"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="200dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="5dp">
 
-        <EditText
-            android:id="@+id/editTextPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/phonenumber"
-            android:ems="10"
-            android:inputType="text|phone"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="234dp" />
-
-        <EditText
-            android:id="@+id/editTextAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="@string/address"
-            android:ems="10"
-            android:inputType="text"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="234dp" />
-
-        <TextView
-            android:id="@+id/textViewGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:text="@string/gender" />
-
-        <RadioGroup
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/radioButtonMale"
-                android:layout_width="120dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtName"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="@string/male" />
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="textPersonName"/>
 
-            <RadioButton
-                android:id="@+id/radioButtonFemale"
-                android:layout_width="120dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPhone"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="@string/female" />
-        </RadioGroup>
+                android:layout_gravity="center"
+                android:hint="@string/phoneNumber"
+                android:ems="10"
+                android:inputType="text|phone"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/OkButton"
-        android:text="@string/ok"
+        android:id="@+id/btnChange"
+        android:text="@string/change"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/beeyellow"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="413dp" />
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/beeyellow" />
+
     </LinearLayout>
 
 </ScrollView>

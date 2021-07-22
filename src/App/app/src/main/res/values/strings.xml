@@ -19,10 +19,9 @@
     <string name="ok">OK</string>
     <string name="change_pass">Change Pass</string>
     <string name="new_password">New Password</string>
-    <string name="reenter_password">ReEnter Password</string>
     <string name="change_information">Change Information</string>
     <string name="name">Name</string>
-    <string name="phonenumber">Phone number</string>
+    <string name="phoneNumber">Phone number</string>
     <string name="backbutton">BACKBUTTON</string>
     <string name="requesticon">REQUESTICON</string>
     <string name="sorry_for_no_function">Sorry for no function</string>
@@ -90,6 +89,7 @@
     <string name="coin">Coin</string>
     <string name="email">Email</string>
     <string name="description">Description</string>
+    <string name="change">Change</string>
 
     <string-array name="Category">
         <item>Java</item>
