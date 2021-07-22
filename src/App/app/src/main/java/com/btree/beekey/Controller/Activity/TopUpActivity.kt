@@ -25,10 +25,10 @@ class TopUpActivity : AppCompatActivity() {
         binding = ActivityTopUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnTopUp.setOnClickListener { btnTopUpClick(this) }
+        binding.btnTopUp.setOnClickListener { clickTopUpBtn(this) }
     }
 
-    private fun btnTopUpClick(context: Context) {
+    private fun clickTopUpBtn(context: Context) {
         val amount = binding.edtAmount.text.toString().toIntOrNull()
         if (amount==null) {
             Toast.makeText(context,"Cannot leave field blank",Toast.LENGTH_SHORT).show()

@@ -27,7 +27,6 @@
         <activity android:name=".Controller.Activity.ProfileActivity" />
         <activity android:name=".Controller.Activity.MyListRequestActivity" />
         <activity android:name=".Controller.Activity.MyListTaskActivity" />
-        <activity android:name=".Controller.Activity.SettingsActivity" />
         <activity android:name=".Controller.Activity.CounterOfferActivity" />
         <activity android:name=".Controller.Activity.ReportActivity" />
         <activity android:name=".Controller.Activity.LoginActivity">
