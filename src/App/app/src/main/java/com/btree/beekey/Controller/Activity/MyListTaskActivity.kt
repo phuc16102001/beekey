@@ -2,7 +2,6 @@ package com.btree.beekey.Controller.Activity
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.Tasks
@@ -16,24 +15,17 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListTaskActivity:AppCompatActivity() {
-    private lateinit var TasksListAPI: List<Tasks>
+    private lateinit var listTask: List<Tasks>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_list_task)
         getListRequest(this)
-
-        Log.d("MyListRequestActivity",TasksListAPI.toString())
-
     }
 
     private fun loadAdapter(){
-        if (TasksListAPI == null) {
-            return
-        }
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = TasksAdapter(TasksListAPI)
+        recyclerView.adapter = TasksAdapter(listTask)
 
         recyclerView.setHasFixedSize(true)
     }
@@ -51,7 +43,7 @@ class MyListTaskActivity:AppCompatActivity() {
                     val data = response.body()
                     //Log.d("getMyRequest", data.toString())
                     if (data?.exitcode == 0) {
-                        TasksListAPI = data.tasks
+                        listTask = data.tasks
                         loadAdapter()
                     }
                 }

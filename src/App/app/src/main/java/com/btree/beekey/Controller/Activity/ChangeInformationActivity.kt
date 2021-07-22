@@ -52,9 +52,7 @@ class ChangeInformationActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("ChangePasswordStatus", data.toString())
                     if (data?.exitcode == 0) {
-                        Intent(context, ProfileActivity::class.java).also {
-                            startActivity(it)
-                        }
+                        finish()
                     }
                     else if (data?.exitcode == 104){
                         Toast.makeText(context, data.message, Toast.LENGTH_LONG).show()
