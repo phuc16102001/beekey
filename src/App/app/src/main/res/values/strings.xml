@@ -90,6 +90,10 @@
     <string name="email">Email</string>
     <string name="description">Description</string>
     <string name="change">Change</string>
+    <string name="couter_offer_list">Couter offer list</string>
+    <string name="name">Name</string>
+    <string name="message_content">Message content</string>
+    <string name="todo">TODO</string>
 
     <string-array name="Category">
         <item>Java</item>
