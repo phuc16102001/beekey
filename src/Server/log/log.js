@@ -10,7 +10,9 @@ const logger = function(req,res,next) {
     const method = req.method
     const url = req.url
     const logStr = `[${now}] ${method}:${url}`
-    console.log(logStr)
+    console.info(logStr)
+    console.log("Request body")
+    console.log(req.body)
     next()
 }
 
