@@ -1,4 +1,4 @@
-const logger = (req,res,next) => {
+const logger = function(req,res,next) {
     const currentDateTime = new Date();
     const year = currentDateTime.getFullYear()
     const month = currentDateTime.getMonth()+1
