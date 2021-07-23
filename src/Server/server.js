@@ -4,6 +4,7 @@ const   express = require('express')
         jwt = require('jsonwebtoken')
         config = require('./config/config')
         cors = require('cors')
+        log = require('./log/log')
 
 //==================== Library =======================
 
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended:true
 }));
+
+app.use(logger)
 
 app.use(function(req,res,next){
     if (config.server.noTokenUrl.indexOf(req.url)==-1){
