@@ -16,7 +16,7 @@ app.use(express.urlencoded({
     extended:true
 }));
 
-app.use(logger)
+app.use(log.logger)
 
 app.use(function(req,res,next){
     if (config.server.noTokenUrl.indexOf(req.url)==-1){
