@@ -13,3 +13,7 @@ const logger = function(req,res,next) {
     console.log(logStr)
     next()
 }
+
+module.exports = {
+    logger
+}
