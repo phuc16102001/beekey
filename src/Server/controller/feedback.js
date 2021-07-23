@@ -3,8 +3,6 @@ const Task = require('../models/task')
 const config = require('../config/config')
 
 function post(req,res) {
-    console.log("Make feedback")
-
     data = {
         user_id: req.payload.username,
         task_id: req.body.task_id,
@@ -59,7 +57,6 @@ function post(req,res) {
 }
 
 function get(req,res) {
-    console.log("Get feedback")
     data = {
         username: req.payload.username
     }

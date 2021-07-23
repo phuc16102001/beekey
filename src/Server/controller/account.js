@@ -3,7 +3,6 @@ const Account = require('../models/account')
 const config = require('../config/config')
 
 function login(req,res){
-    console.log("Login")
     data = {
         username: req.body.username,
         password: req.body.password,
@@ -40,7 +39,6 @@ function login(req,res){
 }
 
 function signup(req,res){
-    console.log("Signup")
     data = {
         username: req.body.username,
         name: req.body.username,
@@ -67,7 +65,6 @@ function signup(req,res){
 }
 
 function getInformation(req,res){
-    console.log("Get information")
     data = {
         username: req.payload.username
     }
@@ -101,7 +98,6 @@ function getInformation(req,res){
 }
 
 function changePassword(req,res) {
-    console.log("Change password")
     data = {
         username: req.payload.username,
         newPassword: req.body.newPassword,
@@ -150,7 +146,6 @@ function changePassword(req,res) {
 }
 
 function changeInformation(req,res) {
-    console.log("Change information")
     changes = {
         phone: req.body.phone,
         name: req.body.name,
@@ -189,7 +184,6 @@ function changeInformation(req,res) {
 }
 
 function topUp(req,res){
-    console.log("Top up")
     data = {
         username: req.payload.username,
         topUpValue: req.body.topUpValue
