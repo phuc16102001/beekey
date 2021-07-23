@@ -29,54 +29,41 @@
             android:layout_height="58dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:text="What problem that you are facing with our application or user?"
+            android:text="@string/what_problem_that_you_are_facing_with_our_application_or_user"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="361dp"
-            android:layout_height="224dp"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:hint="@string/write_here"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="200dp" />
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/grayF0EBEB"
-                android:text="@string/cancel"
-                android:textColor="@color/black"
-                tools:layout_editor_absoluteX="158dp"
-                tools:layout_editor_absoluteY="413dp"
-                style="?android:attr/buttonBarButtonStyle" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtContent"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:inputType="text"
+                android:hint="@string/write_here"/>
 
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/beeyellow"
-                android:text="@string/send"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="158dp"
-                tools:layout_editor_absoluteY="413dp"
-                style="?android:attr/buttonBarButtonStyle" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/beeyellow"
+            android:layout_gravity="center"
+            android:text="@string/send"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="413dp"
+            style="?android:attr/buttonBarButtonStyle" />
+
     </LinearLayout>
 </ScrollView>
