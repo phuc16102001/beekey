@@ -3,7 +3,6 @@ const task = require("../models/task")
 const config = require("../config/config")
 
 function postOffer(req,res) {
-    console.log("Make counter-offer")
     data = {
         task_id: req.body.task_id,
         lancer_id: req.payload.username,
@@ -55,7 +54,6 @@ function postOffer(req,res) {
 }
 
 function getByRequest(req,res) {
-    console.log("Get counter-offer by request")
     data = {
         task_id: req.body.task_id
     }
@@ -79,7 +77,6 @@ function getByRequest(req,res) {
 }
 
 function accept(req,res){
-    console.log("Accept counter-offer")
     data = {
         task_id: req.body.task_id,
         lancer_id: req.body.lancer_id
@@ -128,8 +125,6 @@ function accept(req,res){
 }
 
 function decline(req,res){
-    console.log("Decline counter-offer")
-
     data = {
         task_id: req.body.task_id,
         lancer_id: req.body.lancer_id
