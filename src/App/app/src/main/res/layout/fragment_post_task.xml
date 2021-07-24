@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
-            android:hint="@string/description"
+            android:hint="Description"
             android:maxLength="500" />
     </com.google.android.material.textfield.TextInputLayout>
 

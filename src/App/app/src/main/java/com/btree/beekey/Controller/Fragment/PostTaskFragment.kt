@@ -171,11 +171,3 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     }
 }
-
-
-
-
-
-
-
-
