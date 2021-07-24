@@ -38,6 +38,7 @@
         android:layout_marginEnd="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtFeedback"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
