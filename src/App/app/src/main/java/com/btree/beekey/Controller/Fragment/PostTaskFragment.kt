@@ -220,6 +220,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data?.exitcode == 0) {
+                        Toast.makeText(context, "Successful", Toast.LENGTH_LONG).show()
                         (activity as MainActivity?)?.setCurrentFragment(profileFragment)
                     }
                 }
