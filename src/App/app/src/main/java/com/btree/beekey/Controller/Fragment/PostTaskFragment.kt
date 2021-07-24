@@ -1,17 +1,18 @@
 package com.btree.beekey.Controller.Fragment
 
+import ProfileFragment
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.btree.beekey.Controller.Activity.MainActivity
 import com.btree.beekey.Controller.Adapter.Category
-import com.btree.beekey.Model.CategoryResponse
+import com.btree.beekey.Model.*
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -30,6 +31,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
     private var categoryList: List<Category>? = null
     private var dateString: String? = null
     private var timeString: String? = null
+    val profileFragment=ProfileFragment()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -69,9 +71,14 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             }
         }
 
-        binding.deadline.setOnClickListener { getDeadlineFromUser() }
+        binding.deadlineTxt.setOnClickListener {
+            getDeadlineFromUser()
+        }
         binding.fileAttachTxt.setOnClickListener {
             fileChooser()
+        }
+        binding.postButton.setOnClickListener{
+            postTask()
         }
     }
 
@@ -131,8 +138,17 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         val curMinute = calendar.get(Calendar.MINUTE)
         val timePicker = context?.let {
             TimePickerDialog(it, { view, hour, minute ->
-                timeString = "$hour:$minute:00"
-                binding.deadline.setText("$dateString at $timeString")
+                var hourStr = hour.toString()
+                var minuteStr= minute.toString()
+                if (hour.toString().length == 1){
+                    hourStr= "0$hour"
+                }
+                if (minute.toString().length == 1 ){
+                    minuteStr= "0$minute"
+                }
+
+                timeString = "$hourStr:$minuteStr:00"
+                binding.deadlineTxt.setText("$dateString at $timeString")
             }, curHour, curMinute, true)
         }
         timePicker?.show()
@@ -148,7 +164,15 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             DatePickerDialog(
                 it,
                 { view, year, month, day ->
-                    dateString = "$day/${month + 1}/$year"
+                    var dayStr = day.toString()
+                    var monthStr= {month+1}.toString()
+                    if (day.toString().length ==1){
+                        dayStr= "0$day"
+                    }
+                    if (month.toString().length ==1){
+                        monthStr= "0${month}"
+                    }
+                    dateString = "$year-$monthStr-$dayStr"
                     getTimeFromUser()
                 },
                 curYear, curMonth, curDay
@@ -169,5 +193,41 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
+    }
+
+    private fun postTask() {
+        val title = binding.titleTxt.text.toString()
+        val deadline = "$dateString $timeString"
+        val offer=binding.price.text.toString().toInt()
+        val description = binding.descriptionTxt.text.toString()
+        val spinner=binding.spinnerCategory
+        val index=spinner.selectedItemPosition
+        val category_id = categoryList?.get(index)?.categoryId.toString()
+
+        val token = context?.let { Cache.getToken(it).toString() }
+        val response = token?.let {
+            MyAPI.getAPI().postPostTask(
+                it,
+                PostTaskPost(title, deadline, offer, description, category_id)
+            )
+        }
+
+        response?.enqueue(object : Callback<PostTaskResponse> {
+            override fun onResponse(
+                call: Call<PostTaskResponse>,
+                response: Response<PostTaskResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data?.exitcode == 0) {
+                        (activity as MainActivity?)?.setCurrentFragment(profileFragment)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostTaskResponse>, t: Throwable) {
+                Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }
