@@ -1,19 +1,14 @@
 package com.btree.beekey.Controller.Activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.ChangePasswordPost
-import com.btree.beekey.Model.ChangePasswordResponse
 import com.btree.beekey.Model.CounterOfferPost
 import com.btree.beekey.Model.CounterOfferResponse
 import com.btree.beekey.Utils.Cache
-import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
-import com.btree.beekey.databinding.ActivityChangePasswordBinding
 import com.btree.beekey.databinding.ActivityCounterOfferBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,8 +36,10 @@ class CounterOfferActivity : AppCompatActivity() {
             return
         }
 
+        val task_id:Int = 3 //list task?
+
         val token = Cache.getToken(this).toString()
-        val response = MyAPI.getAPI().postCounterOffer(token, CounterOfferPost(taskId,reason,offer))
+        val response = MyAPI.getAPI().postCounterOffer(token, CounterOfferPost(task_id,reason,offer))
         Log.d("CounterOfferStatus:", taskId.toString())
 
         response.enqueue(object : Callback<CounterOfferResponse> {
