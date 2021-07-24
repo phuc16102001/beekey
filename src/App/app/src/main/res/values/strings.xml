@@ -91,6 +91,7 @@
     <string name="description">Description</string>
     <string name="change">Change</string>
     <string name="what_problem_that_you_are_facing_with_our_application_or_user">What problem that you are facing with our application or user?</string>
+    <string name="content">Content</string>
 
     <string-array name="Category">
         <item>Java</item>

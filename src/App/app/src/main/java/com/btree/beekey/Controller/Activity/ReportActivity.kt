@@ -33,7 +33,8 @@ class ReportActivity : AppCompatActivity() {
 
 
     private fun clickSendBtn(context: Context) {
-        val content = binding.edtContent.text.toString()
+        val content = binding.txtContent.text.toString()
+        Log.d("ReportStatus", content.toString())
 
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI().postReport(token, ReportPost(content))

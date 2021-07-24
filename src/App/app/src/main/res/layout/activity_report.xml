@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".Controller.Activity.ReportActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -33,22 +34,19 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutAmount"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_marginEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtContent"
+                android:id="@+id/txtContent"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:inputType="text"
-                android:hint="@string/write_here"/>
-
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="@string/content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
