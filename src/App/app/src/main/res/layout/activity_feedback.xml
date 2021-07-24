@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="top|center"
     tools:context=".Controller.Activity.FeedbackActivity">
@@ -46,37 +45,15 @@
             android:maxLength="500" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btSend"
+        android:text="@string/send"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btCancel"
-            android:text="@string/change"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="50dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/grayF0EBEB"
-            style="?android:attr/buttonBarButtonStyle" />
-
-        <Button
-            android:id="@+id/btSend"
-            android:text="@string/send"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/beeyellow"
-            style="?android:attr/buttonBarButtonStyle" />
-
-    </LinearLayout>
-
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/beeyellow"
+        style="?android:attr/buttonBarButtonStyle" />
 </LinearLayout>
