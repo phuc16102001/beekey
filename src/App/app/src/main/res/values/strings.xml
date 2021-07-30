@@ -35,7 +35,6 @@
     <string name="write_here">Write here!</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
-    <string name="what_problem_that_you_are_facing_with_our_application_or_usser">What problem that you are facing with our application or usser?</string>
     <string name="address">Address</string>
     <string name="gender">Gender</string>
     <string name="female">Female</string>
@@ -92,6 +91,8 @@
     <string name="change">Change</string>
     <string name="what_problem_that_you_are_facing_with_our_application_or_user">What problem that you are facing with our application or user?</string>
     <string name="content">Content</string>
+    <string name="couter_offer_list">Couter offer list</string>
+    <string name="message_content">Message content</string>
 
     <string-array name="Category">
         <item>Java</item>

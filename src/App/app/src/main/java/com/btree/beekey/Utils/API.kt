@@ -62,4 +62,10 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body reportBody: ReportPost
     ): Call<ReportResponse>
+  
+    @POST("/task/post")
+    fun postPostTask(
+        @Header("x-access-token") tokenHeader: String,
+        @Body postTaskBody: PostTaskPost
+    ): Call<PostTaskResponse>
 }

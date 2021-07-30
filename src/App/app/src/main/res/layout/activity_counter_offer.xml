@@ -41,7 +41,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:text="@string/description"
+            android:text="Description"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"/>
