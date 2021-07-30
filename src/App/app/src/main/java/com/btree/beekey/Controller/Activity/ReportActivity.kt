@@ -48,6 +48,7 @@ class ReportActivity : AppCompatActivity() {
                     val data = response.body()
                     Log.d("ReportStatus", data.toString())
                     if (data?.exitcode == 0) {
+                        Toast.makeText(context,"Posted report successfully",Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     else if (data?.exitcode == 104){
