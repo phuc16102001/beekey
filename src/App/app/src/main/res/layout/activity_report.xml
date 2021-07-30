@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".Controller.Activity.ReportActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -29,54 +30,38 @@
             android:layout_height="58dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:text="What problem that you are facing with our application or user?"
+            android:text="@string/what_problem_that_you_are_facing_with_our_application_or_user"
             android:textColor="@color/black"
             android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="361dp"
-            android:layout_height="224dp"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:hint="@string/write_here"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="200dp" />
-
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:hint="@string/content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/beeyellow"
+            android:layout_gravity="center"
+            android:text="@string/send"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="413dp"
+            style="?android:attr/buttonBarButtonStyle" />
 
-            <Button
-                android:id="@+id/cancelButton"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/grayF0EBEB"
-                android:text="@string/cancel"
-                android:textColor="@color/black"
-                tools:layout_editor_absoluteX="158dp"
-                tools:layout_editor_absoluteY="413dp"
-                style="?android:attr/buttonBarButtonStyle" />
-
-            <Button
-                android:id="@+id/sendButton"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/beeyellow"
-                android:text="@string/send"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="158dp"
-                tools:layout_editor_absoluteY="413dp"
-                style="?android:attr/buttonBarButtonStyle" />
-
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>
