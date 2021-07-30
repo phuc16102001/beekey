@@ -2,7 +2,6 @@ const config = require('../config/config')
 const Report = require('../models/report')
 
 function post(req,res) {
-    console.log("Make report")
     dateTime = new Date()
     data = {
         username: req.payload.username,
@@ -33,7 +32,6 @@ function post(req,res) {
 }
 
 function get(req,res) {
-    console.log("Get report")
     Report.get((err,result)=>{
         if (err) {
             res.send({

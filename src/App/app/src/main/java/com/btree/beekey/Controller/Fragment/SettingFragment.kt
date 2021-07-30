@@ -20,6 +20,7 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,41 +41,41 @@ class SettingFragment: Fragment(R.layout.fragment_setting) {
         binding.layoutPassword.setOnClickListener { clickChangePassword() }
         binding.layoutTopUp.setOnClickListener { clickTopUp() }
         binding.layoutReport.setOnClickListener { clickReport() }
-        binding.logoutButton.setOnClickListener{ clickLogout() }
+        binding.logoutButton.setOnClickListener { clickLogout() }
     }
 
     private fun clickPersonal() {
-        activity?.let{
-            val intent = Intent (context, ChangeInformationActivity::class.java)
+        activity?.let {
+            val intent = Intent(context, ChangeInformationActivity::class.java)
             it.startActivity(intent)
         }
     }
 
-    private fun clickChangePassword(){
-        activity?.let{
-            val intent = Intent (it, ChangePasswordActivity::class.java)
+    private fun clickChangePassword() {
+        activity?.let {
+            val intent = Intent(it, ChangePasswordActivity::class.java)
             it.startActivity(intent)
         }
     }
 
-    private fun clickTopUp(){
-        activity?.let{
-            val intent = Intent (it, TopUpActivity::class.java)
+    private fun clickTopUp() {
+        activity?.let {
+            val intent = Intent(it, TopUpActivity::class.java)
             it.startActivity(intent)
         }
     }
 
-    private fun clickReport(){
-        activity?.let{
-            val intent = Intent (it, ReportActivity::class.java)
+    private fun clickReport() {
+        activity?.let {
+            val intent = Intent(it, ReportActivity::class.java)
             it.startActivity(intent)
         }
     }
 
-    private fun clickLogout(){
-        activity?.let{
+    private fun clickLogout() {
+        activity?.let {
             Cache.clear(it)
-            val intent = Intent (it, LoginActivity::class.java)
+            val intent = Intent(it, LoginActivity::class.java)
             it.startActivity(intent)
             it.finish()
         }
