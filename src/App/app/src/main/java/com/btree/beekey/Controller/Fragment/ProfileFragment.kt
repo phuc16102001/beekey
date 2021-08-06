@@ -49,12 +49,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         requestInformation()
 
         binding.requestIc.setOnClickListener {
-            Intent(getActivity(), MyListRequestActivity::class.java).also {
+            Intent(activity, MyListRequestActivity::class.java).also {
                 startActivity(it)
             }
         }
         binding.taskIc.setOnClickListener {
-            Intent(getActivity(), MyListTaskActivity::class.java).also {
+            Intent(activity, MyListTaskActivity::class.java).also {
                 startActivity(it)
             }
         }
@@ -108,7 +108,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         userList.add(Feedback("Good", "Description: Test test test", "Khoa3"))
         Log.d("user", userList.size.toString())
 
-        val recycler_view = binding.recycler
-        recycler_view.adapter = FeedbackAdapter(userList)
+        binding.recycler.adapter = FeedbackAdapter(userList)
     }
 }

@@ -1,21 +1,24 @@
 package com.btree.beekey.Controller.Adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.R
+import com.btree.beekey.Utils.DateFormat.Companion.dateformat
 import com.google.android.material.card.MaterialCardView
 
-class TasksAdapter (
-    private val listTask: List<Task>
-    ): RecyclerView.Adapter<TasksAdapter.ItemViewHolder>() {
+class TaskAdapter (private val listTask: List<Task>):
+    RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cardTaskView: MaterialCardView = view.findViewById(R.id.cardTaskView)
+        val layoutTask: RelativeLayout = view.findViewById(R.id.layoutTask)
         val txtTitle: TextView = view.findViewById(R.id.txtTitle)
         val txtDeadline: TextView = view.findViewById(R.id.txtDeadline)
         val txtOffer: TextView = view.findViewById(R.id.txtOffer)
@@ -33,8 +36,9 @@ class TasksAdapter (
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val task = listTask[position]
+        Log.d("TAG",task.title)
         holder.txtTitle.text = task.title
-        holder.txtDeadline.text = ("Deadline: "+task.deadline.toString())
+        holder.txtDeadline.text = ("Deadline: "+task.deadline.dateformat())
         holder.txtOffer.text = ("Offer: " + task.offer.toString())
         holder.txtDescription.text = task.description
 
@@ -48,7 +52,7 @@ class TasksAdapter (
         if (task.status==Task.TASK_DONE){
             bgColor = R.color.green
         }
-        holder.cardTaskView.setBackgroundColor(bgColor)
+        holder.layoutTask.setBackgroundResource(bgColor)
     }
 
     override fun getItemCount(): Int {

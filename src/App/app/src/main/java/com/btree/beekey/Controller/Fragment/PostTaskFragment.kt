@@ -206,10 +206,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
         val token = context?.let { Cache.getToken(it).toString() }
         val response = token?.let {
-            MyAPI.getAPI().postPostTask(
-                it,
-                PostTaskPost(title, deadline, offer, description, category_id)
-            )
+            MyAPI.getAPI().postPostTask(it, PostTaskPost(title, deadline, offer, description, category_id))
         }
 
         response?.enqueue(object : Callback<PostTaskResponse> {
