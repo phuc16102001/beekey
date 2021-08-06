@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.btree.beekey.Controller.Fragment.PostTaskFragment
+import com.btree.beekey.Controller.Fragment.SearchTaskFragment
 import com.btree.beekey.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -13,9 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val settingFragment=SettingFragment()
-        val profileFragment=ProfileFragment()
-        val postFragment= PostTaskFragment()
+        val settingFragment = SettingFragment()
+        val profileFragment = ProfileFragment()
+        val postFragment = PostTaskFragment()
+        val searchTaskFragment = SearchTaskFragment()
 
         setCurrentFragment(profileFragment)
         val bottomBar: BottomNavigationView = findViewById(R.id.bottom_bar)
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.menu_setting->setCurrentFragment(settingFragment)
                 R.id.menu_profile->setCurrentFragment(profileFragment)
+                R.id.menu_search->setCurrentFragment(searchTaskFragment)
                 R.id.menu_post->setCurrentFragment(postFragment)
             }
             true

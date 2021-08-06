@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListRequestActivity:AppCompatActivity() {
-    private lateinit var listRequirement: List<Tasks>
+    private lateinit var listRequirement: List<Task>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

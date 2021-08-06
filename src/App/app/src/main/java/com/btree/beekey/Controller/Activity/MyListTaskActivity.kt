@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.btree.beekey.Controller.Adapter.Tasks
+import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Controller.Adapter.TasksAdapter
 import com.btree.beekey.Model.GetMyTaskResponse
 import com.btree.beekey.R
@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListTaskActivity:AppCompatActivity() {
-    private lateinit var listTask: List<Tasks>
+    private lateinit var listTask: List<Task>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
