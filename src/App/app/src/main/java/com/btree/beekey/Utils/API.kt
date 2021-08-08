@@ -56,6 +56,13 @@ interface API {
     @GET("/task/getMyTask")
     fun getMyTask(
         @Header("x-access-token") tokenHeader: String
+    ):Call<GetMyTaskResponse>
+
+    @POST("/counterOffer/post")
+    fun postCounterOffer(
+        @Header("x-access-token") tokenHeader: String,
+        @Body counterOfferBody: CounterOfferPost
+    ): Call<CounterOfferResponse>
     ):Call<ListTaskResponse>
 
     @POST("/task/getByCategory")

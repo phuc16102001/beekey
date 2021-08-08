@@ -26,13 +26,14 @@
         <activity android:name=".Controller.Activity.SignUpActivity" />
         <activity android:name=".Controller.Activity.MyListRequestActivity" />
         <activity android:name=".Controller.Activity.MyListTaskActivity" />
-        <activity android:name=".Controller.Activity.CounterOfferActivity" />
-        <activity android:name=".Controller.Activity.ReportActivity" />
-        <activity android:name=".Controller.Activity.LoginActivity">
-          <intent-filter>
+        <activity android:name=".Controller.Activity.CounterOfferActivity" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Controller.Activity.ReportActivity" />
+        <activity android:name=".Controller.Activity.LoginActivity">
         </activity>
     </application>
 </manifest>
