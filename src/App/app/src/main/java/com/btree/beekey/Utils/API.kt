@@ -1,5 +1,6 @@
 package com.btree.beekey.Utils
 
+import com.btree.beekey.Controller.Adapter.Category
 import com.btree.beekey.Model.*
 import retrofit2.Call
 import retrofit2.http.Body
@@ -50,7 +51,7 @@ interface API {
     @GET("/task/getMyRequest")
     fun getMyRequest(
         @Header("x-access-token") tokenHeader: String
-    ):Call<GetMyRequestResponse>
+    ):Call<ListTaskResponse>
 
     @GET("/task/getMyTask")
     fun getMyTask(
@@ -62,4 +63,23 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body counterOfferBody: CounterOfferPost
     ): Call<CounterOfferResponse>
+    ):Call<ListTaskResponse>
+
+    @POST("/task/getByCategory")
+    fun postTaskByCategory(
+        @Header("x-access-token") tokenHeader: String,
+        @Body categoryBody: Category
+    ): Call<ListTaskResponse>
+
+    @POST("/report")
+    fun postReport(
+        @Header("x-access-token") tokenHeader: String,
+        @Body reportBody: ReportPost
+    ): Call<ReportResponse>
+  
+    @POST("/task/post")
+    fun postPostTask(
+        @Header("x-access-token") tokenHeader: String,
+        @Body postTaskBody: PostTaskPost
+    ): Call<PostTaskResponse>
 }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.*
-import com.btree.beekey.Model.GetMyRequestResponse
+import com.btree.beekey.Model.ListTaskResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListRequestActivity:AppCompatActivity() {
-    private lateinit var listRequirement: List<Tasks>
+    private lateinit var listRequirement: List<Task>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MyListRequestActivity:AppCompatActivity() {
 
     private fun loadAdapter(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = TasksAdapter(listRequirement)
+        recyclerView.adapter = TaskAdapter(listRequirement)
         recyclerView.setHasFixedSize(true)
     }
 
@@ -33,10 +33,10 @@ class MyListRequestActivity:AppCompatActivity() {
         val token = Cache.getToken(context).toString()
         val response = MyAPI.getAPI().getMyRequest(token)
 
-        response.enqueue(object : Callback<GetMyRequestResponse>{
+        response.enqueue(object : Callback<ListTaskResponse>{
             override fun onResponse(
-                call: Call<GetMyRequestResponse>,
-                response: Response<GetMyRequestResponse>
+                call: Call<ListTaskResponse>,
+                response: Response<ListTaskResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -48,7 +48,7 @@ class MyListRequestActivity:AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<GetMyRequestResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ListTaskResponse>, t: Throwable) {
                 TODO("Not yet implemented")
             }
         })

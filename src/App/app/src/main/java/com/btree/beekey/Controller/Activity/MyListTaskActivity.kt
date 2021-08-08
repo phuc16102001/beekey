@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.btree.beekey.Controller.Adapter.Tasks
-import com.btree.beekey.Controller.Adapter.TasksAdapter
-import com.btree.beekey.Model.GetMyTaskResponse
+import com.btree.beekey.Controller.Adapter.Task
+import com.btree.beekey.Controller.Adapter.TaskAdapter
+import com.btree.beekey.Model.ListTaskResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -15,7 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyListTaskActivity:AppCompatActivity() {
-    private lateinit var listTask: List<Tasks>
+    private lateinit var listTask: List<Task>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MyListTaskActivity:AppCompatActivity() {
 
     private fun loadAdapter(){
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = TasksAdapter(listTask)
+        recyclerView.adapter = TaskAdapter(listTask)
 
         recyclerView.setHasFixedSize(true)
     }
@@ -34,10 +34,10 @@ class MyListTaskActivity:AppCompatActivity() {
         val token = Cache.getToken(context).toString()
         val response = MyAPI.getAPI().getMyTask(token)
 
-        response.enqueue(object : Callback<GetMyTaskResponse> {
+        response.enqueue(object : Callback<ListTaskResponse> {
             override fun onResponse(
-                call: Call<GetMyTaskResponse>,
-                response: Response<GetMyTaskResponse>
+                call: Call<ListTaskResponse>,
+                response: Response<ListTaskResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -49,7 +49,7 @@ class MyListTaskActivity:AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<GetMyTaskResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ListTaskResponse>, t: Throwable) {
                 TODO("Not yet implemented")
             }
         })
