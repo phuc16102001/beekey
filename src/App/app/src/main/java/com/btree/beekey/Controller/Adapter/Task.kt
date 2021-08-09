@@ -19,4 +19,13 @@ class Task(
         const val TASK_DOING=1
         const val TASK_DONE=2
     }
+
+    public fun getStatusString() :String{
+        when (status){
+            TASK_PENDING -> return "PENDING"
+            TASK_DOING -> return "DOING"
+            TASK_DONE -> return "DONE"
+        }
+        return "NOT FOUND"
+    }
 }

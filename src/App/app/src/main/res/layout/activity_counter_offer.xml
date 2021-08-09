@@ -12,131 +12,156 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView1"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/counter_task"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="@dimen/logo_height"
+                android:src="@drawable/logo_t"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/counter_task"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title_size"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
+            android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/project_name"
             android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="@dimen/title_size"/>
 
-        <TextView
-            android:id="@+id/textView3"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Description"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/txtDescription"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:text="@string/project_information"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@color/greyborder"
+            app:strokeWidth="1dp"
+            app:cardCornerRadius="15dp"
+            android:layout_margin="5dp">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/deadline"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/txtDeadline"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/date"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/project_information"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
 
-    </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/deadline"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/date"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/offer"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtOffer"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
                 android:text="@string/dollar"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_margin="5dp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/file_attach"
+                android:layout_height="wrap_content"
+                android:text="@string/client"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
             <TextView
-                android:id="@+id/textViewNumbeOfFile"
+                android:id="@+id/txtClient"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/number_of_file"
+                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
+                android:text="@string/client"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -144,15 +169,15 @@
             <TextView
                 android:id="@+id/textViewCounterOffer"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Counter-offer price: "
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/counter_offer_price"
                 android:textColor="@color/black"
-                android:textSize="16sp"/>
+                android:textSize="15sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/layoutPrice"
+                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxStrokeColor="@color/black"
@@ -161,7 +186,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtOfferPrice"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:hint="@string/price"/>
@@ -173,6 +198,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutReason"
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxStrokeColor="@color/black"
@@ -184,10 +210,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:maxLines="5"
                 android:hint="@string/reason"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/btnSend"
@@ -198,8 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/beeyellow"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="413dp" />
+            android:backgroundTint="@color/beeyellow"/>
+
     </LinearLayout>
 </ScrollView>

@@ -44,6 +44,7 @@ class CounterOfferActivity : AppCompatActivity() {
         binding.txtDescription.text = task.description
         binding.txtDeadline.text = task.deadline.dateformat()
         binding.txtOffer.text = task.offer.toString()
+        binding.txtStatus.text = task.getStatusString()
     }
 
     private fun getTask(context: Context){

@@ -94,6 +94,8 @@
     <string name="content">Content</string>
     <string name="couter_offer_list">Couter offer list</string>
     <string name="message_content">Message content</string>
+    <string name="status">Status</string>
+    <string name="client">Client:</string>
     <string-array name="Category">
         <item>Java</item>
         <item>Kotlin</item>

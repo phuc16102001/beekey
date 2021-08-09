@@ -7,9 +7,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_counter_offer.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_feedback.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_forget_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_login.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_my_list_request.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_my_list_task.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_sign_up.xml" value="0.25025641025641027" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_task_view.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_top_up.xml" value="0.25025641025641027" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/feedback_item.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/fragment_post_task.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/fragment_profile.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/fragment_search_task.xml" value="0.25416666666666665" />
