@@ -107,10 +107,10 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         val token = context?.let { Cache.getToken(it).toString() }
         val response = token?.let { MyAPI.getAPI().getCategoryList(it) }
 
-        response?.enqueue(object : Callback<CategoryResponse> {
+        response?.enqueue(object : Callback<GetCategoriesResponse> {
             override fun onResponse(
-                call: Call<CategoryResponse>,
-                response: Response<CategoryResponse>
+                call: Call<GetCategoriesResponse>,
+                response: Response<GetCategoriesResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -122,7 +122,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                 }
             }
 
-            override fun onFailure(call: Call<CategoryResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetCategoriesResponse>, t: Throwable) {
                 Toast.makeText(context, "Fail to connect to server", Toast.LENGTH_SHORT).show()
             }
         })
@@ -206,7 +206,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
         val token = context?.let { Cache.getToken(it).toString() }
         val response = token?.let {
-            MyAPI.getAPI().postPostTask(it, PostTaskPost(title, deadline, offer, description, category_id))
+            MyAPI.getAPI().postPostTask(it, PostTaskBody(title, deadline, offer, description, category_id))
         }
 
         response?.enqueue(object : Callback<PostTaskResponse> {

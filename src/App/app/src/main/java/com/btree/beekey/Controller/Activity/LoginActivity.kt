@@ -5,20 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.GetInformationResponse
-import com.btree.beekey.Model.LoginPost
+import com.btree.beekey.Model.LoginBody
 import com.btree.beekey.Model.LoginResponse
-import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.ActivityLoginBinding
-import kotlinx.coroutines.*
 import retrofit2.*
 
 class LoginActivity : AppCompatActivity() {
@@ -83,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
         val passwordStr = binding.edtPassword.text.toString().sha256()
         Log.d("CheckPasswordHash", passwordStr)
 
-        val response = MyAPI.getAPI().postLogin(LoginPost(usernameStr, passwordStr))
+        val response = MyAPI.getAPI().postLogin(LoginBody(usernameStr, passwordStr))
 
         response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

@@ -1,19 +1,15 @@
 package com.btree.beekey.Controller.Activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.Account
-import com.btree.beekey.Model.SignUpPost
+import com.btree.beekey.Model.SignUpBody
 import com.btree.beekey.Model.SignUpResponse
-import com.btree.beekey.R
 import com.btree.beekey.Utils.Hash256.Companion.sha256
 import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.ActivitySignUpBinding
-import com.btree.beekey.databinding.FragmentPostTaskBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,7 +34,7 @@ class SignUpActivity : AppCompatActivity() {
         val phone = binding.edtPhone.text.toString()
         val email = binding.edtEmail.text.toString()
 
-        val response = MyAPI.getAPI().postSignup(SignUpPost(username, password.sha256(), phone, email))
+        val response = MyAPI.getAPI().postSignup(SignUpBody(username, password.sha256(), phone, email))
         if (checkFill(username, password, rePassword, phone, email)) {
             response.enqueue(object : Callback<SignUpResponse> {
                 override fun onResponse(

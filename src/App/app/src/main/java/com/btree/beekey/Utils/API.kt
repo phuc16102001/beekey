@@ -8,28 +8,27 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-
 interface API {
     @POST("/account/login")
     fun postLogin(
-        @Body loginBody: LoginPost
+        @Body loginBody: LoginBody
     ): Call<LoginResponse>
 
     @POST("/account/signup")
     fun postSignup(
-        @Body signupBody: SignUpPost
+        @Body signupBody: SignUpBody
     ): Call<SignUpResponse>
 
     @POST("/account/changePassword")
     fun postChangePassword(
         @Header("x-access-token") tokenHeader: String,
-        @Body changePasswordBody: ChangePasswordPost
+        @Body changePasswordBody: ChangePasswordBody
     ): Call<ChangePasswordResponse>
 
     @POST("/account/changeInformation")
     fun postChangeInformation(
         @Header("x-access-token") tokenHeader: String,
-        @Body changeInformationBody: ChangeInformationPost
+        @Body changeInformationBody: ChangeInformationBody
     ): Call<ChangeInformationResponse>
 
     @GET("/account/getInformation")
@@ -40,7 +39,7 @@ interface API {
     @GET("/category")
     fun getCategoryList(
         @Header("x-access-token") tokenHeader: String
-    ): Call<CategoryResponse>
+    ): Call<GetCategoriesResponse>
   
     @POST("/account/topUp")
     fun postTopUp(
@@ -61,8 +60,8 @@ interface API {
     @POST("/counterOffer/post")
     fun postCounterOffer(
         @Header("x-access-token") tokenHeader: String,
-        @Body counterOfferBody: CounterOfferPost
-    ): Call<CounterOfferResponse>
+        @Body counterOfferBody: MakeOfferBody
+    ): Call<MakeOfferResponse>
 
     @POST("/task/getByCategory")
     fun postTaskByCategory(
@@ -73,12 +72,18 @@ interface API {
     @POST("/report")
     fun postReport(
         @Header("x-access-token") tokenHeader: String,
-        @Body reportBody: ReportPost
-    ): Call<ReportResponse>
+        @Body reportBody: PostReportBody
+    ): Call<PostReportResponse>
   
     @POST("/task/post")
     fun postPostTask(
         @Header("x-access-token") tokenHeader: String,
-        @Body postTaskBody: PostTaskPost
+        @Body postTaskBody: PostTaskBody
     ): Call<PostTaskResponse>
+
+    @POST("/task/viewDetail")
+    fun postViewTaskDetail(
+        @Header("x-access-token") tokenHeader: String,
+        @Body viewTaskDetailBody: TaskDetailBody
+    ): Call<TaskDetailResponse>
 }

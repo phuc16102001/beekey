@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.ReportResponse
-import com.btree.beekey.Model.ReportPost
+import com.btree.beekey.Model.PostReportResponse
+import com.btree.beekey.Model.PostReportBody
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -37,12 +37,12 @@ class ReportActivity : AppCompatActivity() {
         Log.d("ReportStatus", content.toString())
 
         val token = Cache.getToken(this).toString()
-        val response = MyAPI.getAPI().postReport(token, ReportPost(content))
+        val response = MyAPI.getAPI().postReport(token, PostReportBody(content))
 
-        response.enqueue(object : Callback<ReportResponse> {
+        response.enqueue(object : Callback<PostReportResponse> {
             override fun onResponse(
-                call: Call<ReportResponse>,
-                response: Response<ReportResponse>
+                call: Call<PostReportResponse>,
+                response: Response<PostReportResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -57,7 +57,7 @@ class ReportActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<ReportResponse>, t: Throwable) {
+            override fun onFailure(call: Call<PostReportResponse>, t: Throwable) {
                 Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
             }
         })

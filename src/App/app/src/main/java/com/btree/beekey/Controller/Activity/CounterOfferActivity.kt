@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.CounterOfferPost
-import com.btree.beekey.Model.CounterOfferResponse
+import com.btree.beekey.Controller.Adapter.Task
+import com.btree.beekey.Model.MakeOfferBody
+import com.btree.beekey.Model.MakeOfferResponse
+import com.btree.beekey.Model.TaskDetailBody
+import com.btree.beekey.Model.TaskDetailResponse
 import com.btree.beekey.Utils.Cache
+import com.btree.beekey.Utils.DateFormat.Companion.dateformat
 import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.ActivityCounterOfferBinding
 import retrofit2.Call
@@ -16,6 +20,7 @@ import retrofit2.Response
 
 class CounterOfferActivity : AppCompatActivity() {
     private var TAG = "CounterOfferActivity"  //for debug
+    private var task_id = -1
     private lateinit var binding:ActivityCounterOfferBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +28,46 @@ class CounterOfferActivity : AppCompatActivity() {
         binding = ActivityCounterOfferBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.SendButton.setOnClickListener{
+        task_id = intent.getIntExtra("task_id",-1)
+        if (task_id==1){
+            Toast.makeText(this,"Error loading task",Toast.LENGTH_SHORT).show()
+            finish()
+        }
+        binding.btnSend.setOnClickListener{
             clickSendBtn(this)
         }
+        getTask(this)
+    }
+
+    private fun loadTask(context: Context, task:Task) {
+        binding.txtTitle.text = task.title
+        binding.txtDescription.text = task.description
+        binding.txtDeadline.text = task.deadline.dateformat()
+        binding.txtOffer.text = task.offer.toString()
+    }
+
+    private fun getTask(context: Context){
+        val token = Cache.getToken(context).toString()
+        val response = MyAPI.getAPI().postViewTaskDetail(token, TaskDetailBody(task_id.toString()))
+
+        response.enqueue(object : Callback<TaskDetailResponse> {
+            override fun onResponse(
+                call: Call<TaskDetailResponse>,
+                response: Response<TaskDetailResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data?.exitcode!= 0) {
+                        finish()
+                    }
+                    loadTask(context,data!!.task)
+                }
+            }
+
+            override fun onFailure(call: Call<TaskDetailResponse>, t: Throwable) {
+                Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun clickSendBtn(context: Context) {
@@ -36,16 +78,14 @@ class CounterOfferActivity : AppCompatActivity() {
             return
         }
 
-        val task_id:Int = 3 //list task?
-
         val token = Cache.getToken(this).toString()
-        val response = MyAPI.getAPI().postCounterOffer(token, CounterOfferPost(task_id,reason,offer))
+        val response = MyAPI.getAPI().postCounterOffer(token, MakeOfferBody(task_id,reason,offer))
         Log.d("CounterOfferStatus:", taskId.toString())
 
-        response.enqueue(object : Callback<CounterOfferResponse> {
+        response.enqueue(object : Callback<MakeOfferResponse> {
             override fun onResponse(
-                call: Call<CounterOfferResponse>,
-                response: Response<CounterOfferResponse>
+                call: Call<MakeOfferResponse>,
+                response: Response<MakeOfferResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -59,7 +99,7 @@ class CounterOfferActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<CounterOfferResponse>, t: Throwable) {
+            override fun onFailure(call: Call<MakeOfferResponse>, t: Throwable) {
                 Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
             }
         })

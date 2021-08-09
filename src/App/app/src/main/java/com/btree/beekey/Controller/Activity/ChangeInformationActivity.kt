@@ -1,12 +1,11 @@
 package com.btree.beekey.Controller.Activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.ChangeInformationPost
+import com.btree.beekey.Model.ChangeInformationBody
 import com.btree.beekey.Model.ChangeInformationResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
@@ -40,7 +39,7 @@ class ChangeInformationActivity : AppCompatActivity() {
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI().postChangeInformation(
             token,
-            ChangeInformationPost(name, phone)
+            ChangeInformationBody(name, phone)
         )
 
         response.enqueue(object : Callback<ChangeInformationResponse> {

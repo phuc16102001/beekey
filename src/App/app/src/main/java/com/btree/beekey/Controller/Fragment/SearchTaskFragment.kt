@@ -10,13 +10,12 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Activity.CounterOfferActivity
 import com.btree.beekey.Controller.Adapter.Category
 import com.btree.beekey.Controller.Adapter.ItemClickListener
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Controller.Adapter.TaskAdapter
-import com.btree.beekey.Model.CategoryResponse
+import com.btree.beekey.Model.GetCategoriesResponse
 import com.btree.beekey.Model.ListTaskResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
@@ -83,7 +82,7 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
             override fun onClick(view: View, position: Int) {
                 Log.d("TAG","CLICK")
                 val intent = Intent(activity, CounterOfferActivity::class.java)
-                intent.putExtra("category_id", categoryList!![position].categoryId)
+                intent.putExtra("task_id", taskList!![position].task_id)
                 startActivity(intent)
             }
         })
@@ -141,10 +140,10 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
         val token = context?.let { Cache.getToken(it).toString() }
         val response = token?.let { MyAPI.getAPI().getCategoryList(it) }
 
-        response?.enqueue(object : Callback<CategoryResponse> {
+        response?.enqueue(object : Callback<GetCategoriesResponse> {
             override fun onResponse(
-                call: Call<CategoryResponse>,
-                response: Response<CategoryResponse>
+                call: Call<GetCategoriesResponse>,
+                response: Response<GetCategoriesResponse>
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -156,7 +155,7 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
                 }
             }
 
-            override fun onFailure(call: Call<CategoryResponse>, t: Throwable) {
+            override fun onFailure(call: Call<GetCategoriesResponse>, t: Throwable) {
                 Toast.makeText(context, "Fail to connect to server", Toast.LENGTH_SHORT).show()
             }
         })

@@ -1,12 +1,11 @@
 package com.btree.beekey.Controller.Activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.btree.beekey.Model.ChangePasswordPost
+import com.btree.beekey.Model.ChangePasswordBody
 import com.btree.beekey.Model.ChangePasswordResponse
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.Hash256.Companion.sha256
@@ -41,7 +40,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
 
         val token = Cache.getToken(this).toString()
-        val response = MyAPI.getAPI().postChangePassword(token, ChangePasswordPost(password, newPassword))
+        val response = MyAPI.getAPI().postChangePassword(token, ChangePasswordBody(password, newPassword))
 
         response.enqueue(object : Callback<ChangePasswordResponse> {
             override fun onResponse(
