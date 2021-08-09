@@ -15,8 +15,8 @@ class Task(
     @SerializedName("user_id") var user_id: String,
 ) {
     companion object{
-        val TASK_PENDING=0
-        val TASK_DOING=1
-        val TASK_DONE=2
+        const val TASK_PENDING=0
+        const val TASK_DOING=1
+        const val TASK_DONE=2
     }
 }

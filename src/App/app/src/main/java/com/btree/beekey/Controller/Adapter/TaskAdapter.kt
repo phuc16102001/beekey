@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -17,12 +18,22 @@ import com.google.android.material.card.MaterialCardView
 class TaskAdapter (private val listTask: List<Task>):
     RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private var clickListener: ItemClickListener? = null
+
+    inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
         val layoutTask: RelativeLayout = view.findViewById(R.id.layoutTask)
         val txtTitle: TextView = view.findViewById(R.id.txtTitle)
         val txtDeadline: TextView = view.findViewById(R.id.txtDeadline)
         val txtOffer: TextView = view.findViewById(R.id.txtOffer)
         val txtDescription: TextView = view.findViewById(R.id.txtDescription)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(view: View?) {
+            clickListener?.onClick(view!!,adapterPosition)
+        }
     }
 
     override fun onCreateViewHolder(
@@ -31,6 +42,11 @@ class TaskAdapter (private val listTask: List<Task>):
     ): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.item_list_task_request, parent, false)
         return ItemViewHolder(adapterLayout)
+    }
+
+    fun setClickListener(itemClickListener: ItemClickListener){
+        Log.d("TAG","ASSIGNED")
+        this.clickListener = itemClickListener
     }
 
     @SuppressLint("ResourceAsColor")
@@ -43,14 +59,16 @@ class TaskAdapter (private val listTask: List<Task>):
         holder.txtDescription.text = task.description
 
         @ColorInt var bgColor = R.color.white
-        if (task.status==Task.TASK_PENDING) {
-            bgColor = R.color.white
-        } else
-        if (task.status==Task.TASK_DOING) {
-            bgColor = R.color.beeyellow
-        } else
-        if (task.status==Task.TASK_DONE){
-            bgColor = R.color.green
+        when (task.status) {
+            Task.TASK_PENDING -> {
+                bgColor = R.color.white
+            }
+            Task.TASK_DOING -> {
+                bgColor = R.color.beeyellow
+            }
+            Task.TASK_DONE -> {
+                bgColor = R.color.green
+            }
         }
         holder.layoutTask.setBackgroundResource(bgColor)
     }

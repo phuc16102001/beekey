@@ -1,6 +1,8 @@
 package com.btree.beekey.Controller.Fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +10,10 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.btree.beekey.Controller.Activity.CounterOfferActivity
 import com.btree.beekey.Controller.Adapter.Category
+import com.btree.beekey.Controller.Adapter.ItemClickListener
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Controller.Adapter.TaskAdapter
 import com.btree.beekey.Model.CategoryResponse
@@ -49,21 +54,23 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getCategoryList()
+
         binding.spinnerCategory.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?, position: Int, id: Long
-            ) {
-                if (categoryList!=null) {
-                    Toast.makeText(context, "Loading... "+categoryList!![position].categoryName, Toast.LENGTH_SHORT).show()
-                    getTaskList(categoryList!![position])
-                } else {
-                    Toast.makeText(context, "Some error happened", Toast.LENGTH_SHORT).show()
-                }
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectCategory(position)
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
+        }
+    }
+
+    private fun selectCategory(position: Int){
+        if (categoryList!=null) {
+            Toast.makeText(context, "Loading... "+categoryList!![position].categoryName, Toast.LENGTH_SHORT).show()
+            getTaskList(categoryList!![position])
+        } else {
+            Toast.makeText(context, "Some error happened", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -71,7 +78,16 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
         if (taskList == null) {
             return
         }
-        binding.listTask.adapter = TaskAdapter(taskList!!)
+        val taskAdapter = TaskAdapter(taskList!!)
+        taskAdapter.setClickListener(object : ItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                Log.d("TAG","CLICK")
+                val intent = Intent(activity, CounterOfferActivity::class.java)
+                intent.putExtra("category_id", categoryList!![position].categoryId)
+                startActivity(intent)
+            }
+        })
+        binding.listTask.adapter = taskAdapter
     }
 
     private fun getTaskList(category: Category) {
