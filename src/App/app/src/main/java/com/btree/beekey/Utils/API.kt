@@ -45,7 +45,7 @@ interface API {
     fun postTopUp(
         @Header("x-access-token") tokenHeader: String,
         @Body topUpBody: TopUpBody
-    ): Call<TopUpResponse>
+    ): Call<BasicResponse>
 
     @GET("/task/getMyRequest")
     fun getMyRequest(
@@ -58,16 +58,22 @@ interface API {
     ):Call<ListTaskResponse>
 
     @POST("/counterOffer/post")
-    fun postCounterOffer(
+    fun postOffer(
         @Header("x-access-token") tokenHeader: String,
-        @Body counterOfferBody: MakeOfferBody
+        @Body offerBody: MakeOfferBody
     ): Call<MakeOfferResponse>
 
     @POST("/counterOffer/getByRequest")
-    fun getCounterOffer(
+    fun postGetOfferList(
         @Header("x-access-token") tokenHeader: String,
         @Body counterOfferBody: GetOfferBody
     ): Call<ListCounterOfferResponse>
+
+    @POST("/counterOffer/accept")
+    fun postAcceptOffer(
+        @Header("x-access-token") tokenHeader: String,
+        @Body acceptOfferBody: AcceptOfferBody
+    ): Call<BasicResponse>
 
     @POST("/task/getByCategory")
     fun postTaskByCategory(

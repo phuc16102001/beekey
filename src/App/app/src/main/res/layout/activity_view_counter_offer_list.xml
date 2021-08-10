@@ -23,7 +23,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/couter_offer_list"
+                    android:text="@string/counter_offer_list"
                     android:textColor="@color/black"
                     android:textSize="@dimen/title_size"
                     android:textStyle="bold" />

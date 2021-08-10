@@ -80,7 +80,7 @@ class CounterOfferActivity : AppCompatActivity() {
         }
 
         val token = Cache.getToken(this).toString()
-        val response = MyAPI.getAPI().postCounterOffer(token, MakeOfferBody(task_id,reason,offer))
+        val response = MyAPI.getAPI().postOffer(token, MakeOfferBody(task_id,reason,offer))
         Log.d("CounterOfferStatus:", taskId.toString())
 
         response.enqueue(object : Callback<MakeOfferResponse> {

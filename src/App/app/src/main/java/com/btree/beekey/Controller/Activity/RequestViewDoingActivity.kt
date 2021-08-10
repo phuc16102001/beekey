@@ -57,8 +57,8 @@ class RequestViewDoingActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_done)
 
-        val btnConfirm : Button = dialog.findViewById(R.id.btnconfirm)
-        val btnCancel : Button = dialog.findViewById(R.id.btncancle)
+        val btnConfirm : Button = dialog.findViewById(R.id.btnConfirm)
+        val btnCancel : Button = dialog.findViewById(R.id.btnCancel)
         btnConfirm.setOnClickListener {
             doneTask(context)
         }

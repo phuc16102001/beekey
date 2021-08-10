@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.btree.beekey.Model.TopUpBody
-import com.btree.beekey.Model.TopUpResponse
+import com.btree.beekey.Model.BasicResponse
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.ActivityTopUpBinding
@@ -45,10 +45,10 @@ class TopUpActivity : AppCompatActivity() {
 
         val response = MyAPI.getAPI().postTopUp(token!!, TopUpBody(amount))
         response.enqueue(
-            object : Callback<TopUpResponse> {
+            object : Callback<BasicResponse> {
                 override fun onResponse(
-                    call: Call<TopUpResponse>,
-                    response: Response<TopUpResponse>
+                    call: Call<BasicResponse>,
+                    response: Response<BasicResponse>
                 ) {
                     if (response.isSuccessful) {
                         val data = response.body()!!
@@ -62,7 +62,7 @@ class TopUpActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<TopUpResponse>, t: Throwable) {
+                override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
                     Toast.makeText(context,"Cannot connect to server",Toast.LENGTH_SHORT).show()
                 }
             }
