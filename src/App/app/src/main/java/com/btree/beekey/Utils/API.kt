@@ -86,4 +86,10 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body viewTaskDetailBody: TaskDetailBody
     ): Call<TaskDetailResponse>
+
+    @POST("/task/done")
+    fun postDoneRequest(
+        @Header("x-access-token") tokenHeader: String,
+        @Body doneTaskBody: DoneTaskBody
+    ):Call<DoneTaskResponse>
 }

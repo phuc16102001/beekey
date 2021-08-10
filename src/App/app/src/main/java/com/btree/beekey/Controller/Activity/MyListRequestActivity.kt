@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.*
@@ -28,6 +29,7 @@ class MyListRequestActivity:AppCompatActivity() {
         setContentView(R.layout.activity_my_list_request)
 
         getListRequest(this)
+
     }
 
     private fun loadAdapter(){
@@ -42,6 +44,7 @@ class MyListRequestActivity:AppCompatActivity() {
                 if (listRequirement!![position].status==Task.TASK_PENDING){
                     val intent = Intent(this@MyListRequestActivity, RequestViewPendingActivity::class.java)
                     intent.putExtra("task_id", listRequirement!![position].task_id)
+                    finish()
                     startActivity(intent)
                 }
                 if (listRequirement!![position].status==Task.TASK_DOING){
@@ -49,6 +52,7 @@ class MyListRequestActivity:AppCompatActivity() {
                     intent.putExtra("task_id", listRequirement!![position].task_id)
                     startActivity(intent)
                 }
+
 
 
             }
@@ -78,7 +82,7 @@ class MyListRequestActivity:AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ListTaskResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(context, "Fail", Toast.LENGTH_LONG).show()
             }
         })
     }
