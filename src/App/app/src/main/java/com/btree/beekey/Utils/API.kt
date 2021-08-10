@@ -86,4 +86,9 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body viewTaskDetailBody: TaskDetailBody
     ): Call<TaskDetailResponse>
+
+    @GET("/feedback")
+    fun getFeedback(
+        @Header("x-access-token") tokenHeader: String,
+    ): Call<ListFeedbackResponse>
 }

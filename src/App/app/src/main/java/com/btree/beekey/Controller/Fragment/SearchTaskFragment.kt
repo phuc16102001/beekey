@@ -80,7 +80,6 @@ class SearchTaskFragment : Fragment(R.layout.fragment_search_task) {
         val taskAdapter = TaskAdapter(taskList!!)
         taskAdapter.setClickListener(object : ItemClickListener {
             override fun onClick(view: View, position: Int) {
-                Log.d("TAG","CLICK")
                 val intent = Intent(activity, CounterOfferActivity::class.java)
                 intent.putExtra("task_id", taskList!![position].task_id)
                 startActivity(intent)

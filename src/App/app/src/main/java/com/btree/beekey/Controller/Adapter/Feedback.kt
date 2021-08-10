@@ -1,7 +1,10 @@
 package com.btree.beekey.Controller.Adapter
 
+import com.google.gson.annotations.SerializedName
+
 class Feedback (
-    var general: String,
-    var description: String,
-    var name: String
+    @SerializedName("title") var title: String,
+    @SerializedName("feedback_id") var feedbackID: Int,
+    @SerializedName("description") var description: String,
+    @SerializedName("user_id") var userID: String
 )
