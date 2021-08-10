@@ -17,7 +17,7 @@ CounterOffer.postOffer = function(data,resultCallback) {
 }
 
 CounterOffer.getByRequest = function(data,resultCallback) {
-    sql.query("SELECT task_id, lancer_id, reason, offer FROM COUNTER_OFFER WHERE task_id=?",
+    sql.query("SELECT * FROM COUNTER_OFFER WHERE task_id=?",
         data.task_id,
         function(err,res){
             if (err) {
