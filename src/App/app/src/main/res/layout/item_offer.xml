@@ -8,7 +8,7 @@
     app:cardCornerRadius="15dp"
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
-    app:strokeColor="@color/greyborder"
+    app:strokeColor="@color/grey_border"
     app:strokeWidth="1dp">
 
     <LinearLayout

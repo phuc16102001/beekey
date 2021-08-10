@@ -1,19 +1,15 @@
 package com.btree.beekey.Controller.Adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.R
 import com.btree.beekey.Utils.DateFormat.Companion.dateformat
-import com.google.android.material.card.MaterialCardView
 
 class TaskAdapter (private val listTask: List<Task>):
     RecyclerView.Adapter<TaskAdapter.ItemViewHolder>() {
@@ -62,10 +58,10 @@ class TaskAdapter (private val listTask: List<Task>):
                 bgColor = R.color.white
             }
             Task.TASK_DOING -> {
-                bgColor = R.color.beeyellow
+                bgColor = R.color.bee_yellow_light
             }
             Task.TASK_DONE -> {
-                bgColor = R.color.green
+                bgColor = R.color.teal_200
             }
         }
         holder.layoutTask.setBackgroundResource(bgColor)

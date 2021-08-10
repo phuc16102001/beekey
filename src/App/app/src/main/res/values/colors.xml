@@ -8,10 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="border">#60000000</color>
-    <color name="beegrey">#424242</color>
-    <color name="beeyellow">#FEC215</color>
-    <color name="greyborder">#F2EEEE</color>
-    <color name="grayF0EBEB">#F0EBEB</color>
+    <color name="bee_grey">#424242</color>
+    <color name="bee_yellow">#FEC215</color>
+    <color name="bee_yellow_light">#FDF2CF</color>
+    <color name="grey_border">#F2EEEE</color>
+    <color name="gray_F0EBEB">#F0EBEB</color>
     <color name="deadline">#BF2000</color>
     <color name="green">#7BD655</color>
 

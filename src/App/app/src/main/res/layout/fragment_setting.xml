@@ -45,7 +45,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/display_name"
-                android:textColor="@color/beegrey"
+                android:textColor="@color/bee_grey"
                 android:textSize="16sp" />
 
             <View
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="@string/personal_information"
-                    android:textColor="@color/beegrey"
+                    android:textColor="@color/bee_grey"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/personal_information_ic"
@@ -117,7 +117,7 @@
                     android:src="@drawable/ic_password"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/beegrey"
+                    app:tint="@color/bee_grey"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="@string/change_password"
-                    android:textColor="@color/beegrey"
+                    android:textColor="@color/bee_grey"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/password_ic"
@@ -160,7 +160,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="5dp"
-                    app:tint="@color/beegrey"
+                    app:tint="@color/bee_grey"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/ic_coin"
@@ -178,7 +178,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:textSize="18sp"
-                    android:textColor="@color/beegrey"/>
+                    android:textColor="@color/bee_grey"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -214,7 +214,7 @@
                     android:src="@drawable/ic_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/beegrey"
+                    app:tint="@color/bee_grey"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -222,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="@string/help_and_support"
-                    android:textColor="@color/beegrey"
+                    android:textColor="@color/bee_grey"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/report_ic"
@@ -261,7 +261,7 @@
                     android:src="@drawable/ic_about_us"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/beegrey"
+                    app:tint="@color/bee_grey"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -269,7 +269,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="@string/about_us"
-                    android:textColor="@color/beegrey"
+                    android:textColor="@color/bee_grey"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/about_us_ic"

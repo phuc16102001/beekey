@@ -21,8 +21,8 @@
         android:layout_gravity="bottom"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:background="@color/white"
-        app:itemIconTint="@color/beegrey"
-        app:itemTextColor="@color/beegrey"
+        app:itemIconTint="@color/bee_grey"
+        app:itemTextColor="@color/bee_grey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:menu="@menu/bottom_bar_menu" />

@@ -27,7 +27,7 @@ class TaskViewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         task_id = intent.getIntExtra("task_id",-1)
-        if (task_id==1){
+        if (task_id==-1){
             Toast.makeText(this,"Error loading task", Toast.LENGTH_SHORT).show()
             finish()
         }
@@ -43,6 +43,7 @@ class TaskViewActivity : AppCompatActivity() {
         binding.txtDeadline.text = task.deadline.dateformat()
         binding.txtOffer.text = task.offer.toString()
         binding.txtStatus.text = task.getStatusString()
+        binding.txtClient.text = task.user_id
     }
 
     private fun getTask(context: Context){

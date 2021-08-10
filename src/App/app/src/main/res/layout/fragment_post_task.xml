@@ -34,7 +34,7 @@
             android:focusable="true"
             android:fontFamily="sans-serif"
             android:text="@string/post"
-            android:textColor="@color/beeyellow"
+            android:textColor="@color/bee_yellow"
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>

@@ -26,40 +26,31 @@ class MyListRequestActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyListRequestBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_my_list_request)
+        setContentView(binding.root)
 
         getListRequest(this)
-
     }
 
-    private fun loadAdapter(){
+    private fun loadAdapter(context: Context){
         if (listRequirement == null) {
             return
         }
-        Log.d("getMyRequest", listRequirement.toString())
         val taskAdapter = TaskAdapter(listRequirement!!)
         taskAdapter.setClickListener(object : ItemClickListener {
             override fun onClick(view: View, position: Int) {
-                Log.d("TAG","CLICK")
+                lateinit var intent : Intent
                 if (listRequirement!![position].status==Task.TASK_PENDING){
-                    val intent = Intent(this@MyListRequestActivity, RequestViewPendingActivity::class.java)
-                    intent.putExtra("task_id", listRequirement!![position].task_id)
-                    finish()
-                    startActivity(intent)
+                    intent = Intent(context, RequestViewPendingActivity::class.java)
                 }
                 if (listRequirement!![position].status==Task.TASK_DOING){
-                    val intent = Intent(this@MyListRequestActivity, RequestViewDoingActivity::class.java)
-                    intent.putExtra("task_id", listRequirement!![position].task_id)
-                    startActivity(intent)
+                    intent = Intent(context, RequestViewDoingActivity::class.java)
                 }
-
-
-
+                intent.putExtra("task_id", listRequirement!![position].task_id)
+                startActivity(intent)
             }
         })
-        val recyclerView = findViewById<RecyclerView>(R.id.listRequestRecyclerView)
-        recyclerView.adapter = taskAdapter
-        recyclerView.setHasFixedSize(true)
+        binding.listRequest.adapter = taskAdapter
+        binding.listRequest.setHasFixedSize(true)
     }
 
     private fun getListRequest(context: Context){
@@ -73,10 +64,9 @@ class MyListRequestActivity:AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
-                    //Log.d("getMyRequest", data.toString())
                     if (data?.exitcode == 0) {
                         listRequirement = data.tasks
-                        loadAdapter()
+                        loadAdapter(context)
                     }
                 }
             }

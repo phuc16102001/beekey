@@ -1,33 +1,47 @@
 package com.btree.beekey.Controller.Activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.btree.beekey.Controller.Adapter.ItemClickListener
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Controller.Adapter.TaskAdapter
 import com.btree.beekey.Model.ListTaskResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
+import com.btree.beekey.databinding.ActivityMyListRequestBinding
+import com.btree.beekey.databinding.ActivityMyListTaskBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MyListTaskActivity:AppCompatActivity() {
     private lateinit var listTask: List<Task>
+    private lateinit var binding: ActivityMyListTaskBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_list_task)
+        binding = ActivityMyListTaskBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         getListRequest(this)
     }
 
-    private fun loadAdapter(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.adapter = TaskAdapter(listTask)
-
-        recyclerView.setHasFixedSize(true)
+    private fun loadAdapter(context: Context){
+        val taskAdapter = TaskAdapter(listTask)
+        taskAdapter.setClickListener(object : ItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(context,TaskViewActivity::class.java)
+                intent.putExtra("task_id",listTask[position].task_id)
+                startActivity(intent)
+            }
+        })
+        binding.listTask.adapter = taskAdapter
     }
 
     private fun getListRequest(context: Context){
@@ -41,10 +55,9 @@ class MyListTaskActivity:AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
-                    //Log.d("getMyRequest", data.toString())
                     if (data?.exitcode == 0) {
                         listTask = data.tasks
-                        loadAdapter()
+                        loadAdapter(context)
                     }
                 }
             }

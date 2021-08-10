@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardUseCompatPadding="true"
-            app:strokeColor="@color/greyborder"
+            app:strokeColor="@color/grey_border"
             app:strokeWidth="1dp"
             app:cardCornerRadius="15dp"
             android:layout_margin="5dp">
@@ -180,7 +180,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/beeyellow"/>
+                    android:backgroundTint="@color/bee_yellow"/>
             </LinearLayout>
 
             <LinearLayout
@@ -197,7 +197,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/beeyellow"/>
+                    android:backgroundTint="@color/bee_yellow"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

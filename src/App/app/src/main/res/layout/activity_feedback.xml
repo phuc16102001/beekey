@@ -55,6 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:backgroundTint="@color/beeyellow"
+        android:backgroundTint="@color/bee_yellow"
         style="?android:attr/buttonBarButtonStyle" />
 </LinearLayout>
