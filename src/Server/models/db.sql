@@ -96,7 +96,9 @@ CREATE TABLE REPORT(
 --------------------------------------------------------------------
 
 INSERT INTO ACCOUNT VALUES
-("admin","admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","","",0);
+("admin","admin","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","0123456789","admin@admin",0),
+("client","client","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","0123456789","client@admin",0),
+("lancer","lancer","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918","0123456789","lancer@admin",0);
 
 INSERT INTO CATEGORY(category_name) VALUES
 ("Testing"),
