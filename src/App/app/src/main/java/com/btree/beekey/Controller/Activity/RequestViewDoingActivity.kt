@@ -55,7 +55,7 @@ class RequestViewDoingActivity : AppCompatActivity() {
         val btncancle = dialog.findViewById(R.id.btncancle) as Button
         btncomfirm.setOnClickListener {
             Donetask(context)
-            val intent = Intent(this, MyListTaskActivity::class.java)
+            val intent = Intent(this, MyListRequestActivity::class.java)
             finish()
             startActivity(intent)
         }
