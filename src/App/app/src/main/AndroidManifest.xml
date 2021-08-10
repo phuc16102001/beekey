@@ -15,10 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeeKey"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".Controller.Activity.ChatActivity"
-            android:exported="true" />
         <activity android:name=".Controller.Activity.MainActivity" />
+        <activity android:name=".Controller.Activity.ChatActivity"/>
         <activity android:name=".Controller.Activity.RequestViewDoingActivity" />
         <activity android:name=".Controller.Activity.RequestViewPendingActivity" />
         <activity android:name=".Controller.Activity.TaskViewActivity" />

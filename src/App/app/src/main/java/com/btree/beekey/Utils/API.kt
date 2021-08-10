@@ -87,7 +87,13 @@ interface API {
         @Body viewTaskDetailBody: TaskDetailBody
     ): Call<TaskDetailResponse>
 
-    @GET("/feedback")
+    @POST("/task/done")
+    fun postDoneRequest(
+        @Header("x-access-token") tokenHeader: String,
+        @Body doneTaskBody: DoneTaskBody
+    ):Call<DoneTaskResponse>
+
+  @GET("/feedback")
     fun getFeedback(
         @Header("x-access-token") tokenHeader: String,
     ): Call<ListFeedbackResponse>
