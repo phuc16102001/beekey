@@ -99,6 +99,9 @@
     <string name="are_you_sure_to_accept_this_solution">Are you sure to accept this solution!?</string>
     <string name="confirm">Confirm</string>
     <string name="cancle">Cancle</string>
+    <string name="view_offer">View offer</string>
+    <string name="request_view">Request view</string>
+    <string name="lancer">Lancer</string>
     <string-array name="Category">
         <item>Java</item>
         <item>Kotlin</item>

@@ -20,7 +20,7 @@ class Task(
         const val TASK_DONE=2
     }
 
-    public fun getStatusString() :String{
+    fun getStatusString() :String{
         when (status){
             TASK_PENDING -> return "PENDING"
             TASK_DOING -> return "DOING"

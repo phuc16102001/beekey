@@ -45,14 +45,12 @@ class TaskAdapter (private val listTask: List<Task>):
     }
 
     fun setClickListener(itemClickListener: ItemClickListener){
-        Log.d("TAG","ASSIGNED")
         this.clickListener = itemClickListener
     }
 
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val task = listTask[position]
-        Log.d("TAG",task.title)
         holder.txtTitle.text = task.title
         holder.txtDeadline.text = ("Deadline: "+task.deadline.dateformat())
         holder.txtOffer.text = ("Offer: " + task.offer.toString())

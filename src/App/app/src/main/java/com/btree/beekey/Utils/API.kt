@@ -63,6 +63,12 @@ interface API {
         @Body counterOfferBody: MakeOfferBody
     ): Call<MakeOfferResponse>
 
+    @POST("/counterOffer/getByRequest")
+    fun getCounterOffer(
+        @Header("x-access-token") tokenHeader: String,
+        @Body counterOfferBody: GetOfferBody
+    ): Call<ListCounterOfferResponse>
+
     @POST("/task/getByCategory")
     fun postTaskByCategory(
         @Header("x-access-token") tokenHeader: String,

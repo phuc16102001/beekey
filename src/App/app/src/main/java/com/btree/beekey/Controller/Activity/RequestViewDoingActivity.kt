@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Window
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Model.*
@@ -17,7 +15,6 @@ import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.DateFormat.Companion.dateformat
 import com.btree.beekey.Utils.MyAPI
 import com.btree.beekey.databinding.ActivityRequestViewDoingBinding
-import com.btree.beekey.databinding.ActivityRequestViewPendingBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +22,7 @@ import retrofit2.Response
 class RequestViewDoingActivity : AppCompatActivity() {
     private var task_id = -1
     private lateinit var binding: ActivityRequestViewDoingBinding
+    private lateinit var displayTask : Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +35,20 @@ class RequestViewDoingActivity : AppCompatActivity() {
             finish()
         }
 
-        getTask(this)
-
-        binding.RequestViewDoingDone.setOnClickListener {
+        binding.btnConfirm.setOnClickListener {
             showDialog(this)
         }
+        binding.btnChat.setOnClickListener {
+            btnChatClick(this)
+        }
 
+        getTask(this)
+    }
+
+    private fun btnChatClick(context: Context) {
+        val intent = Intent(context, ChatActivity::class.java)
+        intent.putExtra("user_id", displayTask.lancer_id)
+        startActivity(intent)
     }
 
     private fun showDialog(context: Context) {
@@ -51,22 +57,25 @@ class RequestViewDoingActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_done)
 
-        val btncomfirm = dialog.findViewById(R.id.btnconfirm) as Button
-        val btncancle = dialog.findViewById(R.id.btncancle) as Button
-        btncomfirm.setOnClickListener {
-            Donetask(context)
-            val intent = Intent(this, MyListRequestActivity::class.java)
-            finish()
-            startActivity(intent)
+        val btnConfirm : Button = dialog.findViewById(R.id.btnconfirm)
+        val btnCancel : Button = dialog.findViewById(R.id.btncancle)
+        btnConfirm.setOnClickListener {
+            doneTask(context)
         }
-        btncancle.setOnClickListener {
+        btnCancel.setOnClickListener {
             dialog.dismiss()
         }
         dialog.show()
-
     }
 
-    private fun Donetask(context: Context){
+    private fun openFeedback(context: Context) {
+        val intent = Intent(context, FeedbackActivity::class.java)
+        intent.putExtra("lancer_id",displayTask.lancer_id)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun doneTask(context: Context){
         val token = Cache.getToken(context).toString()
         val response = MyAPI.getAPI().postDoneRequest(token, DoneTaskBody(task_id.toString()))
         response.enqueue(object : Callback<DoneTaskResponse>{
@@ -76,9 +85,9 @@ class RequestViewDoingActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
-
                     if (data?.exitcode == 0) {
                         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+                        openFeedback(context)
                     }
                 }
             }
@@ -90,19 +99,13 @@ class RequestViewDoingActivity : AppCompatActivity() {
 
     }
 
-    private fun loadScreen(context: Context,task: Task){
-        Log.d("test",task.title)
-        binding.RequestViewDoingName.text =  task.title
-        binding.RequestViewDoingDL.text =  task.deadline.dateformat()
-        binding.RequestViewDoingCost.text =  task.offer.toString()
-        binding.RequestViewDoingUser.text =  task.user_id
-        binding.RequestViewContent.text =  task.description
-
-        binding.RequestViewDoingChat.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("user_id", task.user_id)
-            startActivity(intent)
-        }
+    private fun loadScreen(task: Task){
+        binding.txtTitle.text =  task.title
+        binding.txtDeadline.text =  task.deadline.dateformat()
+        binding.txtOffer.text =  task.offer.toString()
+        binding.txtLancer.text =  task.lancer_id
+        binding.txtDescription.text =  task.description
+        binding.txtStatus.text = task.getStatusString()
     }
 
     private fun getTask(context: Context){
@@ -119,7 +122,8 @@ class RequestViewDoingActivity : AppCompatActivity() {
                     if (data?.exitcode!= 0) {
                         finish()
                     }
-                    loadScreen(context,data!!.task)
+                    displayTask = data!!.task
+                    loadScreen(displayTask)
                 }
             }
 

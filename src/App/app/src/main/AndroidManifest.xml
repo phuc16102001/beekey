@@ -29,6 +29,7 @@
         <activity android:name=".Controller.Activity.MyListTaskActivity" />
         <activity android:name=".Controller.Activity.CounterOfferActivity" />
         <activity android:name=".Controller.Activity.ReportActivity" />
+        <activity android:name=".Controller.Activity.ViewCounterOfferListActivity" />
         <activity android:name=".Controller.Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

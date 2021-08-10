@@ -48,14 +48,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
-        binding.requestIc.setOnClickListener {
+        binding.layoutRequest.setOnClickListener {
             Intent(activity, MyListRequestActivity::class.java).also {
                 startActivity(it)
             }
         }
-        binding.taskIc.setOnClickListener {
+        binding.layoutTask.setOnClickListener {
             Intent(activity, MyListTaskActivity::class.java).also {
                 startActivity(it)
             }

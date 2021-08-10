@@ -9,11 +9,9 @@ import android.widget.Toast
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Model.TaskDetailBody
 import com.btree.beekey.Model.TaskDetailResponse
-import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.DateFormat.Companion.dateformat
 import com.btree.beekey.Utils.MyAPI
-import com.btree.beekey.databinding.ActivityCounterOfferBinding
 import com.btree.beekey.databinding.ActivityRequestViewPendingBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,20 +34,23 @@ class RequestViewPendingActivity : AppCompatActivity() {
 
         getTask(this)
 
-        binding.RequestViewPendingViewOffer.setOnClickListener {
-            val intent = Intent(this, ViewCounterOfferListActivity::class.java)
-            intent.putExtra("task_id", task_id)
-            startActivity(intent)
+        binding.btnViewOffer.setOnClickListener {
+            btnViewOfferClick(this)
         }
     }
 
-    private fun loadScreen(context: Context,task:Task){
-        Log.d("test",task.title)
-        binding.RequestViewPendingName.text =  task.title
-        binding.RequestViewPendingDL.text =  task.deadline.dateformat()
-        binding.RequestViewPendingCost.text =  task.offer.toString()
-        binding.RequestViewPendingUser.text =  task.user_id
-        binding.RequestViewContent.text =  task.description
+    private fun btnViewOfferClick(context:Context) {
+        val intent = Intent(context, ViewCounterOfferListActivity::class.java)
+        intent.putExtra("task_id", task_id)
+        startActivity(intent)
+    }
+
+    private fun loadScreen(task: Task){
+        binding.txtTitle.text =  task.title
+        binding.txtDeadline.text =  task.deadline.dateformat()
+        binding.txtOffer.text =  task.offer.toString()
+        binding.txtStatus.text =  task.getStatusString()
+        binding.txtDescription.text =  task.description
     }
 
     private fun getTask(context: Context){
@@ -66,7 +67,7 @@ class RequestViewPendingActivity : AppCompatActivity() {
                     if (data?.exitcode!= 0) {
                         finish()
                     }
-                    loadScreen(context,data!!.task)
+                    loadScreen(data!!.task)
                 }
             }
 
