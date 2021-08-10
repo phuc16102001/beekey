@@ -11,23 +11,21 @@ import com.btree.beekey.R
 class FeedbackAdapter (private val listFeedback:List<Feedback>) :
     RecyclerView.Adapter<FeedbackAdapter.ItemViewHolder>(){
     class ItemViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val textGeneral:TextView=view.findViewById(R.id.general)
-        val textBrief:TextView=view.findViewById(R.id.brief)
-        val textName:TextView=view.findViewById(R.id.user_feedback_name)
+        val txtTitle:TextView = view.findViewById(R.id.title)
+        val txtDescription:TextView = view.findViewById(R.id.txtDescription)
+        val txtUsername:TextView = view.findViewById(R.id.txtUsername)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val adapterLayout =
-            LayoutInflater.from(parent.context).inflate(R.layout.feedback_item,parent,false)
+        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.feedback_item,parent,false)
         return ItemViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val feedback = listFeedback[position]
-        Log.d("Binding",feedback.toString())
-        holder.textGeneral.text=feedback.general
-        holder.textBrief.text=feedback.description
-        holder.textName.text=feedback.name
+        holder.txtTitle.text = feedback.title
+        holder.txtDescription.text = feedback.description
+        holder.txtUsername.text = feedback.userID
     }
 
     override fun getItemCount(): Int {

@@ -92,4 +92,9 @@ interface API {
         @Header("x-access-token") tokenHeader: String,
         @Body doneTaskBody: DoneTaskBody
     ):Call<DoneTaskResponse>
+
+  @GET("/feedback")
+    fun getFeedback(
+        @Header("x-access-token") tokenHeader: String,
+    ): Call<ListFeedbackResponse>
 }

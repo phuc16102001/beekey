@@ -52,25 +52,6 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getCategoryList()
-        binding.spinnerCategory.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View?, position: Int, id: Long
-            ) {
-                Toast.makeText(
-                    context,
-                    categoryList!![position].categoryId.toString(),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
-
         binding.deadlineTxt.setOnClickListener {
             getDeadlineFromUser()
         }
@@ -80,6 +61,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
         binding.postButton.setOnClickListener{
             postTask()
         }
+        getCategoryList()
     }
 
     private fun loadAdapter() {

@@ -1,3 +1,4 @@
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.renderscript.ScriptGroup
@@ -14,6 +15,7 @@ import com.btree.beekey.Controller.Adapter.Feedback
 import com.btree.beekey.Controller.Adapter.FeedbackAdapter
 import com.btree.beekey.Model.Account
 import com.btree.beekey.Model.GetInformationResponse
+import com.btree.beekey.Model.ListFeedbackResponse
 import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.MyAPI
@@ -29,6 +31,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var listFeedback: List<Feedback>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +48,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        loadFeedback()
-        requestInformation()
+
 
         binding.requestIc.setOnClickListener {
             Intent(activity, MyListRequestActivity::class.java).also {
@@ -58,13 +60,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 startActivity(it)
             }
         }
+        context?.let { getFeedback(it) }
+        requestInformation()
     }
 
     private fun loadInformation(account: Account) {
-        binding.txtDisplayName.setText(account.displayName)
-        binding.txtEmail.setText(account.email)
-        binding.txtCoin.setText(account.coin.toString())
-        binding.txtPhone.setText(account.phone)
+        binding.txtDisplayName.text = account.displayName
+        binding.txtEmail.text = account.email
+        binding.txtCoin.text = account.coin.toString()
+        binding.txtPhone.text = account.phone
     }
 
     private fun requestInformation() {
@@ -78,15 +82,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data?.exitcode == 0) {
-                        loadInformation(
-                            Account(
-                                data.username,
-                                data.displayName,
-                                data.phone,
-                                data.email,
-                                data.coin
-                            )
-                        )
+                        loadInformation(Account(data.username, data.displayName, data.phone, data.email, data.coin))
                     }
                 }
             }
@@ -97,17 +93,31 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         })
     }
 
-    private fun loadFeedback() {
-        val userList = mutableListOf<Feedback>()
-        userList.add(Feedback("Good", "Description: Test test test", "Thanh"))
-        userList.add(Feedback("Good", "Description: Test test test", "Phuc"))
-        userList.add(Feedback("Good", "Description: Test test test", "Khanh"))
-        userList.add(Feedback("Good", "Description: Test test test", "Khoa"))
-        userList.add(Feedback("Good", "Description: Test test test", "Khoa1"))
-        userList.add(Feedback("Good", "Description: Test test test", "Khoa2"))
-        userList.add(Feedback("Good", "Description: Test test test", "Khoa3"))
-        Log.d("user", userList.size.toString())
+    private fun getFeedback(context: Context) {
+        val token = Cache.getToken(context).toString()
+        val response = MyAPI.getAPI().getFeedback(token)
 
-        binding.recycler.adapter = FeedbackAdapter(userList)
+        response.enqueue(object : Callback<ListFeedbackResponse> {
+            override fun onResponse(
+                call: Call<ListFeedbackResponse>,
+                response: Response<ListFeedbackResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data!!.exitcode==0) {
+                        listFeedback = data.feedbacks
+                        loadFeedback(listFeedback)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ListFeedbackResponse>, t: Throwable) {
+                Toast.makeText(context,"Cannot connect to server",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun loadFeedback(feedbacks: List<Feedback>) {
+        binding.recycler.adapter = FeedbackAdapter(feedbacks)
     }
 }
