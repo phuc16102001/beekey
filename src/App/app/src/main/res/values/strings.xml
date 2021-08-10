@@ -96,6 +96,9 @@
     <string name="message_content">Message content</string>
     <string name="status">Status</string>
     <string name="client">Client:</string>
+    <string name="are_you_sure_to_accept_this_solution">Are you sure to accept this solution!?</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancle">Cancle</string>
     <string-array name="Category">
         <item>Java</item>
         <item>Kotlin</item>
