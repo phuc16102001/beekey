@@ -35,14 +35,21 @@ class RequestViewDoingActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.btnConfirm.setOnClickListener {
-            showDialog(this)
-        }
+
         binding.btnChat.setOnClickListener {
             btnChatClick(this)
         }
 
         getTask(this)
+
+        binding.btnConfirm.setOnClickListener {
+            if (displayTask.status == Task.TASK_DOING) {
+                showDialog(this)
+            }
+            else {
+                Toast.makeText(this,"The task is already Done", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun btnChatClick(context: Context) {

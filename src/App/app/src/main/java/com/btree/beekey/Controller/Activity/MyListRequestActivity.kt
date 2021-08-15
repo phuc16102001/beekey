@@ -42,9 +42,10 @@ class MyListRequestActivity:AppCompatActivity() {
                 if (listRequirement!![position].status==Task.TASK_PENDING){
                     intent = Intent(context, RequestViewPendingActivity::class.java)
                 }
-                if (listRequirement!![position].status==Task.TASK_DOING){
+                if (listRequirement!![position].status==Task.TASK_DOING || listRequirement!![position].status==Task.TASK_DONE){
                     intent = Intent(context, RequestViewDoingActivity::class.java)
                 }
+
                 intent.putExtra("task_id", listRequirement!![position].task_id)
                 startActivity(intent)
             }

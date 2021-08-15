@@ -15,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeeKey"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Controller.Activity.MainActivity" />
+        <activity android:name=".Controller.Activity.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Controller.Activity.ChatActivity"/>
         <activity android:name=".Controller.Activity.RequestViewDoingActivity" />
         <activity android:name=".Controller.Activity.RequestViewPendingActivity" />
@@ -30,13 +36,7 @@
         <activity android:name=".Controller.Activity.CounterOfferActivity" />
         <activity android:name=".Controller.Activity.ReportActivity" />
         <activity android:name=".Controller.Activity.ViewCounterOfferListActivity" />
-        <activity android:name=".Controller.Activity.FeedbackActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Controller.Activity.FeedbackActivity"/>
         <activity android:name=".Controller.Activity.LoginActivity">
         </activity>
     </application>
