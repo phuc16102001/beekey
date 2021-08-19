@@ -20,7 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RequestViewDoingActivity : AppCompatActivity() {
+class RequestViewActivity : AppCompatActivity() {
     private var task_id = -1
     private lateinit var binding: ActivityRequestViewDoingBinding
     private lateinit var displayTask : Task

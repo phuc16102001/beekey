@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controller.Activity.ChatActivity"/>
-        <activity android:name=".Controller.Activity.RequestViewDoingActivity" />
+        <activity android:name=".Controller.Activity.RequestViewActivity" />
         <activity android:name=".Controller.Activity.RequestViewPendingActivity" />
         <activity android:name=".Controller.Activity.TaskViewActivity" />
         <activity android:name=".Controller.Activity.TopUpActivity" />
