@@ -1,5 +1,6 @@
 package com.btree.beekey.Controller.Activity
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -19,7 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RequestViewDoingActivity : AppCompatActivity() {
+class RequestViewActivity : AppCompatActivity() {
     private var task_id = -1
     private lateinit var binding: ActivityRequestViewDoingBinding
     private lateinit var displayTask : Task
@@ -35,14 +36,16 @@ class RequestViewDoingActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.btnConfirm.setOnClickListener {
-            showDialog(this)
-        }
+
         binding.btnChat.setOnClickListener {
             btnChatClick(this)
         }
 
         getTask(this)
+
+        binding.btnConfirm.setOnClickListener {
+            showDialog(this)
+        }
     }
 
     private fun btnChatClick(context: Context) {
@@ -99,6 +102,7 @@ class RequestViewDoingActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun loadScreen(task: Task){
         binding.txtTitle.text =  task.title
         binding.txtDeadline.text =  task.deadline.dateformat()
@@ -106,6 +110,10 @@ class RequestViewDoingActivity : AppCompatActivity() {
         binding.txtLancer.text =  task.lancer_id
         binding.txtDescription.text =  task.description
         binding.txtStatus.text = task.getStatusString()
+
+        if (task.status == Task.TASK_DONE) {
+            binding.btnConfirm.isEnabled = false
+        }
     }
 
     private fun getTask(context: Context){
