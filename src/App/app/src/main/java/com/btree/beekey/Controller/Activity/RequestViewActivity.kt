@@ -15,19 +15,19 @@ import com.btree.beekey.R
 import com.btree.beekey.Utils.Cache
 import com.btree.beekey.Utils.DateFormat.Companion.dateformat
 import com.btree.beekey.Utils.MyAPI
-import com.btree.beekey.databinding.ActivityRequestViewDoingBinding
+import com.btree.beekey.databinding.ActivityRequestViewBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class RequestViewActivity : AppCompatActivity() {
     private var task_id = -1
-    private lateinit var binding: ActivityRequestViewDoingBinding
+    private lateinit var binding: ActivityRequestViewBinding
     private lateinit var displayTask : Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRequestViewDoingBinding.inflate(layoutInflater)
+        binding = ActivityRequestViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         task_id = intent.getIntExtra("task_id",-1)
@@ -73,7 +73,7 @@ class RequestViewActivity : AppCompatActivity() {
 
     private fun openFeedback(context: Context) {
         val intent = Intent(context, FeedbackActivity::class.java)
-        intent.putExtra("lancer_id",displayTask.lancer_id)
+        intent.putExtra("task_id",displayTask.task_id)
         startActivity(intent)
         finish()
     }

@@ -17,7 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class FeedbackActivity : AppCompatActivity() {
-    private var TAG = "FeedbackActivity"  //for debug
     private var task_id = -1
     private lateinit var binding : ActivityFeedbackBinding
 
@@ -32,18 +31,15 @@ class FeedbackActivity : AppCompatActivity() {
             finish()
         }
 
-        val sendButton: Button = findViewById(R.id.btSend)
-
-        sendButton.setOnClickListener{
+        binding.btnSend.setOnClickListener{
             clickSendBtn(this)
         }
     }
 
 
     private fun clickSendBtn(context: Context) {
-        val title =binding.txtTitle.text.toString()
+        val title = binding.txtTitle.text.toString()
         val description = binding.txtFeedback.text.toString()
-        Log.d("FeedbackStatus", description.toString())
 
         val token = Cache.getToken(this).toString()
         val response = MyAPI.getAPI().postFeedback(token, PostFeedbackBody(title,task_id,description))
@@ -55,12 +51,11 @@ class FeedbackActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
-                    Log.d("FeedbackStatus", data.toString())
-                    if (data?.exitcode == 0) {
-                        Toast.makeText(context,"Sending successfully", Toast.LENGTH_SHORT).show()
+                    if (data!!.exitcode == 0) {
+                        Toast.makeText(context,"Feedback successfully", Toast.LENGTH_SHORT).show()
                         finish()
                     }
-                    else if (data?.exitcode == 104){
+                    else {
                         Toast.makeText(context, data.message, Toast.LENGTH_LONG).show()
                     }
                 }

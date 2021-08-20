@@ -160,7 +160,8 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                 curYear, curMonth, curDay
             )
         }
-        datePicker?.show()
+        datePicker!!.datePicker.minDate = System.currentTimeMillis()-1000
+        datePicker.show()
     }
 
     private fun fileChooser() {

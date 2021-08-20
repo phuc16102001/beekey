@@ -15,13 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeeKey"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Controller.Activity.MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Controller.Activity.MainActivity" />
         <activity android:name=".Controller.Activity.ChatActivity"/>
         <activity android:name=".Controller.Activity.RequestViewActivity" />
         <activity android:name=".Controller.Activity.RequestViewPendingActivity" />
@@ -38,6 +32,11 @@
         <activity android:name=".Controller.Activity.ViewCounterOfferListActivity" />
         <activity android:name=".Controller.Activity.FeedbackActivity"/>
         <activity android:name=".Controller.Activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

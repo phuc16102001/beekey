@@ -64,7 +64,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btSend"
+        android:id="@+id/btnSend"
         android:text="@string/send"
         android:textColor="@color/black"
         android:textStyle="bold"

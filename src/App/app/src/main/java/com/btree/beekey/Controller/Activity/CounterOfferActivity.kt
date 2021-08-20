@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.OnLifecycleEvent
 import com.btree.beekey.Controller.Adapter.Task
 import com.btree.beekey.Model.MakeOfferBody
 import com.btree.beekey.Model.MakeOfferResponse
@@ -39,12 +42,13 @@ class CounterOfferActivity : AppCompatActivity() {
         getTask(this)
     }
 
-    private fun loadTask(context: Context, task:Task) {
+    private fun loadTask(task: Task) {
         binding.txtTitle.text = task.title
         binding.txtDescription.text = task.description
         binding.txtDeadline.text = task.deadline.dateformat()
         binding.txtOffer.text = task.offer.toString()
         binding.txtStatus.text = task.getStatusString()
+        binding.txtClient.text = task.user_id
     }
 
     private fun getTask(context: Context){
@@ -61,7 +65,7 @@ class CounterOfferActivity : AppCompatActivity() {
                     if (data?.exitcode!= 0) {
                         finish()
                     }
-                    loadTask(context,data!!.task)
+                    loadTask(data!!.task)
                 }
             }
 
