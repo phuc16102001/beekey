@@ -10,7 +10,7 @@ function post(req,res) {
         description: req.body.description
     }
 
-    console.log(task_id)
+    console.log(data.task_id)
 
     Task.getStatus(data,(err,result)=>{
         if (err) {
