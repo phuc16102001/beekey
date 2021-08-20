@@ -125,57 +125,8 @@ function accept(req,res){
     })
 }
 
-function decline(req,res){
-    data = {
-        task_id: req.body.task_id,
-        lancer_id: req.body.lancer_id
-    }
-
-    task.getStatus(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-            return
-        }
-
-        if (result[0]!=undefined) {
-            if (result[0].status!=config.constant.STATUS.PENDING) {
-                res.send({
-                    exitcode: 4,
-                    message: "Task status not valid"
-                })
-                return;
-            } else {
-                counterOffer.decline(data,(err,result)=>{
-                    if (err) {
-                        res.send({
-                            exitcode: 1,
-                            message: err
-                        })
-                    }
-            
-                    if (result) {
-                        res.send({
-                            exitcode: 0,
-                            message: "Decline counter-offer successfully"
-                        })
-                    }
-                })
-            }
-        } else {
-            res.send({
-                exitcode: 1,
-                message: "Task not found"
-            })
-        }
-    })
-}
-
 module.exports = {
     postOffer,
     getByRequest,
-    accept,
-    decline
+    accept
 }

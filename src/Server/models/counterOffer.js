@@ -40,30 +40,6 @@ CounterOffer.getByRequest = function(data,resultCallback) {
     );
 }
 
-CounterOffer.decline = function(data,resultCallback) {
-    values = [data.task_id,data.lancer_id]
-    let sqlString = `
-        start transaction;
-
-        set @task_id=?;
-        set @lancer_id=?;
-
-        DELETE FROM COUNTER_OFFER 
-        WHERE task_id=@task_id and lancer_id=@lancer_id;
-
-        commit;
-    `
-    sql.query(sqlString,values,function(err,res){
-            if (err) {
-                console.log("Fail to make decline request: ",err);
-                resultCallback(err,null);
-                return;
-            }
-            resultCallback(null,res)
-        }
-    );
-}
-
 CounterOffer.accept = function(data,resultCallback) {
     values = [data.client_id,data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
     let sqlString = `
