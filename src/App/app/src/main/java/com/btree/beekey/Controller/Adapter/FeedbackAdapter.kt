@@ -11,7 +11,7 @@ import com.btree.beekey.R
 class FeedbackAdapter (private val listFeedback:List<Feedback>) :
     RecyclerView.Adapter<FeedbackAdapter.ItemViewHolder>(){
     class ItemViewHolder(view: View):RecyclerView.ViewHolder(view) {
-        val txtTitle:TextView = view.findViewById(R.id.title)
+        val txtTitle:TextView = view.findViewById(R.id.txtTitle)
         val txtDescription:TextView = view.findViewById(R.id.txtDescription)
         val txtUsername:TextView = view.findViewById(R.id.txtUsername)
     }
