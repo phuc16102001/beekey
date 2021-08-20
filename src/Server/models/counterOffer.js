@@ -45,11 +45,9 @@ CounterOffer.decline = function(data,resultCallback) {
 }
 
 CounterOffer.accept = function(data,resultCallback) {
-    sql.input("lancer_id",data.lancer_id)
-    sql.input("accept_status",config.constant.STATUS.ACCEPTED)
-    sql.input("task_id",data.task_id)
+    values = [data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
 
-    sql.query("UPDATE TASK SET status=@accept_status, lancer_id=@lancer_id WHERE task_id=@task_id; DELETE FROM COUNTER_OFFER WHERE task_id=@task_id")
+    sql.query("UPDATE TASK SET status=$3, lancer_id=$1 WHERE task_id=$2; DELETE FROM COUNTER_OFFER WHERE task_id=$2",values)
     .then(function(res){
             resultCallback(null,res)
     }).catch(function(err){
