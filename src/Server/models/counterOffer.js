@@ -74,7 +74,7 @@ CounterOffer.accept = function(data,resultCallback) {
         set @task_id = ?;
         set @accept_status = ?;
         set @new_offer = (
-            SELEC offer
+            SELECT offer
             FROM COUNTER_OFFER
             WHERE task_id=@task_id and lancer_id=@lancer_id
         );
