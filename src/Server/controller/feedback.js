@@ -23,7 +23,7 @@ function post(req,res) {
 
         if (result[0]!=undefined) {
             console.log(result)
-            if (int(result.status)!=config.constant.STATUS.DONE) {
+            if (Number(result.status)!=config.constant.STATUS.DONE) {
                 res.send({
                     exitcode: 4,
                     message: "Task status not valid"
