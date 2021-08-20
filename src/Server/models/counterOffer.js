@@ -7,7 +7,7 @@ CounterOffer.postOffer = function(data,resultCallback) {
     let sqlString = `
         start transaction;
 
-        INSERT INTO COUNTER_OFFER SET ?
+        INSERT INTO COUNTER_OFFER SET ?;
 
         commit;
     `
