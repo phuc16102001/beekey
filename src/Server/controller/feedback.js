@@ -10,8 +10,6 @@ function post(req,res) {
         description: req.body.description
     }
 
-    console.log(data.task_id)
-
     Task.getStatus(data,(err,result)=>{
         if (err) {
             res.send({
