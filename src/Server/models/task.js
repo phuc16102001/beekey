@@ -50,7 +50,7 @@ Task.postTask = function(data,resultCallback) {
 }
 
 Task.getRequestByUsername = function(data,resultCallback) {
-    sql.query("SELECT * FROM TASK WHERE user_id=?",
+    sql.query("SELECT * FROM TASK WHERE user_id=? ORDER BY status desc",
         data.username,
         (err,res)=>{
             if (err) {
@@ -65,7 +65,7 @@ Task.getRequestByUsername = function(data,resultCallback) {
 }
 
 Task.getTaskByUsername = function(data,resultCallback) {
-    sql.query("SELECT * FROM TASK WHERE lancer_id=?",
+    sql.query("SELECT * FROM TASK WHERE lancer_id=? ORDER BY status desc",
         data.username,
         (err,res)=>{
             if (err) {
