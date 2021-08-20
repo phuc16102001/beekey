@@ -89,7 +89,7 @@ CounterOffer.accept = function(data,resultCallback) {
 
         UPDATE ACCOUNT 
         SET coin = coin + @new_offer
-        WHERE username = 'admin'
+        WHERE username = "admin"
 
         DELETE FROM COUNTER_OFFER
         WHERE task_id=@task_id;
