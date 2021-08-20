@@ -46,8 +46,24 @@ CounterOffer.decline = function(data,resultCallback) {
 
 CounterOffer.accept = function(data,resultCallback) {
     values = [data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
+    let SqlString = `
+        start transaction;
 
-    sql.query("UPDATE TASK SET status=$3, lancer_id=$1 WHERE task_id=$2; DELETE FROM COUNTER_OFFER WHERE task_id=$2",values,(err,res)=>{
+        set @lancer_id = ?;
+        set @task_id = ?;
+        set @accept_status = ?;
+
+        UPDATE TASK 
+        SET status = @accept_status, lancer_id=@lancer_id
+        WHERE task_id=@task_id;
+
+        DELETE FROM COUNTER_OFFER
+        WHERE task_id=@task_id;
+
+        commit;
+    `
+
+    sql.query(sqlString,values,(err,res)=>{
         if (err) {
             console.log("Fail to make accept request: ",err);
             resultCallback(err,null);
