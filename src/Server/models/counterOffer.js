@@ -46,7 +46,7 @@ CounterOffer.decline = function(data,resultCallback) {
 
 CounterOffer.accept = function(data,resultCallback) {
     values = [data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
-    let SqlString = `
+    let sqlString = `
         start transaction;
 
         set @lancer_id = ?;
