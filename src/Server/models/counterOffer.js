@@ -65,17 +65,31 @@ CounterOffer.decline = function(data,resultCallback) {
 }
 
 CounterOffer.accept = function(data,resultCallback) {
-    values = [data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
+    values = [data.client_id,data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
     let sqlString = `
         start transaction;
 
+        set @client_id = ?;
         set @lancer_id = ?;
         set @task_id = ?;
         set @accept_status = ?;
+        set @new_offer = (
+            SELEC offer
+            FROM COUNTER_OFFER
+            WHERE task_id=@task_id and lancer_id=@lancer_id
+        );
 
         UPDATE TASK 
-        SET status = @accept_status, lancer_id=@lancer_id
+        SET status = @accept_status, lancer_id=@lancer_id, offer = @new_offer
         WHERE task_id=@task_id;
+
+        UPDATE ACCOUNT 
+        SET coin = coin - @new_offer
+        WHERE username = @client_id
+
+        UPDATE ACCOUNT 
+        SET coin = coin + @new_offer
+        WHERE username = 'admin'
 
         DELETE FROM COUNTER_OFFER
         WHERE task_id=@task_id;

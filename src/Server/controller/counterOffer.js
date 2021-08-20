@@ -78,6 +78,7 @@ function getByRequest(req,res) {
 
 function accept(req,res){
     data = {
+        client_id: req.payload.username,
         task_id: req.body.task_id,
         lancer_id: req.body.lancer_id
     }
