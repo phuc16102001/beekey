@@ -80,9 +80,39 @@ Task.getTaskByUsername = function(data,resultCallback) {
 }
 
 Task.done = function(data,resultCallback) {
-    sql.query("UPDATE TASK SET status=? WHERE task_id=?",
-        [config.constant.STATUS.DONE,data.task_id],
-        (err,res)=>{
+    values = [data.task_id, config.constant.STATUS.DONE]
+    let sqlString = `
+        start transaction;
+
+        set @task_id = ?;
+        set @done_status = ?;
+        set @offer = (
+            SELECT offer 
+            FROM TASK
+            WHERE task_id=@task_id
+        );
+        set @lancer_id = (
+            SELECT lancer_id
+            FROM TASK
+            WHERE task_id=@task_id
+        );
+
+        UPDATE TASK
+        SET status = @done_status
+        WHERE task_id=@task_id;
+
+        UPDATE ACCOUNT
+        SET coin = coin - @offer
+        WHERE username = 'admin';
+
+        UPDATE ACCOUNT
+        SET coin = coin + @offer
+        WHERE username = @lancer_id;
+
+        commit;
+    `
+
+    sql.query(sqlString, values,(err,res)=>{
             if (err) {
                 console.log("Fail to set status: ",err)
                 resultCallback(err,null)
