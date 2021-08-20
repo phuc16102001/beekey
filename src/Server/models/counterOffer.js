@@ -47,14 +47,14 @@ CounterOffer.decline = function(data,resultCallback) {
 CounterOffer.accept = function(data,resultCallback) {
     values = [data.lancer_id, data.task_id, config.constant.STATUS.ACCEPTED]
 
-    sql.query("UPDATE TASK SET status=$3, lancer_id=$1 WHERE task_id=$2; DELETE FROM COUNTER_OFFER WHERE task_id=$2",values)
-    .then(function(res){
-            resultCallback(null,res)
-    }).catch(function(err){
-        console.log("Fail to make accept request: ",err);
-        resultCallback(err,null);
-        return;
-    });
+    sql.query("UPDATE TASK SET status=$3, lancer_id=$1 WHERE task_id=$2; DELETE FROM COUNTER_OFFER WHERE task_id=$2",values,(err,res)=>{
+        if (err) {
+            console.log("Fail to make accept request: ",err);
+            resultCallback(err,null);
+            return;    
+        }
+        resultCallback(null,res)
+    })
 }
 
 module.exports = CounterOffer
