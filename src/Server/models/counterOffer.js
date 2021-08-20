@@ -23,7 +23,7 @@ CounterOffer.postOffer = function(data,resultCallback) {
 }
 
 CounterOffer.getByRequest = function(data,resultCallback) {
-    values = [data.task.id]
+    values = [data.task_id]
     let sqlString = `
         start transaction;
     
