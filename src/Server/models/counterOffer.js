@@ -25,14 +25,8 @@ CounterOffer.postOffer = function(data,resultCallback) {
 CounterOffer.getByRequest = function(data,resultCallback) {
     values = [data.task_id]
     let sqlString = `
-        start transaction;
-    
-        set @task_id=?;
-
         SELECT * FROM COUNTER_OFFER
-        WHERE task_id=@task_id;
-
-        commit;
+        WHERE task_id=?;
     `
 
     sql.query(sqlString,values,function(err,res){
