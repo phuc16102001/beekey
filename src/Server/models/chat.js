@@ -24,6 +24,7 @@ Chat.fetch = function(data,resultCallback) {
         SELECT send_id, receive_id, content, date_time
         FROM CHAT
         WHERE (send_id=? and receive_id=?) OR (receive_id=? and send_id=?)
+        ORDER BY date_time;
     `
     sql.query(sqlString,values,function(err,res) {
         if (err) {
