@@ -16,7 +16,7 @@ Account.signup = function(data,resultCallback) {
     });
 }
 
-Account.checkMoney = function(data,resultCallback) {
+Account.getMoney = function(data,resultCallback) {
     values = [data.username]
     sqlString = `
         SELECT coin
