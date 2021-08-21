@@ -2,6 +2,7 @@ const counterOffer = require('../models/counterOffer')
 const task = require("../models/task")
 const config = require("../config/config")
 const Account = require('../models/account')
+const CounterOffer = require('../models/counterOffer')
 
 function postOffer(req,res) {
     data = {
@@ -112,29 +113,42 @@ function accept(req,res){
                 return;
             }
             coin = result[0].coin
-            if (coin<currentTask.offer) {
-                res.send({
-                    exitcode: 105,
-                    message: "You do not have enough money"
-                })
-                return;
-            }
 
-            counterOffer.accept(data,(err,result)=>{
-                if (err) {
+            CounterOffer.getByRequest(data,(err,result)=>{
+                if (err || result[0]==undefined) {
                     res.send({
                         exitcode: 1,
                         message: err
                     })
+                    return
+                }
+
+                offer = result[0].offer
+                    
+                if (coin<offer) {
+                    res.send({
+                        exitcode: 105,
+                        message: "You do not have enough money"
+                    })
                     return;
                 }
-        
-                if (result) {
-                    res.send({
-                        exitcode: 0,
-                        message: "Accept counter-offer successfully"
-                    })
-                }
+
+                counterOffer.accept(data,(err,result)=>{
+                    if (err) {
+                        res.send({
+                            exitcode: 1,
+                            message: err
+                        })
+                        return;
+                    }
+            
+                    if (result) {
+                        res.send({
+                            exitcode: 0,
+                            message: "Accept counter-offer successfully"
+                        })
+                    }
+                })
             })
         })
     })
