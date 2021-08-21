@@ -77,20 +77,6 @@ function getByRequest(req,res) {
     })
 }
 
-function getMoney(username) {
-    data = {
-        username: username
-    }
-    Account.getMoney(data,(err,result)=>{
-        if (err || result[0]!=undefined) {
-            return null;
-        }
-        result = result[0]
-        coin = result.coin
-        return coin
-    })
-}
-
 function accept(req,res){
     data = {
         client_id: req.payload.username,
@@ -99,7 +85,7 @@ function accept(req,res){
     }
 
     task.viewDetail(data,(err,result)=>{
-        if (err) {
+        if (err || result[0]==undefined) {
             res.send({
                 exitcode: 1,
                 message: err
@@ -107,45 +93,50 @@ function accept(req,res){
             return
         }
 
-        if (result[0]!=undefined) {
-            currentTask = result[0]
-            if (currentTask.status!=config.constant.STATUS.PENDING) {
+        currentTask = result[0]
+        if (currentTask.status!=config.constant.STATUS.PENDING) {
+            res.send({
+                exitcode: 4,
+                message: "Task status not valid"
+            })
+            return;
+        }
+
+        data['username'] = username
+        Account.getMoney(data,(err,result)=>{
+            if (err || result[0]==undefined) {
                 res.send({
-                    exitcode: 4,
-                    message: "Task status not valid"
+                    exitcode: 1,
+                    message: err
                 })
                 return;
-            } else {
-                coin = getMoney(data.client_id)
-                if (coin<currentTask.offer) {
+            }
+            coin = result[0].coin
+            if (coin<currentTask.offer) {
+                res.send({
+                    exitcode: 105,
+                    message: "You do not have enough money"
+                })
+                return;
+            }
+
+            counterOffer.accept(data,(err,result)=>{
+                if (err) {
                     res.send({
-                        exitcode: 105,
-                        message: "You do not have enough money"
+                        exitcode: 1,
+                        message: err
                     })
-                } else {
-                    counterOffer.accept(data,(err,result)=>{
-                        if (err) {
-                            res.send({
-                                exitcode: 1,
-                                message: err
-                            })
-                        }
-                
-                        if (result) {
-                            res.send({
-                                exitcode: 0,
-                                message: "Accept counter-offer successfully"
-                            })
-                        }
+                    return;
+                }
+        
+                if (result) {
+                    res.send({
+                        exitcode: 0,
+                        message: "Accept counter-offer successfully"
                     })
                 }
-            }
-        } else {
-            res.send({
-                exitcode: 1,
-                message: "Task not found"
             })
-        }
+        })
     })
 }
 
