@@ -1,6 +1,7 @@
 const counterOffer = require('../models/counterOffer')
 const task = require("../models/task")
 const config = require("../config/config")
+const Account = require('../models/account')
 
 function postOffer(req,res) {
     data = {
@@ -76,6 +77,20 @@ function getByRequest(req,res) {
     })
 }
 
+function getMoney(username) {
+    data = {
+        username: username
+    }
+    Account.getMoney(data,(err,result)=>{
+        if (err || result[0]!=undefined) {
+            return null;
+        }
+        result = result[0]
+        coin = result.coin
+        return coin
+    })
+}
+
 function accept(req,res){
     data = {
         client_id: req.payload.username,
@@ -83,7 +98,7 @@ function accept(req,res){
         lancer_id: req.body.lancer_id
     }
 
-    task.getStatus(data,(err,result)=>{
+    task.viewDetail(data,(err,result)=>{
         if (err) {
             res.send({
                 exitcode: 1,
@@ -93,28 +108,37 @@ function accept(req,res){
         }
 
         if (result[0]!=undefined) {
-            if (result[0].status!=config.constant.STATUS.PENDING) {
+            currentTask = result[0]
+            if (currentTask.status!=config.constant.STATUS.PENDING) {
                 res.send({
                     exitcode: 4,
                     message: "Task status not valid"
                 })
                 return;
             } else {
-                counterOffer.accept(data,(err,result)=>{
-                    if (err) {
-                        res.send({
-                            exitcode: 1,
-                            message: err
-                        })
-                    }
-            
-                    if (result) {
-                        res.send({
-                            exitcode: 0,
-                            message: "Accept counter-offer successfully"
-                        })
-                    }
-                })
+                coin = getMoney(data.client_id)
+                if (coin<currentTask.offer) {
+                    res.send({
+                        exitcode: 105,
+                        message: "You do not have enough money"
+                    })
+                } else {
+                    counterOffer.accept(data,(err,result)=>{
+                        if (err) {
+                            res.send({
+                                exitcode: 1,
+                                message: err
+                            })
+                        }
+                
+                        if (result) {
+                            res.send({
+                                exitcode: 0,
+                                message: "Accept counter-offer successfully"
+                            })
+                        }
+                    })
+                }
             }
         } else {
             res.send({
