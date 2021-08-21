@@ -72,9 +72,11 @@ class ViewCounterOfferListActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     val data = response.body()
-                    if (data?.exitcode == 0) {
+                    if (data!!.exitcode == 0) {
                         Toast.makeText(context,data.message,Toast.LENGTH_SHORT).show()
                         finish()
+                    } else {
+                        Toast.makeText(context,data.message,Toast.LENGTH_SHORT).show()
                     }
                 }
             }
