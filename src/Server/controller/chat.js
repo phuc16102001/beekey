@@ -45,7 +45,7 @@ function fetch(req,res) {
             res.send({
                 exitcode: 0,
                 message: "Fetch all message successfully",
-                Chats: result
+                chats: result
             })
         }
     })
