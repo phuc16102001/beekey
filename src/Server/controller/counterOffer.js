@@ -102,7 +102,7 @@ function accept(req,res){
             return;
         }
 
-        data['username'] = username
+        data['username'] = data.client_id
         Account.getMoney(data,(err,result)=>{
             if (err || result[0]==undefined) {
                 res.send({
