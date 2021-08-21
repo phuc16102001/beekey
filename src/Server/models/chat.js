@@ -18,7 +18,7 @@ Chat.send = function(data,resultCallback) {
     });
 }
 
-Chat.fetch = function(resultCallback) {
+Chat.fetch = function(data,resultCallback) {
     values = [data.receive_id, data.send_id, data.receive_id, data.send_id]
     let sqlString = `
         SELECT send_id, receive_id, content, date_time
