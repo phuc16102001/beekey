@@ -15,26 +15,43 @@
         android:id="@+id/listMessage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/edtMessage"/>
+        android:layout_above="@+id/cardView"/>
 
-    <EditText
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/btnSend"
-        android:id="@+id/edtMessage"
-        android:hint="@string/message"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <ImageView
-        android:padding="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_send"
-        android:focusable="true"
-        app:tint="@color/bee_yellow" />
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="@color/grey_border"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edtMessage"
+                android:hint="@string/message"
+                android:layout_toStartOf="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/btnSend"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/ic_send"
+                android:focusable="true"
+                app:tint="@color/bee_yellow" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </RelativeLayout>

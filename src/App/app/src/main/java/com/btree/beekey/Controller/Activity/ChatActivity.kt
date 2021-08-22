@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.btree.beekey.Controller.Adapter.ChatAdapter
 import com.btree.beekey.Controller.Adapter.Message
 import com.btree.beekey.Model.BasicResponse
@@ -26,6 +27,10 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.reverseLayout = true
+        binding.listMessage.layoutManager = linearLayoutManager
 
         receive_id = intent.getStringExtra("user_id").toString()
         fetchMessage(this)
@@ -64,8 +69,8 @@ class ChatActivity : AppCompatActivity() {
         })
     }
 
-    private fun loadMessage(context: Context, listMessage:List<Message>){
-        binding.listMessage.adapter = ChatAdapter(listMessage,receive_id)
+    private fun loadMessage(listMessage: List<Message>){
+        binding.listMessage.adapter = ChatAdapter(listMessage.reversed(),receive_id)
     }
 
     private fun fetchMessage(context:Context){
@@ -80,7 +85,7 @@ class ChatActivity : AppCompatActivity() {
                     val data = response.body()
                     if (data!!.exitcode == 0) {
                         listMessage = data.chats
-                        loadMessage(context,listMessage)
+                        loadMessage(listMessage)
                     }
                 }
             }

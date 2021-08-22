@@ -4,10 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.R
 import com.google.android.material.card.MaterialCardView
+import java.lang.Boolean.FALSE
 
 class ChatAdapter (private val listMessage: List<Message>, private val receive_id: String):
     RecyclerView.Adapter<ChatAdapter.ItemViewHolder>() {
@@ -45,7 +47,10 @@ class ChatAdapter (private val listMessage: List<Message>, private val receive_i
         holder.txtContent.text = message.content
 
         if (message.send_id==receive_id) {
+            val params : RelativeLayout.LayoutParams = holder.cardMessage.layoutParams as (RelativeLayout.LayoutParams)
+            params.addRule(RelativeLayout.ALIGN_PARENT_END,0)
             holder.cardMessage.setBackgroundResource(R.color.white)
+            holder.cardMessage.layoutParams = params
         }
     }
 
