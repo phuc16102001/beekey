@@ -113,6 +113,18 @@ interface API {
     @POST("/feedback")
     fun postFeedback(
         @Header("x-access-token") tokenHeader: String,
-        @Body postFeedbackBody: PostFeedbackBody
+        @Body feedbackBody: PostFeedbackBody
     ): Call<PostFeedbackResponse>
+
+    @POST("/chat/send")
+    fun postSendMessage(
+        @Header("x-access-token") tokenHeader: String,
+        @Body sendMessageBody: SendMessageBody
+    ): Call<BasicResponse>
+
+    @POST("/chat/fetch")
+    fun postFetchMessage(
+        @Header("x-access-token") tokenHeader: String,
+        @Body fetchMessageBody: FetchMessageBody
+    ): Call<FetchMessageResponse>
 }

@@ -102,5 +102,6 @@
     <string name="request_view">Request view</string>
     <string name="lancer">Lancer</string>
     <string name="are_you_sure">Are you sure?</string>
+    <string name="message">Message</string>
 </resources>
 

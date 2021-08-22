@@ -36,7 +36,6 @@ class RequestViewActivity : AppCompatActivity() {
             finish()
         }
 
-
         binding.btnChat.setOnClickListener {
             btnChatClick(this)
         }
@@ -99,7 +98,6 @@ class RequestViewActivity : AppCompatActivity() {
                 Toast.makeText(context, "Fail to connect to server", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 
     @SuppressLint("ResourceAsColor")
