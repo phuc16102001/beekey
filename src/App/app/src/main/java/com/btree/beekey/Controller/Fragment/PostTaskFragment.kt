@@ -152,7 +152,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                         dayStr= "0$day"
                     }
                     if (month.toString().length ==1){
-                        monthStr= "0${month}"
+                        monthStr= "0${monthStr}"
                     }
                     dateString = "$year-$monthStr-$dayStr"
                     getTimeFromUser()
