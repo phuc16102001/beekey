@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -146,15 +147,17 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
             DatePickerDialog(
                 it,
                 { view, year, month, day ->
+                    val realMonth = month+1
                     var dayStr = day.toString()
-                    var monthStr= {month+1}.toString()
-                    if (day.toString().length ==1){
-                        dayStr= "0$day"
+                    var monthStr= realMonth.toString()
+                    if (dayStr.length ==1){
+                        dayStr= "0" + dayStr
                     }
-                    if (month.toString().length ==1){
-                        monthStr= "0${monthStr}"
+                    if (monthStr.length ==1){
+                        monthStr= "0"+monthStr
                     }
-                    dateString = "$year-$monthStr-$dayStr"
+                    dateString = year.toString()+"-" + monthStr+"-" + dayStr
+//                    Log.d("testahihi")
                     getTimeFromUser()
                 },
                 curYear, curMonth, curDay
