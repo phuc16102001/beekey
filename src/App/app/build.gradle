@@ -72,6 +72,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+    //Swipe fresh chat
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }
 
 task wrapper(type: Wrapper){

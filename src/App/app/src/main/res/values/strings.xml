@@ -103,5 +103,6 @@
     <string name="lancer">Lancer</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="message">Message</string>
+    <string name="search_task">Search task</string>
 </resources>
 

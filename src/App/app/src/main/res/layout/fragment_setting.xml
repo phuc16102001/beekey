@@ -26,6 +26,11 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
+            <View
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"

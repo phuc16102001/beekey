@@ -13,10 +13,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="Search task"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"
+            android:text="@string/search_task"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <View
+            style="@style/Divider"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
 
         <com.google.android.material.card.MaterialCardView

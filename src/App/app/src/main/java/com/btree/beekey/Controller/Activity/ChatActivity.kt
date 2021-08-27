@@ -36,12 +36,19 @@ class ChatActivity : AppCompatActivity() {
         fetchMessage(this)
 
         binding.btnSend.setOnClickListener { clickBtnSend(this) }
+
+        binding.swipeRefreshLayout.setOnRefreshListener { swipeRefresh(this) }
+    }
+
+    private fun swipeRefresh(context: Context) {
+        Toast.makeText(context,"Loading message",Toast.LENGTH_SHORT).show()
+        fetchMessage(context)
     }
 
     private fun clickBtnSend(context: Context) {
         val content = binding.edtMessage.text.toString()
         binding.edtMessage.text.clear()
-        if (content.length>0) {
+        if (content.length==0) {
             Toast.makeText(context,"You have not typed any message",Toast.LENGTH_SHORT).show()
             return
         }
@@ -85,6 +92,8 @@ class ChatActivity : AppCompatActivity() {
                 call: Call<FetchMessageResponse>,
                 response: Response<FetchMessageResponse>
             ) {
+                binding.swipeRefreshLayout.isRefreshing = false
+
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data!!.exitcode == 0) {
@@ -95,6 +104,8 @@ class ChatActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<FetchMessageResponse>, t: Throwable) {
+                binding.swipeRefreshLayout.isRefreshing = false
+
                 Toast.makeText(context, "Fail to connect to server", Toast.LENGTH_SHORT).show()
             }
         })
