@@ -27,6 +27,13 @@ class MyListRequestActivity:AppCompatActivity() {
         getListRequest(this)
     }
 
+    override fun onResume() {
+        getListRequest(this)
+
+        super.onResume()
+    }
+
+
     private fun loadAdapter(context: Context){
         if (listRequirement == null) {
             return
@@ -48,6 +55,10 @@ class MyListRequestActivity:AppCompatActivity() {
         })
         binding.listRequest.adapter = taskAdapter
         binding.listRequest.setHasFixedSize(true)
+
+        if (listRequirement!!.size==0) {
+            Toast.makeText(context,"You have not posted any request",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getListRequest(context: Context){

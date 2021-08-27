@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.btree.beekey.Controller.Adapter.ItemClickListener
@@ -32,6 +33,12 @@ class MyListTaskActivity:AppCompatActivity() {
         getListRequest(this)
     }
 
+    override fun onResume() {
+        getListRequest(this)
+
+        super.onResume()
+    }
+
     private fun loadAdapter(context: Context){
         val taskAdapter = TaskAdapter(listTask)
         taskAdapter.setClickListener(object : ItemClickListener {
@@ -42,6 +49,9 @@ class MyListTaskActivity:AppCompatActivity() {
             }
         })
         binding.listTask.adapter = taskAdapter
+        if (listTask.size==0) {
+            Toast.makeText(context,"You have not achieved any task",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getListRequest(context: Context){
