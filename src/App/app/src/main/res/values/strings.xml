@@ -105,5 +105,6 @@
     <string name="message">Message</string>
     <string name="search_task">Search task</string>
     <string name="request_detail">Request detail</string>
+    <string name="task_detail">Task detail</string>
 </resources>
 
