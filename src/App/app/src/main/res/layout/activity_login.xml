@@ -63,8 +63,8 @@
 
         <TextView
             android:id="@+id/txtForgetPassword"
-            android:layout_width="138dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="@string/forget_password"
             android:textColorHighlight="@color/bee_yellow"
