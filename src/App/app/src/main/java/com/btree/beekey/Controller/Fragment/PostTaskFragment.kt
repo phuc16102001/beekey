@@ -181,18 +181,31 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
 
     }
 
+    private fun clearData() {
+        binding.titleTxt.text!!.clear()
+        dateString = null
+        timeString = null
+        binding.deadlineTxt.text!!.clear()
+        binding.descriptionTxt.text!!.clear()
+        binding.price.text!!.clear()
+    }
+
     private fun postTask() {
         val title = binding.titleTxt.text.toString()
         val deadline = "$dateString $timeString"
-        val offer=binding.price.text.toString().toInt()
+        val offer=binding.price.text.toString()
         val description = binding.descriptionTxt.text.toString()
-        val spinner=binding.spinnerCategory
-        val index=spinner.selectedItemPosition
+        val index=binding.spinnerCategory.selectedItemPosition
         val category_id = categoryList?.get(index)?.categoryId.toString()
+
+        if (title.length==0 || deadline.length==0 || offer.length==0 || description.length==0 || category_id.length==0) {
+            Toast.makeText(context,"Information is empty",Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val token = context?.let { Cache.getToken(it).toString() }
         val response = token?.let {
-            MyAPI.getAPI().postPostTask(it, PostTaskBody(title, deadline, offer, description, category_id))
+            MyAPI.getAPI().postPostTask(it, PostTaskBody(title, deadline, offer.toInt(), description, category_id))
         }
 
         response?.enqueue(object : Callback<PostTaskResponse> {
@@ -204,6 +217,7 @@ class PostTaskFragment : Fragment(R.layout.fragment_post_task) {
                     val data = response.body()
                     if (data?.exitcode == 0) {
                         Toast.makeText(context, "Successful", Toast.LENGTH_LONG).show()
+                        clearData()
                         (activity as MainActivity?)?.setCurrentFragment(profileFragment)
                     }
                 }
