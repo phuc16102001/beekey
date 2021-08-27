@@ -21,14 +21,19 @@
             android:textSize="@dimen/title_size"
             android:textStyle="bold" />
 
+        <View
+            style="@style/Divider"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/what_problem_that_you_are_facing_with_our_application_or_user"
             android:textColor="@color/black"
             android:textSize="20sp" />
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -54,10 +59,8 @@
             android:layout_gravity="center"
             android:text="@string/send"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="413dp"
-            style="?android:attr/buttonBarButtonStyle" />
+            android:textStyle="bold"/>
 
     </LinearLayout>
+
 </ScrollView>

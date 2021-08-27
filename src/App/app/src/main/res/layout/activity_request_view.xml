@@ -9,28 +9,22 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/request_view"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="@dimen/logo_width"
-                android:layout_height="@dimen/logo_height"
-                android:src="@drawable/logo_t"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/request_view"
-                android:textColor="@color/black"
-                android:textSize="@dimen/title_size"
-                android:textStyle="bold" />
-        </RelativeLayout>
+        <View
+            style="@style/Divider"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/txtTitle"
@@ -47,7 +41,6 @@
             app:cardUseCompatPadding="true"
             app:strokeColor="@color/grey_border"
             app:strokeWidth="1dp"
-            app:cardCornerRadius="15dp"
             android:layout_margin="5dp">
 
             <TextView
@@ -202,4 +195,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

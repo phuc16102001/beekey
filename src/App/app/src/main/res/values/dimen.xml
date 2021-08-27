@@ -3,5 +3,5 @@
 <resources>
     <dimen name="logo_width">100dp</dimen>
     <dimen name="logo_height">100dp</dimen>
-    <dimen name="title_size">25sp</dimen>
+    <dimen name="title_size">20sp</dimen>
 </resources>

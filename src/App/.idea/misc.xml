@@ -8,11 +8,14 @@
       <map>
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/drawable/card_edge.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/drawable/spinner_background.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_change_information.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_change_password.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_counter_offer.xml" value="0.264" />
-        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_feedback.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_feedback.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_forget_password.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_login.xml" value="0.25025641025641027" />
+        <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_my_list_request.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_my_list_task.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProject/BeeKey/src/App/app/src/main/res/layout/activity_report.xml" value="0.2" />

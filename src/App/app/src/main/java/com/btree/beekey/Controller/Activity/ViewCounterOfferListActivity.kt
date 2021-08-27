@@ -94,6 +94,11 @@ class ViewCounterOfferListActivity : AppCompatActivity() {
     }
 
     private fun loadOfferList(context: Context, offers :List<CounterOffer>) {
+        if (offers.size==0) {
+            Toast.makeText(context,"Request does not have any counter offer",Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val offerAdapter = CounterOfferAdapter(offers)
         offerAdapter.setClickListener(object : ItemClickListener {
             override fun onClick(view: View, position: Int) {
