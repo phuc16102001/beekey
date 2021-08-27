@@ -41,6 +41,10 @@ class ChatActivity : AppCompatActivity() {
     private fun clickBtnSend(context: Context) {
         val content = binding.edtMessage.text.toString()
         binding.edtMessage.text.clear()
+        if (content.length>0) {
+            Toast.makeText(context,"You have not typed any message",Toast.LENGTH_SHORT).show()
+            return
+        }
         sendMessage(context,content)
     }
 
