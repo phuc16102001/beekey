@@ -44,6 +44,12 @@ class ViewCounterOfferListActivity : AppCompatActivity() {
         getOfferList(this)
     }
 
+    override fun onResume() {
+        getOfferList(this)
+
+        super.onResume()
+    }
+
     private fun showDialogAccept(context: Context, offer: CounterOffer) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

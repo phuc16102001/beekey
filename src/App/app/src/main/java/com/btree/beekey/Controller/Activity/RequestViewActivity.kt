@@ -47,6 +47,12 @@ class RequestViewActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        getTask(this)
+
+        super.onResume()
+    }
+
     private fun btnChatClick(context: Context) {
         val intent = Intent(context, ChatActivity::class.java)
         intent.putExtra("user_id", displayTask.lancer_id)

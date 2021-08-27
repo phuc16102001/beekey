@@ -62,6 +62,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         requestInformation()
     }
 
+
+    override fun onResume() {
+        context?.let { getFeedback(it) }
+        requestInformation()
+        super.onResume()
+    }
+
     private fun loadInformation(account: Account) {
         binding.txtDisplayName.text = account.displayName
         binding.txtEmail.text = account.email

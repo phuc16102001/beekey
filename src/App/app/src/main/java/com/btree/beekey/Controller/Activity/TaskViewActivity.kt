@@ -37,6 +37,11 @@ class TaskViewActivity : AppCompatActivity() {
         getTask(this)
     }
 
+    override fun onResume() {
+        getTask(this)
+        super.onResume()
+    }
+
     private fun loadTask(task: Task) {
         binding.txtTitle.text = task.title
         binding.txtDescription.text = task.description

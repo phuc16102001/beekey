@@ -39,6 +39,12 @@ class RequestViewPendingActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        getTask(this)
+
+        super.onResume()
+    }
+
     private fun btnViewOfferClick(context:Context) {
         val intent = Intent(context, ViewCounterOfferListActivity::class.java)
         intent.putExtra("task_id", task_id)
