@@ -15,7 +15,6 @@
         app:cardBackgroundColor="@color/bee_yellow_light"
         android:layout_width="wrap_content"
         app:cardUseCompatPadding="true"
-        app:strokeColor="@color/grey_border"
         app:strokeWidth="1dp">
 
         <LinearLayout
