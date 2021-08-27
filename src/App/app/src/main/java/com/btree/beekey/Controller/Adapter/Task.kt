@@ -23,7 +23,7 @@ class Task(
     fun getStatusString() :String{
         when (status){
             TASK_PENDING -> return "PENDING"
-            TASK_DOING -> return "DOING"
+            TASK_DOING -> return "ON-GOING"
             TASK_DONE -> return "DONE"
         }
         return "NOT FOUND"
