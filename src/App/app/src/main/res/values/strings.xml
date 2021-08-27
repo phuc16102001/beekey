@@ -94,13 +94,13 @@
     <string name="content">Content</string>
     <string name="counter_offer_list">Counter offer list</string>
     <string name="message_content">Message content</string>
-    <string name="status">Status</string>
+    <string name="status">Status:</string>
     <string name="client">Client:</string>
     <string name="are_you_sure_to_accept_this_solution">Are you sure to accept this solution!?</string>
     <string name="confirm">Confirm</string>
     <string name="view_offer">View offer</string>
     <string name="request_view">Request view</string>
-    <string name="lancer">Lancer</string>
+    <string name="lancer">Lancer:</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="message">Message</string>
     <string name="search_task">Search task</string>

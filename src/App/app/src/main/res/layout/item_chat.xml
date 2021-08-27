@@ -15,20 +15,20 @@
         app:cardBackgroundColor="@color/bee_yellow_light"
         app:cardCornerRadius="15dp"
         app:strokeColor="@color/grey_border"
-        app:strokeWidth="1dp">
+        app:strokeWidth="2dp">
 
         <LinearLayout
-            android:padding="10dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/txtContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/message"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
