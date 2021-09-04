@@ -1,6 +1,8 @@
 const counterOffer = require('../models/counterOffer')
 const task = require("../models/task")
 const config = require("../config/config")
+const Account = require('../models/account')
+const CounterOffer = require('../models/counterOffer')
 
 function postOffer(req,res) {
     data = {
@@ -78,12 +80,13 @@ function getByRequest(req,res) {
 
 function accept(req,res){
     data = {
+        client_id: req.payload.username,
         task_id: req.body.task_id,
         lancer_id: req.body.lancer_id
     }
 
-    task.getStatus(data,(err,result)=>{
-        if (err) {
+    task.viewDetail(data,(err,result)=>{
+        if (err || result[0]==undefined) {
             res.send({
                 exitcode: 1,
                 message: err
@@ -91,20 +94,52 @@ function accept(req,res){
             return
         }
 
-        if (result[0]!=undefined) {
-            if (result[0].status!=config.constant.STATUS.PENDING) {
+        currentTask = result[0]
+        if (currentTask.status!=config.constant.STATUS.PENDING) {
+            res.send({
+                exitcode: 4,
+                message: "Task status not valid"
+            })
+            return;
+        }
+
+        data['username'] = data.client_id
+        Account.getMoney(data,(err,result)=>{
+            if (err || result[0]==undefined) {
                 res.send({
-                    exitcode: 4,
-                    message: "Task status not valid"
+                    exitcode: 1,
+                    message: err
                 })
                 return;
-            } else {
+            }
+            coin = result[0].coin
+
+            CounterOffer.getByRequest(data,(err,result)=>{
+                if (err || result[0]==undefined) {
+                    res.send({
+                        exitcode: 1,
+                        message: err
+                    })
+                    return
+                }
+
+                offer = result[0].offer
+                    
+                if (coin<offer) {
+                    res.send({
+                        exitcode: 105,
+                        message: "You do not have enough money"
+                    })
+                    return;
+                }
+
                 counterOffer.accept(data,(err,result)=>{
                     if (err) {
                         res.send({
                             exitcode: 1,
                             message: err
                         })
+                        return;
                     }
             
                     if (result) {
@@ -114,67 +149,13 @@ function accept(req,res){
                         })
                     }
                 })
-            }
-        } else {
-            res.send({
-                exitcode: 1,
-                message: "Task not found"
             })
-        }
-    })
-}
-
-function decline(req,res){
-    data = {
-        task_id: req.body.task_id,
-        lancer_id: req.body.lancer_id
-    }
-
-    task.getStatus(data,(err,result)=>{
-        if (err) {
-            res.send({
-                exitcode: 1,
-                message: err
-            })
-            return
-        }
-
-        if (result[0]!=undefined) {
-            if (result[0].status!=config.constant.STATUS.PENDING) {
-                res.send({
-                    exitcode: 4,
-                    message: "Task status not valid"
-                })
-                return;
-            } else {
-                counterOffer.decline(data,(err,result)=>{
-                    if (err) {
-                        res.send({
-                            exitcode: 1,
-                            message: err
-                        })
-                    }
-            
-                    if (result) {
-                        res.send({
-                            exitcode: 0,
-                            message: "Decline counter-offer successfully"
-                        })
-                    }
-                })
-            }
-        } else {
-            res.send({
-                exitcode: 1,
-                message: "Task not found"
-            })
-        }
+        })
     })
 }
 
 module.exports = {
     postOffer,
     getByRequest,
-    accept,
-    decline
+    accept
 }

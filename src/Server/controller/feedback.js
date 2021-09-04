@@ -10,8 +10,6 @@ function post(req,res) {
         description: req.body.description
     }
 
-    console.log(task_id)
-
     Task.getStatus(data,(err,result)=>{
         if (err) {
             res.send({
@@ -22,7 +20,7 @@ function post(req,res) {
         }
 
         if (result[0]!=undefined) {
-            console.log(result)
+            result = result[0]
             if (result.status!=config.constant.STATUS.DONE) {
                 res.send({
                     exitcode: 4,

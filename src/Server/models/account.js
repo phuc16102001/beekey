@@ -16,6 +16,23 @@ Account.signup = function(data,resultCallback) {
     });
 }
 
+Account.getMoney = function(data,resultCallback) {
+    values = [data.username]
+    sqlString = `
+        SELECT coin
+        FROM ACCOUNT
+        WHERE username = ?;
+    `
+    sql.query(sqlString,values,(err,res)=> {
+        if (err){
+            console.log("Fail to check money:",err)
+            resultCallback(err,null)
+            return;
+        }
+        resultCallback(null,res)
+    })
+}
+
 Account.login = function(data,resultCallback){
     sql.query("SELECT * FROM ACCOUNT WHERE USERNAME=? AND PASSWORD=?",[data.username,data.password],function(err,res){
         if (err){
