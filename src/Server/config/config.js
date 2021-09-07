@@ -20,9 +20,9 @@ exports.constant = {
         FEMALE: 1,
     },
     STATUS: {
-        PENDING: 0,
-        ACCEPTED: 1,
-        DONE: 2
+        PENDING: 1,
+        ACCEPTED: 2,
+        DONE: 0
     },
     DEFAULT_COIN: 0
 }

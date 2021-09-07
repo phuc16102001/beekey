@@ -15,9 +15,9 @@ class Task(
     @SerializedName("user_id") var user_id: String,
 ) {
     companion object{
-        const val TASK_PENDING=0
-        const val TASK_DOING=1
-        const val TASK_DONE=2
+        const val TASK_PENDING=1
+        const val TASK_DOING=2
+        const val TASK_DONE=0
     }
 
     fun getStatusString() :String{
