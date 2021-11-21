@@ -1,8 +1,22 @@
 # BeeKey
-`This is the project of BeeKey application from BTree team. This product ia owned by the team while learning Introduction to Software Engineering course in HCMUS. The repository contains 3 main folders: document, source code, and submissions. Inside the source code, there are two main structures: server and android application. The server using nodejs with express framework and the Android application using Kotlin programming language
-The BTree team including:
-`
-- Do Vuong Phuc
-- Hoang Nhu Thanh
-- Chung Kim Khanh
-- Bui Dang Khoa
+
+This is the project of BeeKey application from BTree team. This product ia owned by the team while learning Introduction to Software Engineering course in HCMUS. In this project, we build a freelancer application on the Android platform using Raspberry Pi as an back-end server.
+
+# Contributors
+
+The project is owned by the BeeKey team members, including:
+- [phuc16102001](https://github.com/phuc16102001/)
+- [thanhhoang4869](https://github.com/thanhhoang4869)
+- [KimKhanh14](https://github.com/KimKhanh14)
+- [Qambitions](https://github.com/Qambitions)
+
+You are free to refer from our project, but ***do not copy without permssion***
+
+# Implementation document
+The repository contains 3 main folders: document, source code, and submissions. Inside the source code, there are two main structures: server and android application.
+## Android application
+The android application is built in Kotlin language following the N-layer model
+You can see the architecture from documents
+
+## Server side
+The server running on Raspberry Pi as a NodeJS server which connects to MariaDB
