@@ -10,7 +10,7 @@ The project is owned by the BeeKey team members, including:
 - [KimKhanh14](https://github.com/KimKhanh14)
 - [Qambitions](https://github.com/Qambitions)
 
-You are free to refer from our project, but ***do not copy without permssion***
+You are free to refer from our project, but ***do not copy without permission***
 
 # Implementation document
 The repository contains 3 main folders: document, source code, and submissions. Inside the source code, there are two main structures: server and android application.
