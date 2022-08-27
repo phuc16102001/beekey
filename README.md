@@ -1,12 +1,12 @@
 # BeeKey
 
+<p align="center">
+    <img style="width: 20%" src="./src/Design/logo_t.png"/>
+</p>
+
 ## Introduction
 
 This is the project of BeeKey application from BTree team. This product ia owned by the team while learning Introduction to Software Engineering course in HCMUS. In this project, we build a freelancer application on the Android platform using Raspberry Pi as an back-end server.
-
-<p align="center">
-    <img style="width: 256px" src="./src/Design/logo_t.png"/>
-</p>
 
 ## Demonstration
 
