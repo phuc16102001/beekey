@@ -1,12 +1,19 @@
 # BeeKey
 
+<div>
+    <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
+    <img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"/>
+</div>
+
+## Introduction
+
 <p align="center">
     <img style="width: 20%" src="./src/Design/logo_t.png"/>
 </p>
 
-## Introduction
-
-This is the project of BeeKey application from BTree team. This product ia owned by the team while learning Introduction to Software Engineering course in HCMUS. In this project, we build a freelancer application on the Android platform using Raspberry Pi as an back-end server.
+This is the project of BeeKey application from BTree team. This product is owned by the team while learning Introduction to Software Engineering course in HCMUS. In this project, we build a freelancer application on the Android platform using Raspberry Pi as a back-end server.
 
 ## Demonstration
 
@@ -16,7 +23,14 @@ Application demo: [Beekey - app demo](https://www.youtube.com/watch?v=wH2CMC9ijt
 
 ## Source code exploration
 
-The repository contains 3 main folders: document, source code, and submissions. Inside the source code, there are two main structures: server and android application.
+The repository contains 3 main folders: 
+- Document
+- Source code
+- Submissions
+
+Inside the source code, there are two main structures: 
+- Backend server
+- Android application
 
 ### Android application
 
