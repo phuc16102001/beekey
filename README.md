@@ -50,4 +50,5 @@ The project is owned by the BeeKey team members, including:
 - [KimKhanh14](https://github.com/KimKhanh14)
 - [Qambitions](https://github.com/Qambitions)
 
-You are free to refer from our project, but **_do not copy without permission_**
+## License
+[MIT](LICENSE)
